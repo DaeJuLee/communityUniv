@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-ssh키 생성 안했다
+ssh키 생성 안했다.. 다시 ssh컴퓨터에서 지웠다
 </body>
 </html>
