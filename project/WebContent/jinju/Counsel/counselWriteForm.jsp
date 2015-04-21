@@ -39,13 +39,13 @@
 			<tr>
 				<td>분류 선택</td>
 				<td>
-				 <select name="category">
-			           <option value="[군대]">[군대]</option>
-			           <option value="[연애]">[연애]</option>
-			           <option value="[진로]">[진로]</option>
-			           <option value="[친구]">[친구]</option>
-			           <option value="[학업]">[학업]</option>
-			           <option value="[기타]">[기타]</option>
+				 <select name="category"><!-- 대주 option value에 숫자 기입 -->
+			           <option value="1">[군대]</option>
+			           <option value="2">[연애]</option>
+			           <option value="3">[진로]</option>
+			           <option value="4">[친구]</option>
+			           <option value="5">[학업]</option>
+			           <option value="6">[기타]</option>
 			       </select>
 			     </td>
 			<tr>

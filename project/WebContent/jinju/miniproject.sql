@@ -13,7 +13,7 @@ create table qboard(
 	ref number,
 	ip varchar2(255)
 );
- //QnA 테이블
+ --QnA 테이블
  
 drop table qboard;
 drop table cboard;
