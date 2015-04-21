@@ -54,7 +54,7 @@ create table timeTable(
 	sub10 varchar2(20)
 
 )
---자유게시판 보드▼--
+--자유게시판 ▼--
 create table board (
 	bnum number primary key,
 	title varchar2(50) not null,
