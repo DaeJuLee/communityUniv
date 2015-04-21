@@ -89,7 +89,9 @@ private static CounselBoardDAO instance;
 		int result = 0;
 		ResultSet rs = null;
 		String sql1 = "select nvl(max(bnum),0) from cboard";
-		String sql = "insert into cboard values(?,?,?,sysdate,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into cboard(bnum, ref, re_level, re_step, category, title, writer, bpass, content, s_date) "+
+				"values(?,?,?,?,?,?,?,?,?,sysdate)";
+		//진주야 여기가 틀려서... console창에 'not enough values'라는 메세지가 뜬거야 ^^ (sql1)
 		String sql2 = "update cboard set re_step = re_step+1 where ref=? and re_step > ?";
 		try {
 			conn = getConnection();
@@ -114,18 +116,14 @@ private static CounselBoardDAO instance;
 				cboard.setRef(number);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, number);
-			pstmt.setString(2, cboard.getWriter());
-			pstmt.setString(3, cboard.getTitle());
-			pstmt.setString(4, cboard.getContent());
-			pstmt.setInt(5, cboard.getHits());
-			pstmt.setString(6, cboard.getBpass());
-			pstmt.setString(7, cboard.getFileName());
-			pstmt.setInt(8, cboard.getFileSize());
-			pstmt.setInt(9, cboard.getRe_step());
-			pstmt.setInt(10, cboard.getRe_level());
-			pstmt.setInt(11, cboard.getRef());
-			pstmt.setString(12, cboard.getIp());
-			pstmt.setString(13, cboard.getCategory());
+			pstmt.setInt(2, cboard.getRef());
+			pstmt.setInt(3, cboard.getRe_level());
+			pstmt.setInt(4, cboard.getRe_step());
+			pstmt.setString(5, cboard.getCategory());
+			pstmt.setString(6, cboard.getTitle());
+			pstmt.setString(7, cboard.getWriter());
+			pstmt.setString(8, cboard.getBpass());
+			pstmt.setString(9, cboard.getContent());
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
