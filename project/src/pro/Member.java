@@ -9,7 +9,8 @@ public class Member {
 	private int grade;
 	private int statement;
 	private String email;
-	private String Address;
+	private String address;
+	private String major;
 	
 	public int getSnum() {
 		return snum;
@@ -60,11 +61,18 @@ public class Member {
 		this.email = email;
 	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
+
 	
 	
 }
