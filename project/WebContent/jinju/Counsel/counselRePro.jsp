@@ -25,7 +25,7 @@
 		
 		CounselBoardDAO cbd = CounselBoardDAO.getInstance();
 
-		int result = pbd.reply(cboard);
+		int result = cbd.reply(cboard);
 		if (result > 0) {
 	%>
 	<script type="text/javascript">
