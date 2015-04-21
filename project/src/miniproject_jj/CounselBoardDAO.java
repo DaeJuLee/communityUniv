@@ -86,7 +86,7 @@ private static CounselBoardDAO instance;
 		int bnum = cboard.getBnum();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		int result = 0;
+		int result = 0; 
 		ResultSet rs = null;
 		String sql1 = "select nvl(max(bnum),0) from cboard";
 		String sql = "insert into cboard(bnum, ref, re_level, re_step, category, title, writer, bpass, content, s_date) "+
