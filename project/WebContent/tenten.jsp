@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-깃허브 연결 되니? 마니?
+10시 반입니다.
 </body>
 </html>
