@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-10시 반입니다.
+된거지?
 </body>
 </html>
