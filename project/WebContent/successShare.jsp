@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-제발 성공좀하자..ㅠㅠ
+그만합시다..ㅠㅠ
 </body>
 </html>
