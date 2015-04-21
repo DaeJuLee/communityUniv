@@ -24,7 +24,7 @@
 		if (result > 0) {
 	%>
 	<script type="text/javascript">
-		alert("입력 완료햇습니다");  
+		alert("입력 완료했습니다");  
 		location.href="QnAList.jsp?pageNum="+<%=pageNum%>;
 	</script>
 	<%
