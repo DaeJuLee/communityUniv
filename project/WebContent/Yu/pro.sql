@@ -42,3 +42,20 @@ create table board (
 );
 select * from member;
 select * from board;
+
+create table traBoard (
+	bnum number primary key,
+	title varchar2(50) ,
+	s_date date not null,
+	writer varchar2(20) ,
+	content varchar2(500) ,
+	hits number(5) default 0,
+	bpass varchar2(14) ,
+	fileName varchar2(100),
+	fileSize number,
+	re2_step number ,
+	re2_level number ,
+	ip varchar2(20) ,
+	ref number ,
+	category varchar(20)
+);
