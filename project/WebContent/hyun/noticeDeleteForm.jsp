@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-나는 되지롱~ 으흐흐흐흐
+
+<%
+	String bnum = request.getParameter("bnum");
+
+%>
+<form action="noticeDeletePro.jsp?bnum=<%=bnum%>">
+	<input type = "hidden" name = "bnum" value="<%=bnum %>">
+	공지를 삭제하시겠습니까?<p>
+	<input type = "submit" value = "확인">
+	
+</form>
 </body>
 </html>
