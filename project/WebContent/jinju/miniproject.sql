@@ -11,7 +11,7 @@ create table qboard(
 	re_step number,
 	re_level number,
 	ref number,
-	ip varchar2(255),
+	ip varchar2(255)
 );
  //QnA Å×ÀÌºí
  
