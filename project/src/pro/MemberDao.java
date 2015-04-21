@@ -64,7 +64,7 @@ public class MemberDao {
 	public int insert(Member member) throws SQLException {
 		int result = 0;
 		Connection conn = null;
-		String sql = "insert into member values(?,?,?,?,?,'0',?,'0',?)";
+		String sql = "insert into member values(?,?,?,?,?,'0',?,'0',?,?)";
 		PreparedStatement pstmt = null;
 		try {
 			conn = getConnection();
@@ -77,6 +77,7 @@ public class MemberDao {
 			pstmt.setString(6, member.getWriter());
 			/* pstmt.setString(6, member.getAddress()); */
 			pstmt.setString(7, member.getEmail());
+			pstmt.setString(8, member.getMajor());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -143,6 +144,7 @@ public class MemberDao {
 				member.setWriter(rs.getString(7));
 				member.setAddress(rs.getString(8));
 				member.setEmail(rs.getString(9));
+				member.setMajor(rs.getString(10));
 
 			}
 		} catch (Exception e) {
@@ -159,21 +161,32 @@ public class MemberDao {
 
 	}
 
-	/*
-	 * public int update(Member member) throws SQLException { int result = 0;
-	 * Connection conn = null; String sql =
-	 * "update member set passwd=?, name=?, address=?, tel=? where id=?";
-	 * PreparedStatement pstmt = null; try { conn = getConnection(); pstmt =
-	 * conn.prepareStatement(sql); pstmt.setString(1, member.getPasswd());
-	 * pstmt.setString(2, member.getName()); pstmt.setString(3,
-	 * member.getAddress()); pstmt.setString(4, member.getTel());
-	 * pstmt.setString(5, member.getId()); result = pstmt.executeUpdate(); }
-	 * catch (Exception e) { System.out.println(e.getMessage()); } finally { if
-	 * (pstmt != null) pstmt.close(); if (conn != null) conn.close(); } return
-	 * result;
-	 * 
-	 * }
-	 */
+	public int update(Member member) throws SQLException {
+		int result = 0;
+		Connection conn = null;
+		String sql = "update member set pass=?, address=?, statement=?, email=? where id=?";
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getPass());
+			pstmt.setString(2, member.getAddress());
+			pstmt.setInt(3, member.getStatement());
+			pstmt.setString(4, member.getEmail());
+			pstmt.setString(5, member.getId());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		return result;
+
+	}
+
 	public int delete(String id, String pass) throws SQLException {
 		int result = 0;
 		result = check(id, pass);
