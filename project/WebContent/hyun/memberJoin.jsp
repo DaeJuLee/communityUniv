@@ -148,27 +148,27 @@
 							<td>
 								<div class="item">
 									<select name="major">
-										<option value="01">수학과</option>
-										<option value="02">화학과</option>
-										<option value="03">물리학과</option>
-										<option value="04">의류학과</option>
-										<option value="05">사회복지학과</option>
-										<option value="06">식품영양학과</option>
-										<option value="07">건축공학과</option>
-										<option value="08">도시공학과</option>
-										<option value="09">컴퓨터공학과</option>
-										<option value="10">생명공학과</option>
-										<option value="11">기계공학과</option>
-										<option value="12">언론홍보학과</option>
-										<option value="13">일어일문학과</option>
-										<option value="14">중어중문학과</option>
-										<option value="15">영어영문학과</option>
-										<option value="16">국제무역학과</option>
-										<option value="17">경영학과</option>
-										<option value="18">물류통상학과</option>
-										<option value="19">경제학과</option>
-										<option value="20">약학과</option>
-										<option value="21">간호학과</option>
+										<option value="수학과">수학과</option>
+										<option value="화학과">화학과</option>
+										<option value="물리학과">물리학과</option>
+										<option value="의류학과">의류학과</option>
+										<option value="사회복지학과">사회복지학과</option>
+										<option value="식품영양학과">식품영양학과</option>
+										<option value="건축공학과">건축공학과</option>
+										<option value="도시공학과">도시공학과</option>
+										<option value="컴퓨터공학과">컴퓨터공학과</option>
+										<option value="생명공학과">생명공학과</option>
+										<option value="기계공학과">기계공학과</option>
+										<option value="언론홍보학과">언론홍보학과</option>
+										<option value="일어일문학과">일어일문학과</option>
+										<option value="중어중문학과">중어중문학과</option>
+										<option value="영어영문학과">영어영문학과</option>
+										<option value="국제무역학과">국제무역학과</option>
+										<option value="경영학과">경영학과</option>
+										<option value="물류통상학과">물류통상학과</option>
+										<option value="경제학과">경제학과</option>
+										<option value="약학과">약학과</option>
+										<option value="간호학과">간호학과</option>
 									</select>
 								</div>
 							</td>
