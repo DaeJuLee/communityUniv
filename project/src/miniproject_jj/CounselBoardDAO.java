@@ -344,4 +344,49 @@ private static CounselBoardDAO instance;
 		}
 		return result;
 	}
+	
+	public List<CounselBoard> listRippleSelect(int boardNum) throws SQLException {
+		List<CounselBoard> list = new ArrayList<CounselBoard>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectRipple =  "select re2_level, re2_step from cboard where bnum = ?";
+		String sql = "select * from(select rownum rn ,a.* from "
+				+ "(select * from cboard order by ref desc, re_step) a ) where rn between ? and ?";
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(selectRipple);
+			pstmt.setInt(1, boardNum);
+			rs = pstmt.executeQuery();
+		
+			while (rs.next()) {
+				CounselBoard cboard = new CounselBoard();
+				cboard.setBnum(rs.getInt("bnum"));
+				cboard.setWriter(rs.getString("writer"));
+				cboard.setTitle(rs.getString("title"));
+				cboard.setS_date(rs.getDate("s_date"));
+				cboard.setContent(rs.getString("content"));
+				cboard.setHits(rs.getInt("hits"));
+				cboard.setBpass(rs.getString("bpass"));
+				cboard.setRe_step(rs.getInt("re_step"));
+				cboard.setRe_level(rs.getInt("re_level"));
+				cboard.setRef(rs.getInt("ref"));
+				cboard.setIp(rs.getString("ip"));
+				cboard.setCategory(rs.getString("category"));
+								
+				list.add(cboard);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		return list;
+	}
 }

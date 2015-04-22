@@ -4,7 +4,7 @@ create table qboard(
 	title varchar2(255), 
 	s_date date,
 	content varchar2(255),
-	hits number,
+	hits number default 0,
 	bpass varchar2(255),
 	fileName varchar2(255),
 	fileSize number,
@@ -14,9 +14,6 @@ create table qboard(
 	ip varchar2(255)
 );
  --QnA 테이블
- 
-drop table qboard;
-drop table cboard;
 
 create sequence qboard_seq;
 select * from qboard;
@@ -28,7 +25,8 @@ create table cboard(
 	title varchar2(255),
 	s_date date,
 	content varchar2(255),
-	hits number,
+	content2 varchar2(255),
+	hits number default 0,
 	bpass varchar2(255),
 	fileName varchar2(255),
 	fileSize number,
@@ -40,7 +38,10 @@ create table cboard(
 	ip varchar2(255),
 	category varchar2(255)
 );
-	//counsel 고민상담 테이블
+	--counsel 고민상담 테이블
  
 create sequence cboard_seq;
 select * from cboard;
+
+drop table qboard;
+drop table cboard;

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "miniproject_jj.*" %>
+<%@page import="java.util.List"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -55,9 +57,14 @@
 		</tr>
 	</table>
 
-
-<!-- 댓글창 include 하기 -->
-
-
+	<!-- <form>
+		<table>
+			<tr>
+				<td><textarea rows="5" cols="25"></textarea></td>
+				<td><input type = "submit" value = "리플작성완료"></td>
+			</tr>
+		</table>
+	</form> -->
+	
 </body>
 </html>
