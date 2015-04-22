@@ -377,19 +377,8 @@ private static CounselBoardDAO instance;
 				crboard.setRe_level(rs.getInt("re_level"));
 				crboard.setContent(rs.getString("content"));
 				crboard.setR_date(rs.getDate("r_date"));
-				System.out.println("resultSet 출력시작");
-				System.out.println(rs.getInt("bnum"));
-				System.out.println(rs.getInt("re_step"));
-				System.out.println(rs.getInt("re_level"));
-				System.out.println(rs.getString("content"));
-				System.out.println(rs.getDate("r_date"));
-				System.out.println("resultSet 출력끝");
 				list.add(crboard);
 			}
-			if(!rs.next()){
-				System.out.println("rs에 값이 없다..");
-			}
-			System.out.println("rs에 값이 없다..");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {

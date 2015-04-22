@@ -54,7 +54,7 @@ bnum number,
 re_step number,
 re_level number,
 content varchar2(255),
-r_date varchar2(255)
+r_date date
 );
 
 select * from REPLYCOMMENT;
