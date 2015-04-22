@@ -1,13 +1,19 @@
 create table member (
 	snum number(10) primary key,
-	name varchar2(10) not null,
+	name varchar2(20) not null,
 	id varchar2(10) not null,
 	pass varchar2(14) not null,
 	statement number(4) not null,
 	grade number(4) not null,
 	writer varchar2(10) not null,
-	address varchar2(250) not null,
-	email varchar2(40) not null
+	post1 number,
+	post2 number,
+	addr varchar2(250),
+	addr2 varchar2(250),
+	addr3 varchar2(250) ,
+	jibeon varchar2(250),
+	email varchar2(40) not null,
+	major varchar2(40) not null
 );
 
 create table univMember (
@@ -54,7 +60,7 @@ create table timeTable(
 	sub10 varchar2(20)
 
 )
---자유게시판 보드 ▼--
+
 create table board (
 	bnum number primary key,
 	title varchar2(50) not null,

@@ -4,21 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<%
-		request.setCharacterEncoding("utf-8");
-	
-	%>
- <input type="text" name="post1" id="post1" value=""> - <input type="text" name="post2" id="post2" value="">
- <input type="button" onclick="openDaumPostcode()" value="우편번호 찾기" style="width:100px; height:20px; font-size:11px; background-color:#ECECEC"><br>
- <input type="text"name="addr1" id="addr" value="" title="행정기본주소" style="width:49%">
- <input type="text" name="addr2" id="addr2" value="" title="상세주소" style="width:49%">
- <input type="text" name="addr3" id="addr3" value="" title="참고항목" style="width:99%">
- <input type="text" name="jibeon" id="jibeon" value="" title="지번주소" style="width:99%">
 
- <script src="http://dmaps.daum.net/map_js_init/postcode.js"></script>
+<title>Insert title here</title>
+<script src="http://dmaps.daum.net/map_js_init/postcode.js"></script>
  <script>
      function openDaumPostcode() {
          new daum.Postcode({
@@ -35,5 +23,18 @@
          }).open();
      }
  </script> 
+</head>
+<body>
+	<%
+		request.setCharacterEncoding("utf-8");
+	%>
+ <input type="text" name="post1" id="post1" value=""> - <input type="text" name="post2" id="post2" value="">
+ <input type="button" onclick="openDaumPostcode()" value="우편번호 찾기" style="width:100px; height:20px; font-size:11px; background-color:#ECECEC"><br>
+ <input type="text"name="addr1" id="addr" value="" title="행정기본주소" style="width:49%">
+ <input type="text" name="addr2" id="addr2" value="" title="상세주소" style="width:49%">
+ <input type="text" name="addr3" id="addr3" value="" title="참고항목" style="width:99%">
+ <input type="text" name="jibeon" id="jibeon" value="" title="지번주소" style="width:99%">
+
+ 
 </body>
 </html>

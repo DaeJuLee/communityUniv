@@ -2,6 +2,7 @@ package pro;
 
 import javax.naming.*;
 import javax.sql.*;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,8 +65,9 @@ public class MemberDao {
 	public int insert(Member member) throws SQLException {
 		int result = 0;
 		Connection conn = null;
-		String sql = "insert into member values(?,?,?,?,?,'0',?,'0',?,?)";
+		String sql = "insert into member values(?,?,?,?,?,'0',?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = null;
+	
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -74,10 +76,22 @@ public class MemberDao {
 			pstmt.setString(3, member.getId());
 			pstmt.setString(4, member.getPass());
 			pstmt.setInt(5, member.getStatement());
+/*			pstmt.setInt(6, member.getGrade());*/
 			pstmt.setString(6, member.getWriter());
-			/* pstmt.setString(6, member.getAddress()); */
-			pstmt.setString(7, member.getEmail());
-			pstmt.setString(8, member.getMajor());
+			pstmt.setInt(7, member.getPost1()); 
+			System.out.println("快祈锅龋1  : " +  member.getPost1());
+			pstmt.setInt(8, member.getPost2()); 
+			System.out.println("快祈锅龋2 : " + member.getPost2());
+			pstmt.setString(9,toKor( member.getAddr2()));
+			System.out.println("林家 1 :  " + toKor( member.getAddr()));
+			pstmt.setString(10,toKor( member.getAddr()));
+			System.out.println("林家 2 :  " + toKor( member.getAddr2()));
+			pstmt.setString(11, toKor(member.getAddr3())); 
+			System.out.println("林家 3 :  " + toKor(member.getAddr3()));
+			pstmt.setString(12,toKor( member.getJibeon()));
+			System.out.println("瘤锅 :  " +toKor( member.getJibeon()));
+			pstmt.setString(13, member.getEmail());
+			pstmt.setString(14, member.getMajor());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -88,6 +102,16 @@ public class MemberDao {
 				conn.close();
 		}
 		return result;
+	}
+	
+	public static String toKor (String en) { 
+		if (en == null) {
+			return null; 
+			} try {
+				return new String (en.getBytes("8859_1"), "utf-8"); 
+			} catch(Exception e) {
+				return en; 
+		} 
 	}
 
 	public int check(String id, String pass) throws SQLException {
@@ -142,9 +166,14 @@ public class MemberDao {
 				member.setStatement(rs.getInt(5));
 				member.setGrade(rs.getInt(6));
 				member.setWriter(rs.getString(7));
-				member.setAddress(rs.getString(8));
-				member.setEmail(rs.getString(9));
-				member.setMajor(rs.getString(10));
+				member.setPost1(rs.getInt(8));
+				member.setPost2(rs.getInt(9));
+				member.setAddr(rs.getString(10));
+				member.setAddr2(rs.getString(11));
+				member.setAddr3(rs.getString(12));
+				member.setJibeon(rs.getString(13));
+				member.setEmail(rs.getString(14));
+				member.setMajor(rs.getString(15));
 
 			}
 		} catch (Exception e) {
@@ -164,16 +193,21 @@ public class MemberDao {
 	public int update(Member member) throws SQLException {
 		int result = 0;
 		Connection conn = null;
-		String sql = "update member set pass=?, address=?, statement=?, email=? where id=?";
+		String sql = "update member set pass=?, post1 = ?, post2 = ?, addr=?, addr2=?, addr3=?, jibeon=?, statement=?, email=? where id=?";
 		PreparedStatement pstmt = null;
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getPass());
-			pstmt.setString(2, member.getAddress());
-			pstmt.setInt(3, member.getStatement());
-			pstmt.setString(4, member.getEmail());
-			pstmt.setString(5, member.getId());
+			pstmt.setInt(2, member.getPost1());
+			pstmt.setInt(3, member.getPost1());
+			pstmt.setString(4, member.getAddr2());
+			pstmt.setString(5, member.getAddr2());
+			pstmt.setString(6, member.getAddr3());
+			pstmt.setString(7, member.getJibeon());
+			pstmt.setInt(8, member.getStatement());
+			pstmt.setString(9, member.getEmail());
+			pstmt.setString(10, member.getId());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -232,8 +266,13 @@ public class MemberDao {
 					member.setStatement(rs.getInt(5));
 					member.setGrade(rs.getInt(6));
 					member.setWriter(rs.getString(7));
-					member.setAddress(rs.getString(8));
-					member.setEmail(rs.getString(9));
+					member.setPost1(rs.getInt(8));
+					member.setPost2(rs.getInt(9));
+					member.setAddr(rs.getString(10));
+					member.setAddr2(rs.getString(11));
+					member.setAddr3(rs.getString(12));
+					member.setJibeon(rs.getString(13));
+					member.setEmail(rs.getString(14));
 					list.add(member);
 				} while (rs.next());
 			}
