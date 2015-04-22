@@ -33,16 +33,16 @@
 			}
 		}).blur();
 	});
-	
+
 	function passchk() {
-		if(frm.pass.value != frm.passch.value){
+		if (frm.pass.value != frm.passch.value) {
 			alert("비번이 일치하지 않습니다.");
 			frm.passch.focus();
 			return false;
 		}
 		return true;
 	}
-	
+
 	function openWini(id) {
 		if (id == "") {
 			alert("아이디를 입력하세요.");
@@ -62,7 +62,7 @@
 		url = "confirmSnum.jsp?snum=" + snum;
 		window.open(url, "SnumCheck", "width=300,height=150");
 	}
-	
+
 	function openWinn(writer) {
 		if (writer == "") {
 			alert("별명을 입력하세요.");
@@ -72,14 +72,13 @@
 		url = "confirmWriter.jsp?writer=" + writer;
 		window.open(url, "writerCheck", "width=300,height=150");
 	}
-	
-	
 </script>
 
 </head>
 <body>
 
-	<form action="memberJoinPro.jsp" method="post" name = "frm" onsubmit="return passchk()">
+	<form action="memberJoinPro.jsp" method="post" name="frm"
+		onsubmit="return passchk()">
 		<fieldset>
 			<legend>회원가입</legend>
 			<div class="form_table">
@@ -130,7 +129,7 @@
 							<th scope="row">비밀번호</th>
 							<td>
 								<div class="item">
-									<input type="password" name="pass" class="i_text" >
+									<input type="password" name="pass" class="i_text">
 								</div>
 							</td>
 						</tr>
@@ -138,7 +137,7 @@
 							<th scope="row">비밀번호 재확인</th>
 							<td>
 								<div class="item">
-									<input type="password" name="passch" class="i_text" >
+									<input type="password" name="passch" class="i_text">
 									<p class="i_dsc">위에 입력한 비밀번호와 일치하게 입력하세요</p>
 								</div>
 							</td>
@@ -185,18 +184,19 @@
 								</div>
 							</td>
 						</tr>
-						<%-- <tr>
-						
+						<tr>
+
+							<!-- 주소 받는 곳입니다..... -->
 							<th scope="row">주소</th>
 							<td>
 								<div class="item">
 									<jsp:include page="post.jsp"></jsp:include>
-									<!-- 우편번호란 입니다..... -->
+
 								</div>
 							</td>
-						</tr> --%>
+						</tr>
 
-							<tr>
+						<tr>
 							<th scope="row">이메일</th>
 							<td>
 								<div class="item">
@@ -208,8 +208,8 @@
 				</table>
 			</div>
 			<div align="center">
-				<input type = "submit" value="회원가입">
-				<input type = "reset" value="취소">
+				<input type="submit" value="회원가입"> <input type="reset"
+					value="취소">
 			</div>
 		</fieldset>
 	</form>

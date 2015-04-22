@@ -1,4 +1,4 @@
-<%@page import="java.util.*"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="pro.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,6 +25,7 @@
 			<th>등급</th>
 		</tr>
 		<%
+			request.setCharacterEncoding("utf-8");
 			MemberDao md = MemberDao.getInstance();
 			int totCnt = md.getTotalCnt();
 
@@ -53,7 +54,8 @@
 			<td width="12%" align="center"><%=list.get(i).getWriter()%></td>
 			<td width="8%" align="center"><%=list.get(i).getStatement()%></td>
 			<td width="19%" align="center"><%=list.get(i).getEmail()%></td>
-			<td width="19%" align="center"><%=list.get(i).getAddress()%></td>
+			<td width="19%" align="center">(<%=list.get(i).getPost1()%>-<%=list.get(i).getPost2()%>)
+				<%=list.get(i).getJibeon()%> <%=list.get(i).getAddr()%> <%=list.get(i).getAddr2()%></td>
 			<td width="8%" align="center"><%=list.get(i).getGrade()%></td>
 		</tr>
 		<%

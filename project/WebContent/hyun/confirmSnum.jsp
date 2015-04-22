@@ -35,11 +35,11 @@
 		} else {
 	%>
 		
-		<%=snum%>는 이미 있는 학번이니 다른 것을 입력하세요.
+		<%=snum%>는 이미 있는 학번입니다. 다른 학번을 입력하세요.
 		<p>
 		
 		<form>
-			닉네임 : <input type="text" name="snum"><p>
+			학번 : <input type="text" name="snum"><p>
 			<input type="submit" value="확인">
 		</form>	
 	<%		
