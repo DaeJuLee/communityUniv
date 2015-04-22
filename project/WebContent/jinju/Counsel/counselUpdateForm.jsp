@@ -30,12 +30,12 @@
 			<tr>
 				<td>분류</td>
 				<td><select name="category">
-			           <option value="[군대]">[군대]</option>
-			           <option value="[연애]">[연애]</option>
-			           <option value="[진로]">[진로]</option>
-			           <option value="[친구]">[친구]</option>
-			           <option value="[학업]">[학업]</option>
-			           <option value="[기타]">[기타]</option>
+			           <option value="군대">[군대]</option>
+			           <option value="연애">[연애]</option>
+			           <option value="진로">[진로]</option>
+			           <option value="친구">[친구]</option>
+			           <option value="학업">[학업]</option>
+			           <option value="기타">[기타]</option>
      			  </select>
 			</td>
 			</tr>

@@ -17,7 +17,7 @@
 	<h2>삭제하려면 암호를 입력하세요</h2>
 	<form action="QnADeletePro.jsp">
 		<input type="hidden" name="bnum" value="<%=bnum%>"> 
-		암호 : <input type="text" name="bpass"><p>
+		암호 : <input type="password" name="bpass"><p>
 		<input type="submit" value="확인">
 	</form>
 
