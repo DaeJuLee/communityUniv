@@ -54,11 +54,15 @@ bnum number,
 re_step number,
 re_level number,
 content varchar2(255),
-r_date varchar2(255)
+--r_date varchar2(255) 잘못된 것... DTO를 Date로 했으니깐... 타입을 date로 해야한다.
+r_date date not null
 );
 
 select * from REPLYCOMMENT;
-
+select * from replyComment where bnum = 3;
+select * from cboard where bnum = 3;
 drop table replycomment;
+
+select * from replyComment where bnum = 3 order by re_step;
 
 delete from REPLYCOMMENT where reply_code = 300;
