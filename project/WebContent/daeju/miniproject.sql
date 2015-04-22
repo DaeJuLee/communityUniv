@@ -62,3 +62,6 @@ select * from REPLYCOMMENT;
 drop table replycomment;
 
 delete from REPLYCOMMENT where reply_code = 300;
+
+select * from (select rownum rn ,a.* from (select * from replyComment where bnum = 3 order by re_step) a );
+select * from (select rownum rn ,a.* from (select * from replyComment order by re_step desc) a ) where bnum = 3;
