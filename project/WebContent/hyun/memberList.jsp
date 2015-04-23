@@ -5,25 +5,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
+<title>회원 명단</title>
+<link rel="stylesheet" type="text/css" href="../jinju/css/common.css">
 </head>
 <body>
 
 	<!-- 리스트 페이지 블록이 안나뉨.... -->
-
-	<h3>회원 정보</h3>
-	<table border="1" width="100%" align="center">
+<div class = "columnMain">
+	<h2>회원 정보</h2>
+	<div class = "contents">
+	<table class = "tbTy1">
+			<colgroup>
+					<col width="10%">
+					<col width="10%">
+					<col width="10%">
+					<col width="10%">
+					<col width="10%">
+					<col width="20%">
+					<col width="25%">
+					<col width="5%">
+				</colgroup>
+				<thead>
 		<tr>
-			<th>학번</th>
-			<th>id</th>
-			<th>이름</th>
-			<th>별명</th>
-			<th>학적상태</th>
-			<th>메일</th>
-			<th>주소</th>
-			<th>등급</th>
+			<th scope="col">학번</th>
+			<th scope="col">id</th>
+			<th scope="col">이름</th>
+			<th scope="col">별명</th>
+			<th scope="col">학적상태</th>
+			<th scope="col">메일</th>
+			<th scope="col">주소</th>
+			<th scope="col">등급</th>
 		</tr>
+		</thead>
+		<tbody>
 		<%
 			request.setCharacterEncoding("utf-8");
 			MemberDao md = MemberDao.getInstance();
@@ -47,6 +61,8 @@
 			} else {
 				for (int i = 0; i < list.size(); i++) {
 		%>
+
+		
 		<tr>
 			<td width="8%" align="center"><%=list.get(i).getSnum()%></td>
 			<td width="12%" align="center"><%=list.get(i).getId()%></td>
@@ -61,11 +77,14 @@
 		<%
 			}
 		%>
+				</tbody>
 	</table>
+	</div>
 	<%
 		}
 	%>
 	<div style="text-align: center;">
+	<p class = "paging">
 		<%
 			int pageCnt = (int) Math.ceil((double) totCnt / pageSize);
 			int startPage = (int) (currentPage - 1) / blockSize * blockSize + 1;
@@ -87,6 +106,7 @@
 						+ (startPage + blockSize) + "'>[다음]</a>");
 			}
 		%>
+	</div>
 	</div>
 </body>
 </html>
