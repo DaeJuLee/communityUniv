@@ -1,0 +1,60 @@
+@CHARSET "UTF-8";
+/* UI Object */
+.tab_list{height:160px}
+.tab_list ul{position:relative;margin:0;padding:0;border-bottom:1px solid #ccc;font-family:Tahoma, Sans-serif;font-size:12px;list-style:none;*zoom:1}
+.tab_list ul:after{display:block;clear:both;content:""}
+.tab_list li{float:left;margin-bottom:-1px}
+.tab_list li a{float:left;position:relative;border:1px solid #eee;border-bottom-color:#ccc;background:#fafafa;color:#666;text-decoration:none}
+.tab_list li a span{display:inline-block;padding:6px 25px 6px 25px;letter-spacing:-1px;cursor:pointer}
+.tab_list li ul{display:none;position:absolute;top:40px;left:0;width:100%;margin:0;padding:0;border:0;list-style:none;*zoom:1}
+.tab_list li ul:after{display:block;clear:both;content:""}
+.tab_list li li{float:none;position:relative;margin:0 0 8px 0;color:#999}
+.tab_list li li a{float:none;margin:0;padding:0;border:0 !important;background:transparent;font-weight:normal;color:#666 !important;letter-spacing:normal}
+.tab_list li li a:hover,
+.tab_list li li a:active,
+.tab_list li li a:focus{color:#000 !important;text-decoration:underline}
+.tab_list li li.more{position:absolute;top:-30px;right:0;border:0 !important;background:transparent}
+.tab_list.m1 .m1 a,
+.tab_list.m2 .m2 a,
+.tab_list.m3 .m3 a,
+.tab_list.m4 .m4 a,
+.tab_list.m5 .m5 a,
+.tab_list.m6 .m6 a,
+.tab_list.m7 .m7 a,
+.tab_list.m8 .m8 a,
+.tab_list.m9 .m9 a,
+.tab_list.m10 .m10 a,
+.tab_list.m11 .m11 a,
+.tab_list.m12 .m12 a{margin-top:-1px;border:1px solid #ccc;border-bottom:1px solid #fff;background:transparent;color:#333}
+.tab_list.m1 .m1 a span,
+.tab_list.m2 .m2 a span,
+.tab_list.m3 .m3 a span,
+.tab_list.m4 .m4 a span,
+.tab_list.m5 .m5 a span,
+.tab_list.m6 .m6 a span,
+.tab_list.m7 .m7 a span,
+.tab_list.m8 .m8 a span,
+.tab_list.m9 .m9 a span,
+.tab_list.m10 .m10 a span,
+.tab_list.m11 .m11 a span,
+.tab_list.m12 .m12 a span{padding-top:7px;font-weight:bold}
+.tab_list.m1 .m1 ul,
+.tab_list.m2 .m2 ul,
+.tab_list.m3 .m3 ul,
+.tab_list.m4 .m4 ul,
+.tab_list.m5 .m5 ul,
+.tab_list.m6 .m6 ul,
+.tab_list.m7 .m7 ul,
+.tab_list.m8 .m8 ul,
+.tab_list.m9 .m9 ul,
+.tab_list.m10 .m10 ul,
+.tab_list.m11 .m11 ul,
+.tab_list.m12 .m12 ul{display:block}
+.tab_list.js_off{height:auto}
+.tab_list.js_off ul{border:0}
+.tab_list.js_off li{float:none;position:relative}
+.tab_list.js_off li a{display:block;float:none;border:1px solid #eee !important;border-bottom-color:#ccc !important;background:#fafafa !important;font-weight:bold;color:#333}
+.tab_list.js_off li ul{position:static;display:block;left:0;top:0;padding:5px 0}
+.tab_list.js_off li li a{display:inline;border:0 !important;background:none !important;font-weight:normal}
+.tab_list.js_off li li.more{top:7px;right:15px}
+/* //UI Object */

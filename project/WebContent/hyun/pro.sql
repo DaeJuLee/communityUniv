@@ -1,14 +1,17 @@
-create table member (
-	snum number(10) primary key,
-	name varchar2(10) not null,
-	id varchar2(10) not null,
-	pass varchar2(14) not null,
+create table memberCommunity (
+	snum number primary key,
+	name varchar2(20) not null,
+	id varchar2(20) not null,
+	pass varchar2(24) not null,
 	statement number(4) not null,
 	grade number(4) not null,
-	writer varchar2(10) not null,
+	writer varchar2(20) not null,
 	address varchar2(250) not null,
 	email varchar2(40) not null
 );
+-- table member를 memberCommunity로 바꾸었어요...
+select * from memberCommunity;
+drop table memberCommunity;
 
 create table univMember (
 	uname varchar2(10),

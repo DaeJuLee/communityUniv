@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+
+/* UI Object */
+html, body{height:100%;margin:0}
+.mw_login{display:none;position:fixed;_position:absolute;top:0;left:0;z-index:10000;width:100%;height:100%}
+.mw_login{display:block}
+.mw_login .bg{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:.5;filter:alpha(opacity=50)}
+#login{position:absolute;top:50%;left:50%;width:328px;margin:-150px 0 0 -194px;padding:28px 28px 0 28px;border:2px solid #555;background:#fff;font-size:12px;font-family:Tahoma, Geneva, sans-serif;color:#767676;line-height:normal;white-space:normal}
+#login form{display:none;margin:0;padding:0}
+#login fieldset{margin:0;padding:0;border:0}
+#login legend{visibility:hidden;position:absolute;top:0;left:0;width:1px;height:1px;font-size:0;line-height:0}
+#login .btn_login,
+#login .btn_login input{display:inline-block;overflow:visible;position:relative;height:32px;margin:0;padding:0;border:0;background:transparent url(img/btn_login.gif) no-repeat;font-size:12px;font-weight:bold;color:#fff;line-height:32px;text-decoration:none !important;vertical-align:middle;cursor:pointer}
+#login .btn_login{margin:0 4px 0 0;background-position:center;}
+#login .btn_login input{left:4px;padding:0 24px 0 36px;background-position:right top;*vertical-align:top; width: 60px; height: 60px}
+#login .item{position:relative}
+#login .i_label{display:block;position:static;top:9px;font:bold 11px Tahoma}
+#login .i_text{display:block;position:relative;border:1px solid #b7b7b7;border-right-color:#e1e1e1;border-bottom-color:#e1e1e1;background:transparent;font:bold 11px Tahoma;height:14px;color:#767676}
+#login .help{float:none;display:block;position:relative;margin:0 -28px;border:0;padding:15px 0;border-top:1px solid #d9d9d9;background:#fafafa;text-align:center;list-style:none;*zoom:1}
+#login .help li{display:inline;float:none;margin:0;padding:0 6px 0 10px;border-left:1px solid #c3c3c3 !important;line-height:1}
+#login .help li.first{border:0 !important}
+#login .help a{display:inline;float:none;padding:0;background:none;font-size:11px;font-family:Dotum, 돋움, Sans-serif;color:#767676;line-height:1;text-decoration:none}
+#login .help a:hover,
+#login .help a:active,
+#login .help a:focus{color:#000;text-decoration:underline}/*마우스 올려놨을때 포커스 및 색깔 decoration  */
+#login .g_login .i_label{left:10px}
+#login .g_login .i_text{width:316px;margin:0 0 5px 0;padding:8px 0 6px 10px}
+#login .g_login .btn_login{position:absolute;top:103px;right:28px}
+#login .g_login .keeping{float:none;height:32px;margin:10px 0;padding:0;line-height:32px}
+#login .g_login .keeping label{position:static;font-family:Dotum, 돋움, Thahoma;cursor:pointer}
+#login .g_login .i_check{width:13px;height:13px;margin:0 4px 0 0;padding:0;vertical-align:middle}
+#login .g_login .warning{display:none;float:none;margin:10px 0;line-height:1.4}
+#login .g_login .warning.open{display:block}
+#login.g_login .g_login,
+#login.o_login .o_login{display:block}
+#login .close{overflow:visible;position:absolute;top:0;right:0;width:25px;height:25px;padding:0;border:0;background:transparent;font:11px/25px Verdana, Geneva, sans-serif;color:#ccc;text-align:center;text-decoration:none !important;cursor:pointer}
+/* //UI Object */

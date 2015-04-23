@@ -64,7 +64,7 @@ public class MemberDao {
 	public int insert(Member member) throws SQLException {
 		int result = 0;
 		Connection conn = null;
-		String sql = "insert into member values(?,?,?,?,?,'0',?,'0',?,?)";
+		String sql = "insert into memberCommunity values(?,?,?,?,?,'0',?,'0',?,?)";
 		PreparedStatement pstmt = null;
 		try {
 			conn = getConnection();

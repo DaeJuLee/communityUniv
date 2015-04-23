@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+#footer{clear:both;margin:0;padding:22px 0 30px;border-top:1px solid #dedede;text-align:center}
+#footer ul,#footer li,#footer a,#footer strong,#footer img,#footer em,#footer address,#footer span{margin:0;padding:0;color:#333;font-family:'나눔고딕',NanumGothic,'돋움',Dotum,'굴림',Gulim, AppleGothic, Sans-serif;font-size:12px;line-height:normal;list-style:none;font-style:normal}
+#footer a{color:#444;text-decoration:none}
+#footer a:visited{color:#666;text-decoration:none}
+#footer a:hover{text-decoration:underline}
+#footer ul{margin:0 0 10px}
+#footer ul li{display:inline;position:relative;padding:0 5px 0 7px;background:url(http://static.naver.com/common/footer/bu_bar.gif) 0 50% no-repeat;_background-position:left 10%;font-size:12px;white-space:nowrap}
+#footer ul li a:hover,#footer ul li a:hover strong{color:#438a01}
+#footer ul li.frst{padding:0 3px 0 0;background:none}
+#footer .info{margin:0 0 11px;color:#7e7e7e;font-size:11px;line-height:15px}
+#footer .info2{margin:-3px 0 13px;font-size:11px;line-height:18px}
+#footer .info2 span{display:inline-block;margin-left:2px;padding-left:7px;background:url(http://static.naver.com/common/footer/bu_bar.gif) 1px 50% no-repeat;_background-position:left 10%;font-size:11px;line-height:18px}
+#footer address{font-family:Verdana;font-size:9px;line-height:14px}
+#footer address img{vertical-align:middle}
+#footer address a{color:#444;font-family:Tahoma;font-size:9px;font-weight:bold}
+#footer address a:hover{color:#009bc8}
+#footer address span{padding-left:2px;font-family:Verdana;font-size:9px;line-height:14px}
+#footer address em{padding-left:6px;font-family:Verdana;font-size:9px}
+#footer address .logo{display:inline-block;*display:inline;vertical-align:top;*vertical-align:baseline}
+#footer address .logo_v1{position:relative;top:-2px}
