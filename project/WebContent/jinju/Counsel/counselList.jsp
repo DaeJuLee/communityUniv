@@ -9,10 +9,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>고민상담 게시판</title>
+
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+
 </head>
 <body>
-
+	<div class="columnMain">
 	<h2>고민상담 게시판</h2>
+	
+	
 	<table>
 		<tr>
 			<td><a href = "counselWriteForm.jsp">글쓰기</a></td>
