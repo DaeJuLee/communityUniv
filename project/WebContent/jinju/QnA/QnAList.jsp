@@ -21,7 +21,6 @@
 	<p class="location">
 		<span><a href="QnAWriteForm.jsp" class="btnTy3">글쓰기</a></span>	
 	</p>
-		
 	
 	<div class="contents">
 	<table class = "tbTy1">

@@ -15,7 +15,7 @@
 
 	<div class="columnMain">
 		<h2>QnA 글 삭제</h2>
-		<span><p>삭제하려면 암호를 입력하세요<p></p></span>
+		<span>삭제하려면 암호를 입력하세요</span>
 		<br>
 		<%
 			int bnum = Integer.parseInt(request.getParameter("bnum"));
