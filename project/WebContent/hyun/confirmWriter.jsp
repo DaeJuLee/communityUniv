@@ -35,11 +35,11 @@
 		} else {
 	%>
 		
-		<%=writer%>는 이미 있는 닉네임이니 다른 것을 입력하세요.
+		<%=writer%>는 이미 있는 별명입니다. 다른 별명을 입력하세요.
 		<p>
 		
 		<form>
-			닉네임 : <input type="text" name="writer"><p>
+			별명 : <input type="text" name="writer"><p>
 			<input type="submit" value="확인">
 		</form>	
 	<%		
