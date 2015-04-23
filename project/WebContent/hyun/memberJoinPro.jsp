@@ -10,6 +10,7 @@
 <jsp:useBean id="member" class="pro.Member"></jsp:useBean>
 <jsp:setProperty property="*" name="member"/>
 <%
+	request.setCharacterEncoding("utf-8");
 	MemberDao md = MemberDao.getInstance();
 	int result = md.insert(member);
 	if(result>0){
@@ -23,7 +24,7 @@
 	}else{%>
 		<script type="text/javascript">
 			alert("회원가입에 실패하였습니다.");
-			location.href="memberJoin.jsp";
+			location.href="memberList.jsp";
 		</script>
 	<%
 	}
