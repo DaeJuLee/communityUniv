@@ -9,26 +9,40 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>고민상담 게시판</title>
+
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+
 </head>
 <body>
-
+	<div class="columnMain">
 	<h2>고민상담 게시판</h2>
-	<table>
-		<tr>
-			<td><a href = "counselWriteForm.jsp">글쓰기</a></td>
-		</tr>
-	</table>
 	
-	<table>
+	<p class="location">
+		<span><a href= "counselWriteForm.jsp" class="btnTy3">글쓰기</a></span>	
+	</p>
+	
+	<div class="contents">	
+	<table class = "tbTy1">
+		<colgroup>
+			<col width="10%">
+			<col width="10%">
+			<col width="40%">
+			<col width="10%">
+			<col width="20%">
+			<col width="10%">
+		</colgroup>
+		<thead>
 		<tr>
-			<th>번호</th>
-			<th>분류</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>
+			<th scope="col">번호</th>
+			<th scope="col">분류</th>
+			<th scope="col">제목</th>
+			<th scope="col">작성자</th>
+			<th scope="col">작성일</th>
+			<th scope="col">조회수</th>
 		</tr>
-		
+		</thead>
+	<tbody>
+	
 		<%
 			CounselBoardDAO cbd = CounselBoardDAO.getInstance();
 			int totCnt = cbd.getTotalCnt();
@@ -70,8 +84,12 @@
 				out.println("<tr><td colspan=7>데이터가 없습니다.</td></tr>");
 			}
 		%>
+	</tbody>
 	</table>
+		</div>
+		
 		<div style="text-align: center;">
+			<p class="paging">
 			<%
 				int pageCnt = (int) Math.ceil((double) totCnt / pageSize);
 				int startPage = (int) (currentPage - 1) / blockSize * blockSize + 1;

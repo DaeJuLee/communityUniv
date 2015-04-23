@@ -63,7 +63,7 @@
 		</tr>
 	</table>
 <!-- 리플 입력 테이블 -->
-	<form action = "">
+	<form action = "counselSelect.jsp?pageNum=<%=pageNum%>&bnum=<%=bnum%>">
 		<table>
 			<tr>
 				<td><textarea rows="5" cols="25"></textarea></td>
@@ -72,10 +72,9 @@
 		</table>
 	</form>
 <!-- 리플 조회 테이블 -->	
-			<table>
-		
+		<table>	
 		<%
-		CounselBoardDAO cbdd = CounselBoardDAO.getInstance();
+			CounselBoardDAO cbdd = CounselBoardDAO.getInstance();
 			/* replyResult = cbd.inputRipple(bnum); */
 			replyList = cbdd.listRippleSelect(bnum);
 			for(int i = 0 ; i < replyList.size(); i++){
@@ -90,10 +89,8 @@
 					out.println("<img src='images/level.gif' width="
 							+ width + ">" + "<img src='images/re.gif'>");
 				}
-				
 			}
 		%>
-		
 		</table>
 	
 </body>

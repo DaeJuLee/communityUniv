@@ -7,11 +7,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>QnA 수정</title>
+
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+
 </head>
 <body>
-
+	
+	<div class="columnMain">
+	<h2>QnA 글 수정</h2>
+	
 	<%
 		int bnum = Integer.parseInt(request.getParameter("bnum"));
+		String writer = request.getParameter("writer");
 		String pageNum = request.getParameter("pageNum");
 		QnABoardDAO qbd = QnABoardDAO.getInstance();
 		QnABoard qboard = qbd.select(bnum);
@@ -19,40 +26,51 @@
 	<form action="QnAUpdatePro.jsp" method="post">
 		<input type="hidden" name="bnum" value="<%=qboard.getBnum()%>">
 		<input type="hidden" name="pageNum" value="<%=pageNum%>">
-		<table border="1">
-			<caption>
-				<h2>QnA 수정</h2>
-			</caption>
+		
+		<div class="contents">
+		<table class="tbTy1 detaLeft">
+			<tbody>
+			
+			<colgroup>
+				<col width="30%">
+				<col width="70%">
+			</colgroup>
+		
 			<tr>
-				<td>번호</td>
+				<th scope="row">번호</th>
 				<td><%=qboard.getBnum()%></td>
 			</tr>
 			<tr>
-				<td>제목</td>
-				<td><input type="text" name="title" required="required"
-					value="<%=qboard.getTitle()%>"></td>
+				<th scope="row">제목</th>
+				<td><input type="text" name="title" required="required" value="<%=qboard.getTitle()%>" class="intTy" style="width:88%;"></td>
 			</tr>
 			<tr>
-				<td>작성자</td>
-				<td><input type="text" name="writer" required="required"
-					value="<%=qboard.getWriter()%>"></td>
+				<th scope="row">작성자</th>
+				<td><%=writer %></td>
 			</tr>
 			<tr>
-				<td>암호</td>
-				<td><input type="password" name="bpass" required="required"
-					value="<%=qboard.getBpass()%>"></td>
+				<th scope="row">암호</th>
+				<td><input type="password" name="bpass" required="required" class="intTy" style="width:88%;"></td>
 			</tr>
 			<tr>
-				<td>내용</td>
-				<td><pre>
-						<textarea rows="10" cols="40" name="content" required="required"><%=qboard.getContent()%></textarea>
-					</pre></td>
+				<th scope="row">내용</th>
+				<td><textarea rows="10" cols="30" name="content" required="required" style="width:465px; height:100px;"><%=qboard.getContent()%></textarea></td>
 			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="수정완료"></td>
-			</tr>
+			
+			</tbody>
 		</table>
+		
+		<div class="btnArea">
+			<span class="btnR">
+				<input type="submit" value="확인" class="btnTy3">
+				<input type="reset" value="다시작성" class="btnTy2">
+			</span>
+		</div>
+		
+		</div>
 	</form>
+
+	</div>
 
 </body>
 </html>

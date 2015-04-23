@@ -16,6 +16,8 @@ create table member (
 	major varchar2(40) not null
 );
 
+select * from member;
+
 create table univMember (
 	uname varchar2(10),
 	major number not null,
