@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "miniproject_jj.*" %>
@@ -13,6 +14,11 @@
 <body>
 
 	<%
+		/* int replyResult = 1;  */
+		/*리블 조회하기 위해 필요한 코드 시작  */
+		CounselReplyBoard crboard = new CounselReplyBoard();
+		List<CounselReplyBoard> replyList = new ArrayList<CounselReplyBoard>();
+		/*리블 조회하기 위해 필요한 코드 끝 */
 		int bnum = Integer.parseInt(request.getParameter("bnum"));
 		String pageNum = request.getParameter("pageNum");
 		CounselBoardDAO cbd = CounselBoardDAO.getInstance();
@@ -56,15 +62,39 @@
 			</td>
 		</tr>
 	</table>
-
-	<!-- <form>
+<!-- 리플 입력 테이블 -->
+	<form action = "">
 		<table>
 			<tr>
 				<td><textarea rows="5" cols="25"></textarea></td>
 				<td><input type = "submit" value = "리플작성완료"></td>
 			</tr>
 		</table>
-	</form> -->
+	</form>
+<!-- 리플 조회 테이블 -->	
+			<table>
+		
+		<%
+		CounselBoardDAO cbdd = CounselBoardDAO.getInstance();
+			/* replyResult = cbd.inputRipple(bnum); */
+			replyList = cbdd.listRippleSelect(bnum);
+			for(int i = 0 ; i < replyList.size(); i++){
+				int width = replyList.get(i).getRe_level() * 10;
+				
+				out.println("<tr><td> 작성자 : *****" + "</td>");
+				out.println("<td> 날짜 : " + replyList.get(i).getR_date() + "</td>");
+				out.println("<td rowspan = '2'> <input type = 'button' value = '삭제'></td></tr>");
+				//두번째 줄
+				out.println("<tr><td colspan = '2'>" + replyList.get(i).getContent() + "</td></tr>");
+				if (replyList.get(i).getRe_level() > 0) {
+					out.println("<img src='images/level.gif' width="
+							+ width + ">" + "<img src='images/re.gif'>");
+				}
+				
+			}
+		%>
+		
+		</table>
 	
 </body>
 </html>

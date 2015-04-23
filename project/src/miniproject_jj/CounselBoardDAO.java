@@ -81,7 +81,7 @@ private static CounselBoardDAO instance;
 		}
 		return list;
 	}
-
+	//답변답변답변
 	public int insert(CounselBoard cboard) throws SQLException {
 		int bnum = cboard.getBnum();
 		Connection conn = null;
@@ -343,5 +343,63 @@ private static CounselBoardDAO instance;
 				conn.close();
 		}
 		return result;
+	}
+	
+	public int inputRipple(int bnum){
+		int result = 0;
+		
+		return result;
+	}
+	
+	//댓글댓글댓글 내가 하는 거!! mine
+	public List<CounselReplyBoard> listRippleSelect(int boardNum) throws SQLException {
+		List<CounselReplyBoard> list = new ArrayList<CounselReplyBoard>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+//		String selectRipple =  "select re2_level, re2_step from cboard where bnum = ?";
+//		String selectRipple = "select * from (select rownum rn ,a.* from "+ 
+//							  "(select * from replyComment order by re_step) a )"+
+//							  "where bnum = ?";
+		String selectRipple = "select * from (select rownum rn ,a.* from "+ 
+				  "(select * from replyComment where bnum = ? order by re_step) a )";
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(selectRipple);
+			pstmt.setInt(1, boardNum);
+			rs = pstmt.executeQuery();
+		
+			while (rs.next()) {
+				CounselReplyBoard crboard = new CounselReplyBoard();
+				crboard.setBnum(boardNum);//여기가 틀렸네..ㅠㅠ
+				crboard.setRe_step(rs.getInt("re_step"));
+				crboard.setRe_level(rs.getInt("re_level"));
+				crboard.setContent(rs.getString("content"));
+				crboard.setR_date(rs.getDate("r_date"));
+				System.out.println("resultSet 출력시작");
+				System.out.println(rs.getInt("bnum"));
+				System.out.println(rs.getInt("re_step"));
+				System.out.println(rs.getInt("re_level"));
+				System.out.println(rs.getString("content"));
+				System.out.println(rs.getDate("r_date"));
+				System.out.println("resultSet 출력끝");
+				list.add(crboard);
+			}
+			if(!rs.next()){
+				System.out.println("rs에 값이 없다..");
+			}
+			System.out.println("rs에 값이 없다..");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		return list;
 	}
 }

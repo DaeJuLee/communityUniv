@@ -8,6 +8,7 @@ public class CounselBoard {
 	private String title;
 	private Date s_date;
 	private String content;
+	private String content2;
 	private int hits;
 	private String bpass;
 	private String fileName;
@@ -58,6 +59,14 @@ public class CounselBoard {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getContent2() {
+		return content2;
+	}
+
+	public void setContent2(String content2) {
+		this.content2 = content2;
 	}
 
 	public int getHits() {
