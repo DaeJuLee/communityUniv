@@ -17,6 +17,7 @@
 <body>
 	<div class="columnMain">
 	<h2>QnA게시판</h2>
+
 	
 	<p class="location">
 		<span><a href="QnAWriteForm.jsp" class="btnTy3">글쓰기</a></span>	
@@ -113,6 +114,7 @@
 			<a href="#none" class="btnTy3">검색</a> 
 <!-- 여기를 어디로 연결해야함  -->
 		</p>
-	</div>
+		</div>
+	
 </body>
 </html>
