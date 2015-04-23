@@ -55,7 +55,7 @@
 			<td width="8%" align="center"><%=list.get(i).getStatement()%></td>
 			<td width="19%" align="center"><%=list.get(i).getEmail()%></td>
 			<td width="19%" align="center">(<%=list.get(i).getPost1()%>-<%=list.get(i).getPost2()%>)
-				<%=list.get(i).getJibeon()%> <%=list.get(i).getAddr()%> <%=list.get(i).getAddr2()%></td>
+				<%=list.get(i).getJibeon()%> <%=list.get(i).getAddr()%></td>
 			<td width="8%" align="center"><%=list.get(i).getGrade()%></td>
 		</tr>
 		<%
