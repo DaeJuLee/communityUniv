@@ -46,8 +46,7 @@
 								</div></td>
 
 
-							<td colSpan="2"><span class="btn_login"> <input
-									type="submit" value="로그인"></span></td>
+						
 						</tr>
 						<tr>
 							<!-- 패스워드 입력란 -->
@@ -57,6 +56,8 @@
 										name="pass" type="password" value="" id="upw"
 										class="i_text upw" size="10px">
 								</div></td>
+									<td colSpan="2"><span class="btn_login"> <input
+									type="submit" value="로그인"></span></td>
 						</tr>
 
 
