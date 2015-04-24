@@ -37,19 +37,25 @@ create table notice (
 
 create table professor (
 	pcode varchar2(10) primary key,	
-	pname varchar2(10) not null,
+	pname varchar2(10) not null
 );
 
 create table subject(
-	scode number primary key,
+	scode varchar2(20) primary key, --scode는 시간 + 요일 + 교수코드 짬뽕
 	sname varchar2(20) not null,
 	stime varchar2(15) not null,
+	sday varchar2(15) not null, --추가  요일 구별
 	pcode varchar2(10) not null,
+	scategory varchar2(2) --전공, 교양
 );
+
+select * from subject;
+select * from subject where scategory = '2';
+select * from subject where scategory = '2' and sname = 'subject1';
+drop table subject;
 
 create table timeTable(
 	snum number(10),
-	scode number,
 	sub1 varchar2(20),
 	sub2 varchar2(20),
 	sub3 varchar2(20),
@@ -60,9 +66,9 @@ create table timeTable(
 	sub8 varchar2(20),
 	sub9 varchar2(20),
 	sub10 varchar2(20)
-
 )
-
+--sub들은 과목코드들이 들어갈 항목이다.
+--자유게시판 보드 ▼--
 create table board (
 	bnum number primary key,
 	title varchar2(50) not null,
