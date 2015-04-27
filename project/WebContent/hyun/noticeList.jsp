@@ -9,15 +9,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>공지사항</title>
 <link rel="stylesheet" type="text/css" href="../jinju/css/common.css">
-<!-- 일반 회원들이 볼 수 있는 공지사항 목록 출력 -->
+<!-- 관리자용 공지사항 목록 -->
+\
 </head>
 <body>
 	<div class="columnMain">
 		<h2>공지사항</h2>
 		<p class="location">
+			<span><a href="noticeWriteForm.jsp" class="btnTy3">공지쓰기</a></span>
 		</p>
 		<div class="contents">
-		<!-- 공지사항 출력 부분 -->
+		<!-- 공지사항 목록 출력 부분 -->
 			<table class="tbTy1">
 				<colgroup>
 					<col width="15%">
@@ -36,7 +38,6 @@
 					</tr>
 				</thead>
 				<tbody>
-
 					<%
 						NoticeDao nd = NoticeDao.getInstance();
 						int totCnt = nd.getTotalCnt();
@@ -54,7 +55,7 @@
 							for (int i = 0; i < list.size(); i++) {
 								out.println("<tr><td>" + startNum-- + "</td>");
 								out.println("<td class=left width=200>");
-								out.println("<a href=noticeContent.jsp?bnum="
+								out.println("<a href=noticeContent_manager.jsp?bnum="
 										+ list.get(i).getBnum() + "&pageNum=" + currentPage
 										+ ">" + list.get(i).getTitle() + "</a></td>");
 								out.println("<td>" + list.get(i).getWriter() + "</td>");
@@ -81,16 +82,16 @@
 						endPage = pageCnt;
 					}
 					if (startPage > blockSize) {
-						out.println("<a href=noticeList.jsp?pageNum="
+						out.println("<a href=noticeList_manager.jsp?pageNum="
 								+ (startPage - blockSize) + ">[이전]</a>");
 
 					}
 					for (int i = startPage; i < endPage; i++) {
-						out.println("<a href = noticeList.jsp?pageNum=" + i + ">[" + i
+						out.println("<a href = noticeList_manager.jsp?pageNum=" + i + ">[" + i
 								+ "]</a>");
 					}
 					if (endPage < pageCnt) {
-						out.println("<a href=noticeList.jsp?pageNum="
+						out.println("<a href=noticeList_manager.jsp?pageNum="
 								+ (startPage + blockSize) + ">[다음]</a>");
 					}
 				%>
