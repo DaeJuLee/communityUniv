@@ -17,6 +17,7 @@
 	<jsp:setProperty property="*" name="qboard" />
 	<%
 		String pageNum = request.getParameter("pageNum");
+		
 		qboard.setIp(request.getRemoteAddr());
 		QnABoardDAO qbd = QnABoardDAO.getInstance();
 		int result =qbd.update(qboard);

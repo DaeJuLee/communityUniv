@@ -9,8 +9,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Counsel Select</title>
+
+<link rel="stylesheet" type="text/css" href="../../common.css">
+
 </head>
 <body>
+
+	<div class="columnMain">
+	<h2>고민상담 상세내역</h2>
 
 	<%
 		int bnum = Integer.parseInt(request.getParameter("bnum"));
@@ -19,52 +25,71 @@
 		cbd.hits(bnum);
 		CounselBoard cboard = cbd.select(bnum);
 	%>
-	<table border="1">
-		<caption>
-			<h2>게시판 상세내역</h2>
-		</caption>
+	<div class="contents">
+	<table class="tbTy1 detaLeft">
+		<tbody>
+				
+				<colgroup>
+					<col width="30%">
+					<col width="70%">
+				</colgroup>
+		
 		<tr>
-			<td>번호</td>
+			<th>번호</th>
 			<td><%=cboard.getBnum()%></td>
 		</tr>
 		<tr>
-			<td>제목</td>
+			<th>제목</th>
 			<td><%=cboard.getTitle()%></td>
 		</tr>
 		<tr>
-			<td>작성자</td>
+			<th>작성자</th>
 			<td>*****<input type="hidden" value="<%=cboard.getWriter()%>"></td>
 		</tr>
 		<tr>
-			<td>작성일</td>
+			<th>작성일</th>
 			<td><%=cboard.getS_date()%></td>
 		</tr>
 		<tr>
-			<td>조회수</td>
+			<th>조회수</th>
 			<td><%=cboard.getHits()%></td>
 		</tr>
 		<tr>
-			<td>내용</td>
+			<th>내용</th>
 			<td><pre><%=cboard.getContent()%></pre></td>
 		</tr>
-		<tr>
-			<td colspan="2">
-				<input type="button" value="수정" onclick="location.href='counselUpdateForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
-				<input type="button" value="답변작성" onclick="location.href='counselWriteForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
-				<input type="button" value="삭제" onclick="location.href='counselDeleteForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
-				<input type="button" value="목록" onclick="location.href='counselList.jsp?pageNum=<%=pageNum%>'"></td>
-			</td>
-		</tr>
 	</table>
+		
+	<div class="btnArea">
+		<span class="btnR">
+			<input type="button" class="btnTy3" value="수정" onclick="location.href='counselUpdateForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" class="btnTy2" value="답변작성" onclick="location.href='counselWriteForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" class="btnTy3" value="삭제" onclick="location.href='counselDeleteForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" class="btnTy2" value="목록" onclick="location.href='counselList.jsp?pageNum=<%=pageNum%>'">
+		</span>
+	</div>
 
-	<!-- <form>
-		<table>
+	<form>
+		<table class="tbTy1 detaLeft">
+			<tbody>
+					
 			<tr>
-				<td><textarea rows="5" cols="25"></textarea></td>
-				<td><input type = "submit" value = "리플작성완료"></td>
+				<td colspan="2">
+					<textarea cols="100%"></textarea>
+				
+					<div class="btnArea">
+						<span class="btnR">
+							<input type="button" value="확인" class="btnTy3">
+						</span>
+					</div>
+				</td>
 			</tr>
 		</table>
-	</form> -->
+		
+	</form>
 	
+	</div>
+	</div>
+
 </body>
 </html>

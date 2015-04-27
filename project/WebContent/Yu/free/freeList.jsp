@@ -7,29 +7,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
-
-<style type="text/css">
-table {
-	width: 100%;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="../../common.css">
 </head>
 <body>
+<div class ="columnMain">
 	<h2>자유게시판</h2>
-	<table>
+	<p class = "location">
+			<span><a href="fwriteForm.jsp" class="btnTy3">글쓰기</a></span></p>
+			
+			<div class="contents">
+	<table class = "tbTy1">
+			<colgroup>
+			<col width="10%">
+			<col width="10%">
+			<col width="40%">
+			<col width="10%">
+			<col width="20%">
+			<col width="10%">
+		</colgroup>
+	<thead>
 		<tr>
-			<td><a href="fwriteForm.jsp">글쓰기</a></td>
+			<th scope="col">번호</th>
+			<th scope="col">분류</th>
+			<th scope="col">제목</th>
+			<th scope="col">작성자</th>
+			<th scope="col">작성일</th>
+			<th scope="col">조회수</th>
 		</tr>
-	</table>
-	<table>
-		<tr>
-			<th>번호</th>
-			<th>분류</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>
-		</tr>
+		</thead>
+	<tbody>
+	
 		<%
 			BoardDao bd = BoardDao.getInstance();
 			int totCnt = bd.getTotalCnt();
@@ -68,8 +75,12 @@ table {
 				out.println("<tr><td colspan=7>데이터가 없네</td></tr>");
 			}
 		%>
+		
+		</tbody>
 	</table>
+	</div>
 	<div style="text-align: center;">
+	<p class = "paging">
 		<%
 			int pageCnt = (int) Math.ceil((double) totCnt / pageSize);
 			int startPage = (int) (currentPage - 1) / blockSize * blockSize + 1;
@@ -91,6 +102,7 @@ table {
 						+ (startPage + blockSize) + "'>[다음]</a>");
 			}
 		%>
+		</p>
 	</div>
 </body>
 </html>
