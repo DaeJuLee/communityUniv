@@ -48,7 +48,7 @@ create table subject(
 	pcode varchar2(10) not null,
 	scategory varchar2(2) --전공, 교양
 );
-
+--mon, tues, wed, thu, fri, sat 시간은 9시부터 1로 표기 6시까지
 select * from subject;
 select * from subject where scategory = '2';
 select * from subject where scategory = '2' and sname = 'subject1';
