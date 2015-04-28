@@ -62,7 +62,7 @@
 					<input type="button" value="삭제" class="btnTy2"
 					onclick="location.href='noticeDeleteForm.jsp?bnum=<%=notice.getBnum()%>&pageNum=<%=pageNum%>'">
 					<input type="button" value="목록" class="btnTy3"
-					onclick="location.href='noticeList_manager.jsp?pageNum=<%=pageNum%>'">
+					onclick="location.href='noticeList.jsp?pageNum=<%=pageNum%>'">
 				</span>
 			</div>
 		</div>

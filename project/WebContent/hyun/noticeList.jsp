@@ -55,7 +55,7 @@
 							for (int i = 0; i < list.size(); i++) {
 								out.println("<tr><td>" + startNum-- + "</td>");
 								out.println("<td class=left width=200>");
-								out.println("<a href=noticeContent_manager.jsp?bnum="
+								out.println("<a href=noticeContent.jsp?bnum="
 										+ list.get(i).getBnum() + "&pageNum=" + currentPage
 										+ ">" + list.get(i).getTitle() + "</a></td>");
 								out.println("<td>" + list.get(i).getWriter() + "</td>");
@@ -82,16 +82,16 @@
 						endPage = pageCnt;
 					}
 					if (startPage > blockSize) {
-						out.println("<a href=noticeList_manager.jsp?pageNum="
+						out.println("<a href=noticeList.jsp?pageNum="
 								+ (startPage - blockSize) + ">[이전]</a>");
 
 					}
 					for (int i = startPage; i < endPage; i++) {
-						out.println("<a href = noticeList_manager.jsp?pageNum=" + i + ">[" + i
+						out.println("<a href = noticeList.jsp?pageNum=" + i + ">[" + i
 								+ "]</a>");
 					}
 					if (endPage < pageCnt) {
-						out.println("<a href=noticeList_manager.jsp?pageNum="
+						out.println("<a href=noticeList.jsp?pageNum="
 								+ (startPage + blockSize) + ">[다음]</a>");
 					}
 				%>
