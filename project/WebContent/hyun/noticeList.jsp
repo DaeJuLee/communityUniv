@@ -8,9 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>공지사항</title>
-<link rel="stylesheet" type="text/css" href="../jinju/css/common.css">
+<link rel="stylesheet" type="text/css" href="../common.css">
 <!-- 관리자용 공지사항 목록 -->
-\
 </head>
 <body>
 	<div class="columnMain">
