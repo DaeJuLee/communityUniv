@@ -62,7 +62,7 @@
 <div id="bottom"> </div>
 <!-- footer는 맨 밑에 있는것... 사업자 번호 등등 -->
 <div id="footer">
-<jsp:include page="footer.jsp"/>
+<jsp:include page="footer_j.jsp"/>
 </div>
 </body>
 </html>
