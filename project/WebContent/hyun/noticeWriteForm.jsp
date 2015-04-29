@@ -41,7 +41,7 @@
 					</tr>
 					<tr>
 						<th>작성자</th>
-						<td><%=notice.getWriter()%></td>
+						<td>관리자<input type = "hidden" name ="writer" class = "intTy" style="width:88%" value = "관리자"></td>
 					</tr>
 					<tr>
 						<th>내용</th>
