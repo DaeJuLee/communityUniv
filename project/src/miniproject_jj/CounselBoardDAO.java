@@ -13,37 +13,41 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class CounselBoardDAO {
-	
-private static CounselBoardDAO instance;
-	
-	private CounselBoardDAO() {	}
-	
+
+	private static CounselBoardDAO instance;
+
+	private CounselBoardDAO() {
+	}
+
 	public static CounselBoardDAO getInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new CounselBoardDAO();
 		}
 		return instance;
 	}
-	
+
 	private Connection getConnection() {
 		Connection conn = null;
-		
+
 		try {
 			Context ctx = new InitialContext();
-			DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/OracleDB");
+			DataSource ds = (DataSource) ctx
+					.lookup("java:comp/env/jdbc/OracleDB");
 			conn = ds.getConnection();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return conn;
 	}
-	//find
-	public List<CounselBoard> list(int startRow, int endRow) throws SQLException {
+
+	// find
+	public List<CounselBoard> list(int startRow, int endRow)
+			throws SQLException {
 		List<CounselBoard> list = new ArrayList<CounselBoard>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		String sql = "select * from(select rownum rn ,a.* from (select * from cboard order by ref desc, re_step) a ) where rn between ? and ?";
 		try {
 			conn = getConnection();
@@ -51,7 +55,7 @@ private static CounselBoardDAO instance;
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
 			rs = pstmt.executeQuery();
-		
+
 			while (rs.next()) {
 				CounselBoard cboard = new CounselBoard();
 				cboard.setBnum(rs.getInt("bnum"));
@@ -66,7 +70,7 @@ private static CounselBoardDAO instance;
 				cboard.setRef(rs.getInt("ref"));
 				cboard.setIp(rs.getString("ip"));
 				cboard.setCategory(rs.getString("category"));
-								
+
 				list.add(cboard);
 			}
 		} catch (Exception e) {
@@ -81,17 +85,18 @@ private static CounselBoardDAO instance;
 		}
 		return list;
 	}
-	//답변답변답변
+
+	// 답변답변답변
 	public int insert(CounselBoard cboard) throws SQLException {
 		int bnum = cboard.getBnum();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		int result = 0; 
+		int result = 0;
 		ResultSet rs = null;
 		String sql1 = "select nvl(max(bnum),0) from cboard";
-		String sql = "insert into cboard(bnum, ref, re_level, re_step, category, title, writer, bpass, content, s_date) "+
-				"values(?,?,?,?,?,?,?,?,?,sysdate)";
-		//진주야 여기가 틀려서... console창에 'not enough values'라는 메세지가 뜬거야 ^^ (sql1)
+		String sql = "insert into cboard(bnum, ref, re_level, re_step, category, title, writer, bpass, content, s_date) "
+				+ "values(?,?,?,?,?,?,?,?,?,sysdate)";
+		// 진주야 여기가 틀려서... console창에 'not enough values'라는 메세지가 뜬거야 ^^ (sql1)
 		String sql2 = "update cboard set re_step = re_step+1 where ref=? and re_step > ?";
 		try {
 			conn = getConnection();
@@ -111,7 +116,7 @@ private static CounselBoardDAO instance;
 			int number = rs.getInt(1) + 1;
 			rs.close();
 			pstmt.close();
-			
+
 			if (bnum == 0)
 				cboard.setRef(number);
 			pstmt = conn.prepareStatement(sql);
@@ -149,7 +154,7 @@ private static CounselBoardDAO instance;
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
-		
+
 			if (rs.next()) {
 				cboard.setBnum(bnum);
 				cboard.setWriter(rs.getString("writer"));
@@ -285,87 +290,16 @@ private static CounselBoardDAO instance;
 		}
 		return tot;
 	}
-	
-	public int reply(CounselBoard cboard) throws SQLException {
-		int bnum = cboard.getBnum();
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		int result = 0;
-		ResultSet rs = null;
-		String sql1 = "select nvl(max(bnum),0) from cboard";
-		String sql = "insert into cboard values(?,?,?,sysdate,?,?,?,?,?,?,?,?,?,?)";
-		String sql2 = "update cboard set re2_step = re2_step+1 where ref=? and re2_step > ?";
-		try {
-			conn = getConnection();
-			if (bnum != 0) {
-				pstmt = conn.prepareStatement(sql2);
-				pstmt.setInt(1, cboard.getRef());
-				pstmt.setInt(2, cboard.getRe_step());
-				pstmt.executeUpdate();
-				pstmt.close();
-				cboard.setRe_step(cboard.getRe_step() + 1);
-				cboard.setRe_level(cboard.getRe_level() + 1);
-			}
-			pstmt = conn.prepareStatement(sql1);
-			rs = pstmt.executeQuery();
-			rs.next();
 
-			int number = rs.getInt(1) + 1;
-			rs.close();
-			pstmt.close();
-			
-			if (bnum == 0)
-				cboard.setRef(number);
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, number);
-			pstmt.setString(2, cboard.getWriter());
-			pstmt.setString(3, cboard.getTitle());
-			pstmt.setString(4, cboard.getContent());
-			pstmt.setInt(5, cboard.getHits());
-			pstmt.setString(6, cboard.getBpass());
-			pstmt.setString(7, cboard.getFileName());
-			pstmt.setInt(8, cboard.getFileSize());
-			pstmt.setInt(9, cboard.getRe_step());
-			pstmt.setInt(10, cboard.getRe_level());
-			pstmt.setInt(11, cboard.getRef());
-			pstmt.setString(12, cboard.getIp());
-			pstmt.setString(13, cboard.getCategory());
-
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} finally {
-			if (rs != null)
-				rs.close();
-			if (pstmt != null)
-				pstmt.close();
-			if (conn != null)
-				conn.close();
-		}
-		return result;
-	}
-	
-	public int inputRipple(int bnum){
-		int result = 0;
-		
-		return result;
-	}
-	
-	//댓글댓글댓글 내가 하는 거!! mine
-	public List<CounselReplyBoard> listRippleSelect(int boardNum) throws SQLException {
+	// 댓글댓글댓글 내가 하는 거!! mine 대주
+	public List<CounselReplyBoard> listRippleSelect(int boardNum)
+			throws SQLException {
 		List<CounselReplyBoard> list = new ArrayList<CounselReplyBoard>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-//		String selectRipple =  "select re2_level, re2_step from cboard where bnum = ?";
-//		String selectRipple = "select * from (select rownum rn ,a.* from "+ 
-//							  "(select * from replyComment order by re_step) a )"+
-//							  "where bnum = ?";
-		// String selectRipple = "select * from (select rownum rn ,a.* from "+ 
-			//	  "(select * from replyComment where bnum = ? order by re_step) a )";
-		
 		String selectRipple = "select * from replyComment where bnum = ? order by re_step";
-		
+
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(selectRipple);
@@ -373,27 +307,13 @@ private static CounselBoardDAO instance;
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				CounselReplyBoard crboard = new CounselReplyBoard();
-				crboard.setBnum(boardNum);//여기가 틀렸네..ㅠㅠ
+				crboard.setBnum(boardNum);// 여기가 틀렸네..ㅠㅠ
 				crboard.setRe_step(rs.getInt("re_step"));
 				crboard.setRe_level(rs.getInt("re_level"));
 				crboard.setContent(rs.getString("content"));
-//				System.out.println(rs.getString("r_date"));
-//				System.out.println(rs.getDate("r_date"));
 				crboard.setR_date(rs.getDate("r_date"));
-/*				System.out.println("6 ");
-				System.out.println("resultSet 출력시작");
-				System.out.println(rs.getInt("bnum"));
-				System.out.println(rs.getInt("re_step"));
-				System.out.println(rs.getInt("re_level"));
-				System.out.println(rs.getString("content"));
-			//	System.out.println(rs.getDate("r_date"));
-				System.out.println("resultSet 출력끝");*/
 				list.add(crboard);
 			}
-			if(!rs.next()){
-				System.out.println("rs에 값이 없다..");
-			}
-			System.out.println("rs에 값이 없다..");
 		} catch (Exception e) {
 			System.out.println("error ");
 			System.out.println(e.getMessage());
@@ -406,5 +326,76 @@ private static CounselBoardDAO instance;
 				conn.close();
 		}
 		return list;
+	}
+	// 댓글댓글댓글 내가 하는 거!! mine 대주
+	public int insertReply(CounselReplyBoard crb) throws SQLException {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql1 = "select nvl(max(reply_code),0) from replyComment";
+		String sql2 = "insert into replyComment values(?, ?, ?, 1, ?, sysdate)";
+		String sql3 = "update replyComment set re_step = re_step+1 where bnum=? and re_step > ?";
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql3);
+			pstmt.setInt(1, crb.getBnum());
+			pstmt.setInt(2, crb.getRe_step());
+			pstmt.executeUpdate();
+			pstmt.close();
+			crb.setRe_step(crb.getRe_step() + 1);
+			pstmt = conn.prepareStatement(sql1);
+			//primary key값 1씩 증가
+			rs = pstmt.executeQuery();
+			rs.next();
+			int number = rs.getInt(1) + 1;
+			rs.close();
+			pstmt.close();
+			//insert문을 수행하는 곳
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setInt(1, number);
+			pstmt.setInt(2, crb.getBnum());
+			pstmt.setInt(3, crb.getRe_step());
+			pstmt.setString(4, crb.getContent());
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("error가 난거야??? ");
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+
+		return result;
+	}
+	
+	public int deleteReply(int bnum, int re_step) throws SQLException{
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "delete from replyComment where bnum = ? and re_step = ?";
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bnum);
+			pstmt.setInt(2, re_step);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("error가 난거야??? ");
+			System.out.println(e.getMessage());
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		
+		return result;
 	}
 }

@@ -4,12 +4,20 @@
 <%@ page import = "miniproject_jj.*" %>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Counsel Select</title>
+<script type="text/javascript">
+function chk(){
+	if(!frm.content.value){
+		alert("댓글을 입력하세요");
+		return false;
+	}
+	return true;
+}
+</script>
 </head>
 <body>
 
@@ -31,7 +39,7 @@
 		</caption>
 		<tr>
 			<td>번호</td>
-			<td><%=cboard.getBnum()%></td>
+			<td><%=bnum%></td>
 		</tr>
 		<tr>
 			<td>제목</td>
@@ -62,11 +70,15 @@
 			</td>
 		</tr>
 	</table>
+<!-- 진주야 복사 시작~! -->
 <!-- 리플 입력 테이블 -->
-	<form action = "counselSelect.jsp?pageNum=<%=pageNum%>&bnum=<%=bnum%>">
+	<form action = "../CounselReply/counselSelectReplyPro.jsp" name = "frm" method = "get" onsubmit = "return chk()">
+		<!-- 위에  name => bnum과 pageNum 두개의 값을 정해놨다.action을 취하면 값이 넘어간다. -->
 		<table>
 			<tr>
-				<td><textarea rows="5" cols="25"></textarea></td>
+				<td><textarea rows="5" cols="25" name = "content"></textarea>
+				<input type = "hidden" name = "bnum" value = <%=bnum%>>
+				<input type = "hidden" name = "pageNum" value = <%=pageNum %>></td>
 				<td><input type = "submit" value = "리플작성완료"></td>
 			</tr>
 		</table>
@@ -82,16 +94,24 @@
 				
 				out.println("<tr><td> 작성자 : *****" + "</td>");
 				out.println("<td> 날짜 : " + replyList.get(i).getR_date() + "</td>");
-				out.println("<td rowspan = '2'> <input type = 'button' value = '삭제'></td></tr>");
+				out.println("<td> <input type = 'button' value = '수정'"+
+						"onclick = location.href='../CounselReply/counselUpdateReply.jsp?bnum=" +
+						bnum + "&pageNum=" + pageNum + "&re_step=" + replyList.get(i).getRe_step() + 
+						"'></td></tr>");
 				//두번째 줄
-				out.println("<tr><td colspan = '2'>" + replyList.get(i).getContent() + "</td></tr>");
-				if (replyList.get(i).getRe_level() > 0) {
+				out.println("<tr><td colspan = '2'>" + replyList.get(i).getContent() + "</td>");
+				out.println("<td> <input type = 'button' value = '삭제'"+
+						"onclick = location.href='../CounselReply/counselDeleteReplyPro.jsp?bnum=" +
+						bnum + "&pageNum=" + pageNum + "&re_step=" + replyList.get(i).getRe_step() + 
+						"'></td>");
+				out.println("</tr>");
+				/* if (replyList.get(i).getRe_level() > 0) {
 					out.println("<img src='images/level.gif' width="
 							+ width + ">" + "<img src='images/re.gif'>");
-				}
+				} */
 			}
 		%>
 		</table>
-	
+<!-- 진주야 복사 시작~! -->
 </body>
 </html>
