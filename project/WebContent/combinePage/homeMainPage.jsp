@@ -23,11 +23,14 @@
 <div id="headermenu"> 
 <div class="headerm">
 <ul>
-<li><a href="#">공지사항</a></li> 
+<li><a href="../hyun/noticeList.jsp">공지사항</a></li> 
 <li><a href="#">족보공유</a></li> 
-<li><a href="#">자유게시판</a></li> 
-<li><a href="#">고민상담</a></li>
+<li><a href="../Yu/free/freeList.jsp">자유게시판</a></li> 
+<li><a href="../jinju/Counsel/counselList.jsp">고민상담</a></li>
+<li><a href="#">장  터</a></li>
 <li><a href="#">시간표제작</a></li> 
+<li><a href="../jinju/QnA/QnAList.jsp">Q&A</a></li> 
+<li><a href="../hyun/memberInfo.jsp">myPage</a></li> 
 </ul>
 </div>
 </div>
@@ -63,6 +66,7 @@
 <!-- footer는 맨 밑에 있는것... 사업자 번호 등등 -->
 <div id="footer">
 <jsp:include page="footer.jsp"/>
+</div>
 </div>
 </body>
 </html>
