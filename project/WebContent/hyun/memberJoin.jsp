@@ -164,21 +164,8 @@
 								</div>
 							</td>
 						</tr>
+						<!-- 주소 받는 곳입니다..... -->
 						<tr>
-							<th scope="row">학적상태</th>
-							<td>
-								<div class="item">
-									<select name="statement">
-										<option value="0">재학생</option>
-										<option value="1">휴학생</option>
-										<option value="2">졸업생</option>
-									</select>
-								</div>
-							</td>
-						</tr>
-						<tr>
-
-							<!-- 주소 받는 곳입니다..... -->
 							<th scope="row">주소</th>
 							<td>
 								<div class="item">

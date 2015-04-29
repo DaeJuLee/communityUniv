@@ -56,11 +56,15 @@
 			</table>
 
 			<div class="btnArea">
-				<span class="btnR"> <input type="button" value="수정"
+				<span class="btnR">
+				
+				<% if(session.getAttribute("id").equals("admin")){%> 
+				<input type="button" value="수정"
 					class="btnTy3"
 					onclick="location.href='noticeUpdateForm.jsp?bnum=<%=notice.getBnum()%>&pageNum=<%=pageNum%>'">
 					<input type="button" value="삭제" class="btnTy2"
 					onclick="location.href='noticeDeleteForm.jsp?bnum=<%=notice.getBnum()%>&pageNum=<%=pageNum%>'">
+					<%} %>
 					<input type="button" value="목록" class="btnTy3"
 					onclick="location.href='noticeList.jsp?pageNum=<%=pageNum%>'">
 				</span>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="pro.*"%>
-	<%@ include file="memberCheck.jsp"%>
+<%@ include file="memberCheck.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,9 +34,9 @@
 			}
 		}).blur();
 	});
-	
+
 	function passchk() {
-		if(frm.pass.value != frm.passch.value){
+		if (frm.pass.value != frm.passch.value) {
 			alert("비번이 일치하지 않습니다.");
 			frm.passch.focus();
 			return false;
@@ -60,15 +60,16 @@
 						<tr>
 							<th scope="row">아이디</th>
 							<td>
-								<div class="item">
-									<input type="hidden" name="id" class="i_text" value="<%=member.getId()%>">
+								<div class="item"><%=member.getId()%>
+									<input type="hidden" name="id" class="i_text"
+										value="<%=member.getId()%>">
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row">학번</th>
 							<td>
-								<div class="item">
+								<div class="item"><%=member.getSnum()%>
 									<input type="hidden" name="snum" class="i_text"
 										value="<%=member.getSnum()%>">
 								</div>
@@ -77,7 +78,7 @@
 						<tr>
 							<th scope="row">별명</th>
 							<td>
-								<div class="item">
+								<div class="item"><%=member.getWriter()%>
 									<input type="hidden" name="writer" class="i_text"
 										value="<%=member.getWriter()%>">
 								</div>
@@ -86,7 +87,7 @@
 						<tr>
 							<th scope="row">이름</th>
 							<td>
-								<div class="item">
+								<div class="item"><%=member.getName()%>
 									<input type="hidden" name="name" class="i_text"
 										value="<%=member.getName()%>">
 								</div>
@@ -112,34 +113,22 @@
 						<tr>
 							<th scope="row">전공</th>
 							<td>
-								<div class="item">
+								<div class="item"><%=member.getMajor()%>
 									<input type="hidden" name="major" class="i_text"
 										value="<%=member.getMajor()%>">
 								</div>
 							</td>
 						</tr>
 						<tr>
-							<th scope="row">학적상태</th>
-							<td>
-								<div class="item">
-									<select name="statement">
-										<option value="0">재학생</option>
-										<option value="1">휴학생</option>
-										<option value="2">졸업생</option>
-									</select>
-								</div>
-							</td>
-						</tr>
-					<%-- <tr>
-						
+						<tr>
 							<th scope="row">주소</th>
 							<td>
 								<div class="item">
 									<jsp:include page="post.jsp"></jsp:include>
-									<!-- 우편번호란 입니다..... -->
+
 								</div>
 							</td>
-						</tr> --%>
+						</tr>
 						<tr>
 							<th scope="row">이메일</th>
 							<td>
@@ -153,8 +142,8 @@
 				</table>
 			</div>
 			<div align="center">
-				<input type = "submit" value="회원정보수정">
-				<input type = "reset" value="취소">
+				<input type="submit" value="회원정보수정"> <input type="reset"
+					value="취소">
 			</div>
 		</fieldset>
 	</form>
