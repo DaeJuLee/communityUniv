@@ -7,8 +7,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>고민상담 수정</title>
+
+<link rel="stylesheet" type="text/css" href="../../common.css">
+
 </head>
 <body>
+
+	<div class="columnMain">
+	<h2>고민상담 글 수정</h2>
 
 	<%
 		int bnum = Integer.parseInt(request.getParameter("bnum"));
@@ -19,17 +25,23 @@
 	<form action="counselUpdatePro.jsp" method="post">
 		<input type="hidden" name="bnum" value="<%=cboard.getBnum()%>">
 		<input type="hidden" name="pageNum" value="<%=pageNum%>">
-		<table border="1">
-			<caption>
-				<h2>고민상담 수정</h2>
-			</caption>
-			<tr>
-				<td>번호</td>
+		
+		<div class="contents">
+		<table class="tbTy1 detaLeft">
+			<tbody>
+			
+			<colgroup>
+				<col width="30%">
+				<col width="70%">
+			</colgroup>
+			
+				<tr>
+				<th scope="row">번호</th>
 				<td><%=cboard.getBnum()%></td>
 			</tr>
 			<tr>
-				<td>분류</td>
-				<td><select name="category">
+				<th scope="row">분류</th>
+				<td><select name="category" class="intTy" style="width:88%;">
 			           <option value="군대">[군대]</option>
 			           <option value="연애">[연애]</option>
 			           <option value="진로">[진로]</option>
@@ -40,32 +52,38 @@
 			</td>
 			</tr>
 			<tr>
-				<td>제목</td>
-				<td><input type="text" name="title" required="required"
-					value="<%=cboard.getTitle()%>"></td>
+				<th scope="row">제목</th>
+				<td><input type="text" name="title" required="required" class="intTy" style="width:88%;" value="<%=cboard.getTitle()%>"></td>
 			</tr>
 			<tr>
-				<td>작성자</td>
-				<td><input type="text" name="writer" required="required"
-					value="<%=cboard.getWriter()%>"></td>
+				<th scope="row">작성자</th>
+				<td><input type="text" name="writer" required="required" class="intTy" style="width:88%;" value="<%=cboard.getWriter()%>"></td>
 			</tr>
 			<tr>
-				<td>암호</td>
-				<td><input type="password" name="bpass" required="required"
-					value="<%=cboard.getBpass()%>"></td>
+				<th scope="row">암호</th>
+				<td><input type="password" name="bpass" required="required" class="intTy" style="width:88%;" value="<%=cboard.getBpass()%>"></td>
 			</tr>
 			<tr>
-				<td>내용</td>
-				<td><pre>
-						<textarea rows="10" cols="40" name="content" required="required"><%=cboard.getContent()%></textarea>
-					</pre></td>
+				<th scope="row">내용</th>
+				<td>
+					<textarea rows="10" cols="40" name="content" required="required"  style="width:465px; height:100px;"><%=cboard.getContent()%></textarea>
+				</td>
 			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="수정완료"></td>
-			</tr>
+
+			</tbody>
 		</table>
+		
+		<div class="btnArea">
+			<span class="btnR">
+				<input type="submit" value="수정완료" class="btnTy3">
+				<input type="reset" value="다시작성" class="btnTy2">
+			</span>
+		</div>
+		
+		</div>
 	</form>
 
+	</div>
 
 </body>
 </html>

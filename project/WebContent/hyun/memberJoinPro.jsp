@@ -17,14 +17,14 @@
 	%>
 	<script type="text/javascript">
 		alert("회원가입이 완료되었습니다");
-		location.href="loginForm.jsp" //메인 페이지 주소로 바꾸세요.
+		location.href="../combinePage/homeMainPage.jsp" //메인 페이지 주소로 바꾸세요.
 	</script>
 	<%
 	out.println("입력 성공");
 	}else{%>
 		<script type="text/javascript">
 			alert("회원가입에 실패하였습니다.");
-			location.href="memberList.jsp";
+			location.href="memberJoin.jsp";
 		</script>
 	<%
 	}

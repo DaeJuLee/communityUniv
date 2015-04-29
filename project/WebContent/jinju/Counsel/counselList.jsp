@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>고민상담 게시판</title>
 
-<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../../common.css">
 
 </head>
 <body>
@@ -110,7 +110,7 @@
 				}
 			%>
 		</div>
-		<input type = "hidden" >
+	</div>
 
 
 </body>

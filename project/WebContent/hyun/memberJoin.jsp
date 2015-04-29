@@ -151,42 +151,21 @@
 										<option value="화학과">화학과</option>
 										<option value="물리학과">물리학과</option>
 										<option value="의류학과">의류학과</option>
-										<option value="사회복지학과">사회복지학과</option>
 										<option value="식품영양학과">식품영양학과</option>
-										<option value="건축공학과">건축공학과</option>
-										<option value="도시공학과">도시공학과</option>
 										<option value="컴퓨터공학과">컴퓨터공학과</option>
 										<option value="생명공학과">생명공학과</option>
-										<option value="기계공학과">기계공학과</option>
-										<option value="언론홍보학과">언론홍보학과</option>
-										<option value="일어일문학과">일어일문학과</option>
-										<option value="중어중문학과">중어중문학과</option>
+										<option value="홍보광고학과">홍보광고학과</option>
 										<option value="영어영문학과">영어영문학과</option>
-										<option value="국제무역학과">국제무역학과</option>
 										<option value="경영학과">경영학과</option>
-										<option value="물류통상학과">물류통상학과</option>
 										<option value="경제학과">경제학과</option>
 										<option value="약학과">약학과</option>
-										<option value="간호학과">간호학과</option>
+										<option value="통계학과">통계학과</option>
 									</select>
 								</div>
 							</td>
 						</tr>
+						<!-- 주소 받는 곳입니다..... -->
 						<tr>
-							<th scope="row">학적상태</th>
-							<td>
-								<div class="item">
-									<select name="statement">
-										<option value="0">재학생</option>
-										<option value="1">휴학생</option>
-										<option value="2">졸업생</option>
-									</select>
-								</div>
-							</td>
-						</tr>
-						<tr>
-
-							<!-- 주소 받는 곳입니다..... -->
 							<th scope="row">주소</th>
 							<td>
 								<div class="item">

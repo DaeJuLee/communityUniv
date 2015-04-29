@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>QnA 삭제</title>
 
-<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../../common.css">
 
 </head>
 <body>
@@ -25,8 +25,8 @@
 				
 				글 번호 : <%=bnum %> <p>
 				<input type="hidden" name="bnum" value="<%=bnum%>">
-				암호 : <input type="password" name="bpass"> <p>
-				<input type="submit" value="확인">
+				암호 : <input type="password" name="bpass">
+				<input type="submit" value="확인" class="btnTy3">
 			</form>
 		</div>
 	</div>
