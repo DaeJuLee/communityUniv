@@ -17,7 +17,7 @@ create table member (
 );
 
 select * from member;
-
+drop 
 create table univMember (
 	uname varchar2(10),
 	major number not null,
