@@ -23,7 +23,7 @@ create table board (
 	ip varchar2(20) not null,
 	ref number not null
 );
-
+--자유게시판▼--
 create table board (
 	bnum number primary key,
 	title varchar2(50) ,
@@ -42,7 +42,7 @@ create table board (
 );
 select * from member;
 select * from board;
-
+--족보게시판▼--
 create table traBoard (
 	bnum number primary key,
 	title varchar2(50) ,
