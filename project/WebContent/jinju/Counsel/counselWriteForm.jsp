@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>고민상담 글쓰기</title>
 
-<link rel="stylesheet" type="text/css" href="../../common.css">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
 
 </head>
 <body>
@@ -81,7 +81,7 @@
 				<td><%=writer %></td>
 			</tr>
 			<tr>
-				<th scope="row">비밀번호</th>
+				<th scope="row">암호</th>
 				<td><input type="password" name="bpass" required="required"  class="intTy" style="width:88%;"></td>
 			</tr>
 			<tr>
