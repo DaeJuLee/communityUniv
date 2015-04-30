@@ -30,7 +30,7 @@ public class BoardDao {
 		Connection conn = null;	PreparedStatement pstmt= null;
 		ResultSet rs = null;
 		 String sql = "select * from (select rownum rn ,a.* from " + 
-			" (select * from board order by ref desc,re2_step) a ) "+
+			" (select * from fboard order by ref desc,re2_step) a ) "+
 			" where rn between ? and ?";
 		try {
 			conn = getConnection();
@@ -66,8 +66,8 @@ public class BoardDao {
 		int num = board.getBnum();		
 		Connection conn = null;	PreparedStatement pstmt= null; 
 		int result = 0;			ResultSet rs = null;
-		String sql1 = "select nvl(max(bnum),0) from board";
-		String sql="insert into board values(?,?,sysdate,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql1 = "select nvl(max(bnum),0) from fboard";
+		String sql="insert into fboard values(?,?,sysdate,?,?,?,?,?,?,?,?,?,?,?)";
 		/*String sql2="update board set re2_step = re2_step+1 where " +
 			" ref=? and re2_step > ?";*/
 		try {	
@@ -113,7 +113,7 @@ public class BoardDao {
 	
 	public Board select(int bnum) throws SQLException {
 		Connection conn = null;	Statement stmt= null; ResultSet rs = null;
-		String sql = "select * from board where bnum="+bnum;
+		String sql = "select * from fboard where bnum="+bnum;
 		Board board = new Board();
 		try {
 			conn = getConnection();
@@ -161,7 +161,7 @@ public class BoardDao {
 	public int update(Board board) throws SQLException {
 		Connection conn = null;	PreparedStatement pstmt= null; 
 		int result = 0;			
-		String sql="update board set title=?,category=?,bpass=?,content=?where bnum=?";
+		String sql="update fboard set title=?,category=?,bpass=?,content=?where bnum=?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -182,8 +182,8 @@ public class BoardDao {
 	public int delete(int bnum, String bpass) throws SQLException {
 		Connection conn = null;	PreparedStatement pstmt= null; 
 		int result = 0;		    ResultSet rs = null;
-		String sql1 = "select bpass from board where bnum=?";
-		String sql="delete from board where bnum=?";
+		String sql1 = "select bpass from fboard where bnum=?";
+		String sql="delete from fboard where bnum=?";
 		try {
 			String dbPasswd = "";
 			conn = getConnection();
@@ -209,7 +209,7 @@ public class BoardDao {
 	public int getTotalCnt() throws SQLException {
 		Connection conn = null;	Statement stmt= null; 
 		ResultSet rs = null;    int tot = 0;
-		String sql = "select count(*) from board";
+		String sql = "select count(*) from fboard";
 		try {
 			conn = getConnection();
 			stmt = conn.createStatement();
@@ -227,9 +227,9 @@ public class BoardDao {
 		int num = board.getBnum();		
 		Connection conn = null;	PreparedStatement pstmt= null; 
 		int result = 0;			ResultSet rs = null;
-		String sql1 = "select nvl(max(bnum),0) from board";
-		String sql="insert into board values(?,?,sysdate,?,?,?,?,?,?,?,?,?,?,?)";
-		String sql2="update board set re2_step = re2_step+1 where " +
+		String sql1 = "select nvl(max(bnum),0) from fboard";
+		String sql="insert into fboard values(?,?,sysdate,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql2="update fboard set re2_step = re2_step+1 where " +
 			" ref=? and re2_step > ?";
 		try {			
 			conn = getConnection();
