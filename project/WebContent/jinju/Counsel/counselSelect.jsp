@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "miniproject_jj.*" %>
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
@@ -9,9 +9,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Counsel Select</title>
-
-<link rel="stylesheet" type="text/css" href="../../common.css">
-
+<script type="text/javascript">
+function chk(){
+	if(!frm.content.value){
+		alert("댓글을 입력하세요");
+		return false;
+	}
+	return true;
+}
+</script>
+<link rel="stylesheet" type="text/css" href="../css/common.css">
 </head>
 <body>
 
@@ -19,6 +26,10 @@
 	<h2>고민상담 상세내역</h2>
 
 	<%
+		int replyResult = 1; /* 이건 하는건지 아닌건지 모르겠음 */
+		CounselReplyBoard crboard = new CounselReplyBoard();
+		List<CounselReplyBoard> replyList = new ArrayList<CounselReplyBoard>();
+	
 		int bnum = Integer.parseInt(request.getParameter("bnum"));
 		String pageNum = request.getParameter("pageNum");
 		CounselBoardDAO cbd = CounselBoardDAO.getInstance();
@@ -69,25 +80,55 @@
 		</span>
 	</div>
 
-	<form>
+	<form action="../CounselReply/counselSelectReplyPro.jsp" name="frm" method="get" onsubmit="return chk()">
 		<table class="tbTy1 detaLeft">
 			<tbody>
 					
 			<tr>
 				<td colspan="2">
-					<textarea cols="100%"></textarea>
+					<textarea cols="100%" name = "content"></textarea>
+					<input type="hidden" name="bnum" value=<%=bnum%>> 
+					<input type="hidden" name="pageNum" value=<%=pageNum %>>
 				
 					<div class="btnArea">
 						<span class="btnR">
-							<input type="button" value="확인" class="btnTy3">
+							<input type="submit" value="확인" class="btnTy3">
 						</span>
 					</div>
 				</td>
 			</tr>
 		</table>
-		
 	</form>
-	
+	<div class = "contents">
+	<table class="tbTy1 detaLeft">
+		<%
+			CounselBoardDAO cbdd = CounselBoardDAO.getInstance();
+			/* replyResult = cbd.inputRipple(bnum); */
+			replyList = cbdd.listRippleSelect(bnum);
+			for(int i = 0 ; i < replyList.size(); i++){
+				int width = replyList.get(i).getRe_level() * 10;
+				
+				out.println("<tr><td> 작성자 : *****" + "</td>");
+				out.println("<td> 날짜 : " + replyList.get(i).getR_date() + "</td>");
+				out.println("<td> <input type = 'button' value = '수정'"+
+						"onclick = location.href='../CounselReply/counselUpdateReply.jsp?bnum=" +
+						bnum + "&pageNum=" + pageNum + "&re_step=" + replyList.get(i).getRe_step() + 
+						"'></td></tr>");
+				//두번째 줄
+				out.println("<tr><td colspan = '2'>" + replyList.get(i).getContent() + "</td>");
+				out.println("<td> <input type = 'button' value = '삭제'"+
+						"onclick = location.href='../CounselReply/counselDeleteReplyPro.jsp?bnum=" +
+						bnum + "&pageNum=" + pageNum + "&re_step=" + replyList.get(i).getRe_step() + 
+						"'></td></tr>");
+				out.println("</tr>");
+				/* if (replyList.get(i).getRe_level() > 0) {
+					out.println("<img src='images/level.gif' width="
+							+ width + ">" + "<img src='images/re.gif'>");
+				} */
+			}
+		%>
+	</table>
+	</div>
 	</div>
 	</div>
 
