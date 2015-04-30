@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,7 +22,8 @@
 <div id="headermenu"> 
 <div class="headerm">
 <ul>
-<li><a href="../hyun/noticeList.jsp">공지사항</a></li> 
+<!-- <li><a href="../hyun/AnoticeSessionTest.jsp">공지사항</a></li> -->
+<li><a href="../hyun/noticeList.jsp">공지사항</a></li>  
 <li><a href="#">족보공유</a></li> 
 <li><a href="../Yu/free/freeList.jsp">자유게시판</a></li> 
 <li><a href="../jinju/Counsel/counselList.jsp">고민상담</a></li>
@@ -65,7 +65,7 @@
 <div id="bottom"> </div>
 <!-- footer는 맨 밑에 있는것... 사업자 번호 등등 -->
 <div id="footer">
-<jsp:include page="footer_j.jsp"/>
+<jsp:include page="footer.jsp"/>
 </div>
 </div>
 </body>

@@ -85,17 +85,24 @@ function chk(){
 
 	<form action = "../QnAReply/QnASelectReplyPro.jsp" name = "frm" method = "get" onsubmit = "return chk()">
 		<!-- 위에  name => bnum과 pageNum 두개의 값을 정해놨다.action을 취하면 값이 넘어간다. -->
-		<table>
+		<table class="tbTy1 detaLeft">
 			<tr>
-				<td><textarea rows="5" cols="25" name = "content"></textarea>
-				<input type = "hidden" name = "bnum" value = <%=bnum%>>
-				<input type = "hidden" name = "pageNum" value = <%=pageNum %>></td>
-				<td><input type = "submit" value = "리플작성완료"></td>
+				<td colspan="2">
+					<textarea cols="100%" name = "content"></textarea>
+					<input type="hidden" name="bnum" value=<%=bnum%>> 
+					<input type="hidden" name="pageNum" value=<%=pageNum %>>
+				
+					<div class="btnArea">
+						<span class="btnR">
+							<input type="submit" value="확인" class="btnTy3">
+						</span>
+					</div>
+				</td>
 			</tr>
 		</table>
 	</form>
-	
-	<table>	
+	<div class = "contents">
+	<table class="tbTy1 detaLeft">
 		<%
 			QnABoardDAO qbdd = QnABoardDAO.getInstance();
 			/* replyResult = cbd.inputRipple(bnum); */
@@ -122,10 +129,10 @@ function chk(){
 				} */
 			}
 		%>
-		</table>
-		
+	</table>
 	</div>
-	</div>
+</div>
+</div>
 
 </body>
 </html>

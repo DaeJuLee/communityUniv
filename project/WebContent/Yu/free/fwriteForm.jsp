@@ -19,7 +19,6 @@
 				pageNum = "1";
 			if (request.getParameter("bnum") != null) {
 				bnum = Integer.parseInt(request.getParameter("bnum"));
-
 				ref = board.getRef();
 				re2_level = board.getRe2_level();
 				re2_step = board.getRe2_step();

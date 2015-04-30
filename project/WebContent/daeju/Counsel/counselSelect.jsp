@@ -18,7 +18,7 @@ function chk(){
 	return true;
 }
 </script>
-<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../../common.css">
 </head>
 <body>
 
