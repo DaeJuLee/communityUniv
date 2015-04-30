@@ -75,7 +75,7 @@ public class MemberDao {
 			pstmt.setString(2, member.getName());
 			pstmt.setString(3, member.getId());
 			pstmt.setString(4, member.getPass());
-			/*pstmt.setInt(5, member.getStatement());*/
+			/* pstmt.setInt(5, member.getStatement()); */
 			/* pstmt.setInt(6, member.getGrade()); */
 			pstmt.setString(5, member.getWriter());
 			pstmt.setInt(6, member.getPost1());
@@ -91,7 +91,7 @@ public class MemberDao {
 			pstmt.setString(11, toKor(member.getJibeon()));
 			System.out.println("지번 :  " + toKor(member.getJibeon()));
 			pstmt.setString(12, member.getEmail());
-			pstmt.setString(13,  toKor(member.getMajor()));
+			pstmt.setString(13, toKor(member.getMajor()));
 			System.out.println("전공 :  " + toKor(member.getMajor()));
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -148,6 +148,7 @@ public class MemberDao {
 		return result;
 
 	}
+
 	public int checkM(String id) throws SQLException {
 		int result = 0;
 		String sql = "select pass from member where id=?";
@@ -160,7 +161,7 @@ public class MemberDao {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-					result = 1;
+				result = 1;
 			} else
 				result = -1;
 		} catch (Exception e) {
@@ -176,6 +177,7 @@ public class MemberDao {
 		return result;
 
 	}
+
 	public int deleteM(String id) throws SQLException {
 		int result = 0;
 		result = checkM(id);
@@ -200,8 +202,6 @@ public class MemberDao {
 		}
 		return result;
 	}
-	
-	
 
 	public Member select(String id) throws SQLException {
 		Member member = new Member();
@@ -219,7 +219,7 @@ public class MemberDao {
 				member.setName(rs.getString("name"));
 				member.setId(rs.getString("id"));
 				member.setPass(rs.getString("pass"));
-/*				member.setStatement(rs.getInt(5));*/
+				/* member.setStatement(rs.getInt(5)); */
 				/* member.setGrade(rs.getInt(5)); */
 				member.setWriter(rs.getString("writer"));
 				member.setPost1(rs.getInt("post1"));
@@ -261,7 +261,7 @@ public class MemberDao {
 			pstmt.setString(5, member.getAddr2());
 			pstmt.setString(6, member.getAddr3());
 			pstmt.setString(7, member.getJibeon());
-/*			pstmt.setInt(8, member.getStatement());*/
+			/* pstmt.setInt(8, member.getStatement()); */
 			pstmt.setString(8, member.getEmail());
 			pstmt.setString(9, member.getId());
 			result = pstmt.executeUpdate();
@@ -302,36 +302,39 @@ public class MemberDao {
 		return result;
 	}
 
-	public List<Member> list() throws SQLException {
-		List<Member> list = new ArrayList<>();
-		String sql = "select * from member";
+	public List<Member> list(int startRow, int endRow) throws SQLException {
+		List<Member> list = new ArrayList<Member>();
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+
+		String sql = "select * from(select rownum rn ,a.* from (select * from member order by snum) a ) where rn between ? and ?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				do {
-					Member member = new Member();
-					member.setSnum(rs.getInt("snum"));
-					member.setName(rs.getString("name"));
-					member.setId(rs.getString("id"));
-					member.setPass(rs.getString("pass"));
-					/*member.setStatement(rs.getInt(5));*/
-					/*member.setGrade(rs.getInt(5));*/
-					member.setWriter(rs.getString("writer"));
-					member.setMajor(rs.getString("major"));
-					member.setPost1(rs.getInt("post1"));
-					member.setPost2(rs.getInt("post2"));
-					member.setAddr(rs.getString("addr"));
-					member.setAddr2(rs.getString("addr2"));
-					member.setAddr3(rs.getString("addr3"));
-					member.setJibeon(rs.getString("jibeon"));
-					member.setEmail(rs.getString("email"));
-					list.add(member);
-				} while (rs.next());
+			while (rs.next()) {
+				Member member = new Member();
+				member.setSnum(rs.getInt("snum"));
+				member.setId(rs.getString("id"));
+				member.setName(rs.getString("name"));
+				/* member.setPass(rs.getString("pass")); */
+				/* member.setStatement(rs.getInt(5)); */
+				/* member.setGrade(rs.getInt(5)); */
+				member.setWriter(rs.getString("writer"));
+				member.setMajor(rs.getString("major"));
+				member.setPost1(rs.getInt("post1"));
+				member.setPost2(rs.getInt("post2"));
+				member.setAddr(rs.getString("addr"));
+				/* member.setAddr2(rs.getString("addr2")); */
+				/* member.setAddr3(rs.getString("addr3")); */
+				member.setJibeon(rs.getString("jibeon"));
+				member.setEmail(rs.getString("email"));
+
+				list.add(member);
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -470,6 +473,52 @@ public class MemberDao {
 				conn.close();
 		}
 		return tot;
+	}
+
+	public String findMember(String id, int snum, String email, String name)
+			throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String resultId = null;
+		String resultPw = null;
+		String result = "";
+		String sql = "select pass from Member where id=? and snum=? and email = ?";
+		String sql1 = "select id from Member where name=? and snum=? and email = ?";
+		try {
+			conn = getConnection();
+			if (name == null) {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setInt(2, snum);
+				pstmt.setString(3, email);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					resultPw = rs.getString("pass");
+				}
+				result = resultPw;
+			} else { // name 이 null이 아닐때 아이디찾기로 해석하여 sql쿼리문을 실행시켜 아이디를 출력한다.
+				pstmt = conn.prepareStatement(sql1);
+				pstmt.setString(1, name);
+				pstmt.setInt(2, snum);
+				pstmt.setString(3, email);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					resultId = rs.getString("id");
+				}
+				result = resultId;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		return result;
 	}
 
 }
