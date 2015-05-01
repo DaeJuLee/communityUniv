@@ -14,7 +14,7 @@
 			<li class="frst"><a href="#" target="_blank">웹페이지 소개</a></li> <!-- 공지사항에 첫번째 글로 연결 -->
 			<li><a href="../jinju/footer/footer1.jsp">커뮤니티 이용약관</a></li> <!-- 워드로 있음 -->
 			<li><a href="../jinju/footer/footer2.jsp">개인정보취급방침</a></li> <!-- 워드로 있음 -->
-			<li><a href="../QnA/QnAList.jsp">QnA</a></li> <!--QnA에 연결  -->
+			<li><a href="../jinju/QnA/QnAList.jsp">QnA</a></li> <!--QnA에 연결  -->
 			<li><a href="../jinju/footer/footer3.jsp">CONTACT</a></li> <!-- 메일 주소만 뜨는 페이지 만들기(admin@d.d) -->
 		</ul>
 		<p class="info2">
