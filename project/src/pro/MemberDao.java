@@ -62,6 +62,7 @@ public class MemberDao {
 		return result;
 	}
 
+	//회원가입
 	public int insert(Member member) throws SQLException {
 		int result = 0;
 		Connection conn = null;
@@ -105,6 +106,7 @@ public class MemberDao {
 		return result;
 	}
 
+
 	public static String toKor(String en) {
 		if (en == null) {
 			return null;
@@ -115,7 +117,8 @@ public class MemberDao {
 			return en;
 		}
 	}
-
+	
+//
 	public int check(String id, String pass) throws SQLException {
 		int result = 0;
 		String sql = "select pass from member where id=?";
@@ -149,6 +152,7 @@ public class MemberDao {
 
 	}
 
+	//관리자 회원삭제를 위한 멤버체크
 	public int checkM(String id) throws SQLException {
 		int result = 0;
 		String sql = "select pass from member where id=?";
@@ -178,6 +182,7 @@ public class MemberDao {
 
 	}
 
+	//관리자 회원삭제
 	public int deleteM(String id) throws SQLException {
 		int result = 0;
 		result = checkM(id);
@@ -203,6 +208,7 @@ public class MemberDao {
 		return result;
 	}
 
+//회원정보 가져오기
 	public Member select(String id) throws SQLException {
 		Member member = new Member();
 		String sql = "select * from member where id=?";
@@ -246,6 +252,7 @@ public class MemberDao {
 
 	}
 
+	//회원정보 수정
 	public int update(Member member) throws SQLException {
 		int result = 0;
 		Connection conn = null;
@@ -277,6 +284,7 @@ public class MemberDao {
 
 	}
 
+//회원탈퇴 (탈퇴페이지를 만들지 않아서 사용은 안함)
 	public int delete(String id, String pass) throws SQLException {
 		int result = 0;
 		result = check(id, pass);
@@ -302,6 +310,7 @@ public class MemberDao {
 		return result;
 	}
 
+	//회원명단출력
 	public List<Member> list(int startRow, int endRow) throws SQLException {
 		List<Member> list = new ArrayList<Member>();
 
@@ -350,6 +359,7 @@ public class MemberDao {
 
 	}
 
+//회원가입시 ID 중복체크
 	public int confirmId(String id) throws SQLException {
 		int result = 1;
 		Connection conn = null;
@@ -383,6 +393,7 @@ public class MemberDao {
 		return result;
 	}
 
+	//회원가입시 별명중복체크
 	public int confirmWriter(String writer) throws SQLException {
 		int result = 1;
 		Connection conn = null;
@@ -416,6 +427,7 @@ public class MemberDao {
 		return result;
 	}
 
+	//회원가입시 학번 중복체크 (학적부랑 비교하는 것 추가 필요)
 	public int confirmSnum(int snum) throws SQLException {
 		int result = 1;
 		Connection conn = null;
@@ -449,6 +461,7 @@ public class MemberDao {
 		return result;
 	}
 
+	//회원목록 출력시 회원수 체크
 	public int getTotalCnt() throws SQLException {
 		Connection conn = null;
 		Statement stmt = null;
@@ -474,7 +487,8 @@ public class MemberDao {
 		}
 		return tot;
 	}
-
+	
+//id랑 비번 찾기(name 이 null이 아닐때 아이디찾기로 해석하여 sql쿼리문을 실행시켜 아이디를 출력한다.)
 	public String findMember(String id, int snum, String email, String name)
 			throws SQLException {
 		Connection conn = null;
@@ -497,7 +511,7 @@ public class MemberDao {
 					resultPw = rs.getString("pass");
 				}
 				result = resultPw;
-			} else { // name 이 null이 아닐때 아이디찾기로 해석하여 sql쿼리문을 실행시켜 아이디를 출력한다.
+			} else {
 				pstmt = conn.prepareStatement(sql1);
 				pstmt.setString(1, name);
 				pstmt.setInt(2, snum);
