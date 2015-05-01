@@ -1,9 +1,9 @@
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "miniproject_jj.*" %>
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,73 +18,89 @@ function chk(){
 	return true;
 }
 </script>
+<link rel="stylesheet" type="text/css" href="../../common.css">
 </head>
 <body>
 
+	<div class="columnMain">
+	<h2>고민상담 상세내역</h2>
+
 	<%
-		/* int replyResult = 1;  */
-		/*리블 조회하기 위해 필요한 코드 시작  */
+		int replyResult = 1; /* 이건 하는건지 아닌건지 모르겠음 */
 		CounselReplyBoard crboard = new CounselReplyBoard();
 		List<CounselReplyBoard> replyList = new ArrayList<CounselReplyBoard>();
-		/*리블 조회하기 위해 필요한 코드 끝 */
+	
 		int bnum = Integer.parseInt(request.getParameter("bnum"));
 		String pageNum = request.getParameter("pageNum");
 		CounselBoardDAO cbd = CounselBoardDAO.getInstance();
 		cbd.hits(bnum);
 		CounselBoard cboard = cbd.select(bnum);
 	%>
-	<table border="1">
-		<caption>
-			<h2>게시판 상세내역</h2>
-		</caption>
+	<div class="contents">
+	<table class="tbTy1 detaLeft">
+		<tbody>
+				
+				<colgroup>
+					<col width="30%">
+					<col width="70%">
+				</colgroup>
+		
 		<tr>
-			<td>번호</td>
-			<td><%=bnum%></td>
+			<th>번호</th>
+			<td><%=cboard.getBnum()%></td>
 		</tr>
 		<tr>
-			<td>제목</td>
+			<th>제목</th>
 			<td><%=cboard.getTitle()%></td>
 		</tr>
 		<tr>
-			<td>작성자</td>
+			<th>작성자</th>
 			<td>*****<input type="hidden" value="<%=cboard.getWriter()%>"></td>
 		</tr>
 		<tr>
-			<td>작성일</td>
+			<th>작성일</th>
 			<td><%=cboard.getS_date()%></td>
 		</tr>
 		<tr>
-			<td>조회수</td>
+			<th>조회수</th>
 			<td><%=cboard.getHits()%></td>
 		</tr>
 		<tr>
-			<td>내용</td>
+			<th>내용</th>
 			<td><pre><%=cboard.getContent()%></pre></td>
 		</tr>
-		<tr>
-			<td colspan="2">
-				<input type="button" value="수정" onclick="location.href='counselUpdateForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
-				<input type="button" value="답변작성" onclick="location.href='counselWriteForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
-				<input type="button" value="삭제" onclick="location.href='counselDeleteForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
-				<input type="button" value="목록" onclick="location.href='counselList.jsp?pageNum=<%=pageNum%>'"></td>
-			</td>
-		</tr>
 	</table>
-<!-- 진주야 복사 시작~! -->
-<!-- 리플 입력 테이블 -->
-	<form action = "../CounselReply/counselSelectReplyPro.jsp" name = "frm" method = "get" onsubmit = "return chk()">
-		<!-- 위에  name => bnum과 pageNum 두개의 값을 정해놨다.action을 취하면 값이 넘어간다. -->
-		<table>
+		
+	<div class="btnArea">
+		<span class="btnR">
+			<input type="button" class="btnTy3" value="수정" onclick="location.href='counselUpdateForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" class="btnTy2" value="답변작성" onclick="location.href='counselWriteForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" class="btnTy3" value="삭제" onclick="location.href='counselDeleteForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" class="btnTy2" value="목록" onclick="location.href='counselList.jsp?pageNum=<%=pageNum%>'">
+		</span>
+	</div>
+
+	<form action="../CounselReply/counselSelectReplyPro.jsp" name="frm" method="get" onsubmit="return chk()">
+		<table class="tbTy1 detaLeft">
+			<tbody>
+					
 			<tr>
-				<td><textarea rows="5" cols="25" name = "content"></textarea>
-				<input type = "hidden" name = "bnum" value = <%=bnum%>>
-				<input type = "hidden" name = "pageNum" value = <%=pageNum %>></td>
-				<td><input type = "submit" value = "리플작성완료"></td>
+				<td colspan="2">
+					<textarea cols="100%" name = "content"></textarea>
+					<input type="hidden" name="bnum" value=<%=bnum%>> 
+					<input type="hidden" name="pageNum" value=<%=pageNum %>>
+				
+					<div class="btnArea">
+						<span class="btnR">
+							<input type="submit" value="확인" class="btnTy3">
+						</span>
+					</div>
+				</td>
 			</tr>
 		</table>
 	</form>
-<!-- 리플 조회 테이블 -->	
-		<table>	
+	<div class = "contents">
+	<table class="tbTy1 detaLeft">
 		<%
 			CounselBoardDAO cbdd = CounselBoardDAO.getInstance();
 			/* replyResult = cbd.inputRipple(bnum); */
@@ -103,7 +119,7 @@ function chk(){
 				out.println("<td> <input type = 'button' value = '삭제'"+
 						"onclick = location.href='../CounselReply/counselDeleteReplyPro.jsp?bnum=" +
 						bnum + "&pageNum=" + pageNum + "&re_step=" + replyList.get(i).getRe_step() + 
-						"'></td>");
+						"'></td></tr>");
 				out.println("</tr>");
 				/* if (replyList.get(i).getRe_level() > 0) {
 					out.println("<img src='images/level.gif' width="
@@ -111,7 +127,10 @@ function chk(){
 				} */
 			}
 		%>
-		</table>
-<!-- 진주야 복사 시작~! -->
+	</table>
+	</div>
+	</div>
+	</div>
+
 </body>
 </html>

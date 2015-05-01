@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,15 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1">
-		<tr>
-			<td>작성자</td>
-			<td>날짜</td>
-			<td rowspan="2">버튼 란</td>
-		</tr>
-		<tr>
-			<td colspan="2">textarea</td>
-		</tr>
-	</table>
+<h3>댓글 수정 아직 안했지롱 ^^v</h3>
 </body>
 </html>

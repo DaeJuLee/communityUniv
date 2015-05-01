@@ -80,7 +80,7 @@
 
 		<ul>
 			<%
-				if (id != null) {
+				if (id != null && id != "not") {
 					out.println("<li>" + id + "님 안녕하십니까?</li>");
 					out.println("<li><a href = '../sessionLogout.jsp'>로그아웃</li> ");
 				}

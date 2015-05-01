@@ -85,7 +85,8 @@ public class QnABoardDAO {
 		int result = 0;
 		ResultSet rs = null;
 		String sql1 = "select nvl(max(bnum),0) from qboard";
-		String sql = "insert into qboard values(?,?,?,sysdate,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into qboard(bnum, ref, re_level, re_step, category, title, writer, bpass, content, s_date) "
+		+ "values(?,?,?,?,?,?,?,?,?,sysdate)";
 		String sql2 = "update qboard set re_step = re_step+1 where ref=? and re_step > ?"; //답글
 		try {
 			conn = getConnection();
@@ -198,7 +199,7 @@ public class QnABoardDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String sql = "update qboard set title=?,writer=?, bpass=?,content=? where bnum=?";
+		String sql = "update qboard set title=?, writer=?, bpass=?,content=? where bnum=?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -279,5 +280,111 @@ public class QnABoardDAO {
 				conn.close();
 		}
 		return tot;
+	}
+	public List<QnAReplyBoard> listRippleSelect(int boardNum) //boardNum 이라고 되어 있음
+			throws SQLException {
+		List<QnAReplyBoard> QnAList = new ArrayList<QnAReplyBoard>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectRipple = "select * from replyComment where bnum = ? order by re_step";
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(selectRipple);
+			pstmt.setInt(1, boardNum);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				QnAReplyBoard qrboard = new QnAReplyBoard();
+				qrboard.setBnum(boardNum);// 여기가 틀렸었대;;
+				qrboard.setRe_step(rs.getInt("re_step"));
+				qrboard.setRe_level(rs.getInt("re_level"));
+				qrboard.setContent(rs.getString("content"));
+				qrboard.setR_date(rs.getDate("r_date"));
+				QnAList.add(qrboard);
+			}
+		} catch (Exception e) {
+			System.out.println("error ");
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		return QnAList;
+	}
+	// 댓글댓글댓글 내가 하는 거!! mine 대주
+	public int insertReply(QnAReplyBoard qrb) throws SQLException {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql1 = "select nvl(max(reply_code),0) from replyComment";
+		String sql2 = "insert into replyComment values(?, ?, ?, 1, ?, sysdate)";
+		String sql3 = "update replyComment set re_step = re_step+1 where bnum=? and re_step > ?";
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql3);
+			pstmt.setInt(1, qrb.getBnum());
+			pstmt.setInt(2, qrb.getRe_step());
+			pstmt.executeUpdate();
+			pstmt.close();
+			qrb.setRe_step(qrb.getRe_step() + 1);
+			pstmt = conn.prepareStatement(sql1);
+			//primary key값 1씩 증가
+			rs = pstmt.executeQuery();
+			rs.next();
+			int number = rs.getInt(1) + 1;
+			rs.close();
+			pstmt.close();
+			//insert문을 수행하는 곳
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setInt(1, number);
+			pstmt.setInt(2, qrb.getBnum());
+			pstmt.setInt(3, qrb.getRe_step());
+			pstmt.setString(4, qrb.getContent());
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("error 발생 ");
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+
+		return result;
+	}
+	
+	public int deleteReply(int bnum, int re_step) throws SQLException{
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "delete from replyComment where bnum = ? and re_step = ?";
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bnum);
+			pstmt.setInt(2, re_step);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("error 발생 ");
+			System.out.println(e.getMessage());
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		
+		return result;
 	}
 }
