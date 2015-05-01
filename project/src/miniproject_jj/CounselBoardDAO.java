@@ -298,7 +298,7 @@ public class CounselBoardDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String selectRipple = "select * from replyComment where bnum = ? order by re_step";
+		String selectRipple = "select * from cReplyComment where bnum = ? order by re_step";
 
 		try {
 			conn = getConnection();
@@ -333,9 +333,9 @@ public class CounselBoardDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql1 = "select nvl(max(reply_code),0) from replyComment";
-		String sql2 = "insert into replyComment values(?, ?, ?, 1, ?, sysdate)";
-		String sql3 = "update replyComment set re_step = re_step+1 where bnum=? and re_step > ?";
+		String sql1 = "select nvl(max(reply_code),0) from cReplyComment";
+		String sql2 = "insert into cReplyComment values(?, ?, ?, 1, ?, sysdate)";
+		String sql3 = "update cReplyComment set re_step = re_step+1 where bnum=? and re_step > ?";
 		
 		try {
 			conn = getConnection();
@@ -379,7 +379,7 @@ public class CounselBoardDAO {
 		int result = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "delete from replyComment where bnum = ? and re_step = ?";
+		String sql = "delete from cReplyComment where bnum = ? and re_step = ?";
 		try{
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
