@@ -80,6 +80,7 @@ create table fboard (
 	ref number not null
 );
 select * from fboard;
+drop table fboard;
 --title not null로 한거로 하자 아래 테이블 생성
 create table fboard (
 	bnum number primary key,
