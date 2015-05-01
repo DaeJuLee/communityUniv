@@ -139,7 +139,7 @@ create table cboard(
 );
 select * from cboard;
 --------------------------------------------------------------------------------
---장터
+--족보
 create table traBoard (
 	bnum number primary key,
 	title varchar2(50) ,
@@ -159,6 +159,36 @@ create table traBoard (
 select * from traBoard;
 --------------------------------------------------------------------------------
 --maBoard?
+--------------------------------------------------------------------------------
+--자유게시판 리플
+create table fReplyComment(
+reply_code number primary key,
+bnum number,
+re_step number,
+re_level number,
+content varchar2(255),
+r_date date not null
+);
+--------------------------------------------------------------------------------
+--counsel게시판 리플
+create table cReplyComment(
+reply_code number primary key,
+bnum number,
+re_step number,
+re_level number,
+content varchar2(255),
+r_date date not null
+);
+--------------------------------------------------------------------------------
+--Q&A게시판 리플
+create table qReplyComment(
+reply_code number primary key,
+bnum number,
+re_step number,
+re_level number,
+content varchar2(255),
+r_date date not null
+);
 
 
 
