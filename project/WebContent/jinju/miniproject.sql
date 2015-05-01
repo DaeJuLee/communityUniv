@@ -42,19 +42,35 @@ create table cboard(
  
 create sequence cboard_seq;
 select * from cboard;
+select * from REPLYCOMMENT;
 
 drop table qboard;
 drop table cboard;
 
 -- replayComment 테이블 추가
 -- column ip를 추가할 계획임.
-create table replyComment(
+create table fReplyComment(
 reply_code number primary key,
 bnum number,
 re_step number,
 re_level number,
 content varchar2(255),
---r_date varchar2(255) 잘못된 것... DTO를 Date로 했으니깐... 타입을 date로 해야한다.
+r_date date not null
+);
+create table cReplyComment(
+reply_code number primary key,
+bnum number,
+re_step number,
+re_level number,
+content varchar2(255),
+r_date date not null
+);
+create table qReplyComment(
+reply_code number primary key,
+bnum number,
+re_step number,
+re_level number,
+content varchar2(255),
 r_date date not null
 );
 
