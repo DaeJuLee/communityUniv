@@ -15,7 +15,7 @@
 	if(result>0){ %>
 	<script type="text/javascript">
 		alert("사용자 정보 수정 완료");
-		location.href = "main.jsp";
+		location.href = "homeMainPage.jsp";
 	</script>
 	
 		<%		

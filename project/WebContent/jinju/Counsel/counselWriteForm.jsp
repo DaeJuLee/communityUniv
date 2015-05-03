@@ -33,7 +33,7 @@
 			re_step = cboard.getRe_step();
 		}
 	%>
-	<form action="counselWritePro.jsp?pageNum=<%=pageNum%>" method="post">
+	<form action="homeMainPage.jsp?pgm=../jinju/Counsel/counselWritePro.jsp?pageNum=<%=pageNum%>" method="post">
 		<input type="hidden" name="bnum" value="<%=bnum%>"> 
 		<input type="hidden" name="ref" value="<%=ref%>"> 
 		<input type="hidden" name="re_level" value="<%=re_level%>"> 

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="pro.*"%>
-<%@ include file="memberCheck.jsp"%>
+<%@ include file="../memberCheck.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,22 @@
 <link rel="stylesheet" media="all" href="memberJoin.css">
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.js"></script>
 <script type="text/javascript">
+	function openDaumPostcode() {
+  	  new daum.Postcode({
+	        oncomplete: function(data) {
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	            // 우편번호와 주소 정보를 해당 필드에 넣고, 커서를 상세주소 필드로 이동한다.
+	            document.getElementById('post1').value = data.postcode1;
+	            document.getElementById('post2').value = data.postcode2;
+	            document.getElementById('addr').value = data.address1;
+	            document.getElementById('addr3').value = data.address2;
+	            document.getElementById('jibeon').value = data.relatedAddress;
+	            document.getElementById('addr2').focus();
+	        }
+	    }).open();
+	}
 	jQuery(function() {
 		// Help Toggle
 		$('.item>.i_help').click(function() {
@@ -47,12 +62,23 @@
 </head>
 <body>
 	<%
-		MemberDao md = MemberDao.getInstance();
 		Member member = md.select(id);
 	%>
-	<form action="memberInfoPro.jsp" method="post" name="frm"
+	<form action="homeMainPage.jsp?pgm=../hyun/memberInfoPro.jsp" method="post" name="frm"
 		onsubmit="return passchk()">
+
+		<%
+			if (id.equals("not") || id == "not") {//회원이 아닌경우
+		%>
+		<script type="text/javascript">
+			alert("회원들만 사용할 수 있습니다.");
+			location.href = "../combinePage/homeMainPage.jsp";
+		</script>
+
 		<fieldset>
+			<%
+				} else {
+			%>
 			<legend>회원정보수정</legend>
 			<div class="form_table">
 				<table border="1" cellspacing="0" summary="회원정보수정입니다.">
@@ -124,8 +150,14 @@
 							<th scope="row">주소</th>
 							<td>
 								<div class="item">
-									<jsp:include page="post.jsp"></jsp:include>
-
+									 <input type="text" name="post1" id="post1" value="<%=member.getPost1()%>"> - <input type="text" name="post2" id="post2" value="<%=member.getPost2()%>">
+									 <input type="button" onclick="openDaumPostcode()" value="우편번호 찾기" 
+									 style="width:100px; height:20px; font-size:11px; background-color:#ECECEC"><br>
+									 <input type="text"name="addr1" id="addr" value="<%=member.getAddr() %>" title="행정기본주소" style="width:49%">
+									 <input type="text" name="addr2" id="addr2" value="<%=member.getAddr2() %>" title="상세주소" style="width:49%">
+									 <input type="text" name="addr3" id="addr3" value="<%=member.getAddr3() %>" title="참고항목" style="width:99%">
+									 <input type="text" name="jibeon" id="jibeon" value="<%=member.getJibeon() %>" title="지번주소" style="width:99%">
+									
 								</div>
 							</td>
 						</tr>
@@ -145,6 +177,9 @@
 				<input type="submit" value="회원정보수정"> <input type="reset"
 					value="취소">
 			</div>
+			<%
+				}//else 끝 문장
+			%>
 		</fieldset>
 	</form>
 </body>

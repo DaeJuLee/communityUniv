@@ -21,13 +21,13 @@
 		%>
 		<script type="text/javascript">
 			alert("회원들만 사용할 수 있습니다.");
-			location.href = "../../combinePage/homeMainPage.jsp";
+			location.href = "../combinePage/homeMainPage.jsp";
 		</script>
 		<%
 			} else {
 		%>
 		<p class="location">
-			<span><a href="counselWriteForm.jsp" class="btnTy3">글쓰기</a></span>
+			<span><a href="homeMainPage.jsp?pgm=../jinju/Counsel/counselWriteForm.jsp" class="btnTy3">글쓰기</a></span>
 		</p>
 
 		<div class="contents">
@@ -95,7 +95,7 @@
 										out.println("<img src='images/level.gif' width="
 												+ width + ">" + "<img src='images/re.gif'>");
 									}
-									out.println("<a href='counselSelect.jsp?bnum="
+									out.println("<a href='homeMainPage.jsp?pgm=../jinju/Counsel/counselSelect.jsp?bnum="
 											+ list.get(i).getBnum() + "&pageNum="
 											+ currentPage + "'>" + list.get(i).getTitle()
 											+ "</a></td>");

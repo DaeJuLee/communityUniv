@@ -73,10 +73,10 @@ function chk(){
 		
 	<div class="btnArea">
 		<span class="btnR">
-			<input type="button" class="btnTy3" value="수정" onclick="location.href='counselUpdateForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
-				<input type="button" class="btnTy2" value="답변작성" onclick="location.href='counselWriteForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
-				<input type="button" class="btnTy3" value="삭제" onclick="location.href='counselDeleteForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
-				<input type="button" class="btnTy2" value="목록" onclick="location.href='counselList.jsp?pageNum=<%=pageNum%>'">
+			<input type="button" class="btnTy3" value="수정" onclick="location.href='homeMainPage.jsp?pgm=../jinju/Counsel/counselUpdateForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" class="btnTy2" value="답변작성" onclick="location.href='homeMainPage.jsp?pgm=../jinju/Counsel/counselWriteForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" class="btnTy3" value="삭제" onclick="location.href='homeMainPage.jsp?pgm=../jinju/Counsel/counselDeleteForm.jsp?bnum=<%=cboard.getBnum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" class="btnTy2" value="목록" onclick="location.href='homeMainPage.jsp?pgm=../jinju/Counsel/counselList.jsp?pageNum=<%=pageNum%>'">
 		</span>
 	</div>
 

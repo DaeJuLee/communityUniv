@@ -34,6 +34,9 @@
 			<form action="leftSidePro.jsp" id="g_login" class="g_login"
 				name = "frm" onsubmit="return chk()">
 				<fieldset>
+					<%
+						if((id.equals("not")) || id == "not"){
+					%>
 					<legend>Login</legend>
 					<table>
 						<tr>
@@ -68,25 +71,29 @@
 							class="i_check"><label for="keepid">로그인 유지</label>
 					</p>
 
-
-
 					<ul class="help">
-						<li class="first"><a href="#">아이디/비밀번호 찾기</a></li>
+						<li class="first"><a href="../hyun/searchMember.jsp">아이디/비밀번호 찾기</a></li>
 						<li><a href="../hyun/memberJoin.jsp">회원 가입</a></li>
 					</ul>
+					<%}else if(id.equals("admin") || id == "admin"){ %>
+					<legend><%=writer %>님 반갑습니다.</legend>
+					<ul class="help">
+						<li class="first"><a href="#">마이페이지</a></li>
+						<li><a href="../hyun/memberList.jsp">회원관리</a></li>
+						<li><a href="../sessionLogout.jsp">로그아웃</a></li>
+						<li><input type = "button" onclick = "location.href='../sessionLogout.jsp'"
+							value = "로그아웃"></li>
+					</ul>
+					<% }else{ %>
+					<legend><%=writer %>님 반갑습니다.</legend>
+					<ul class="help">
+						<li class="first"><a href="#">마이페이지</a></li>
+						<li><a href="../sessionLogout.jsp">로그아웃</a></li>
+					</ul>
+					<%}%>
 				</fieldset>
 			</form>
 		</div>
-
-		<ul>
-			<%
-				if (id != null && id != "not") {
-					out.println("<li>" + id + "님 안녕하십니까?</li>");
-					out.println("<li><a href = '../sessionLogout.jsp'>로그아웃</li> ");
-				}
-			%>
-		</ul>
-
 	</div>
 
 </body>

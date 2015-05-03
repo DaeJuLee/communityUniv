@@ -16,8 +16,9 @@
 		String bnum = request.getParameter("bnum");
 	%>
 	<div class = "contents">
-	<form action="fdeletePro.jsp?">
+	<form action="homeMainPage.jsp">
 	글번호 : <%=bnum %><p>
+		<input type = "hidden" name = "pgm" value = "../Yu/free/fdeletePro.jsp">
 		<input type="hidden" name="bnum" value="<%=bnum%>">
 		 비밀번호 : <input
 			type="password" name="bpass">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="project.*"%>
+<%@ include file="../../memberCheck.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,9 +53,9 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-			<input type="button" value="수정" onclick="location.href='tupdateForm.jsp?bnum=<%=tboard.getBnum()%>&pageNum=<%=pageNum%>'">
-			<input type="button" value="삭제" onclick="location.href='tdeleteForm.jsp?bnum=<%=tboard.getBnum()%>'">
-			<input type="button" value="목록" onclick="location.href='traceList.jsp?pageNum=<%=pageNum%>'"></td>
+			<input type="button" value="수정" onclick="location.href='homeMainPage.jsp?pgm=../Yu/trace/tupdateForm.jsp?bnum=<%=tboard.getBnum()%>&pageNum=<%=pageNum%>'">
+			<input type="button" value="삭제" onclick="location.href='homeMainPage.jsp?pgm=../Yu/trace/tdeleteForm.jsp?bnum=<%=tboard.getBnum()%>'">
+			<input type="button" value="목록" onclick="location.href='homeMainPage.jsp?pgm=../Yu/trace/traceList.jsp?pageNum=<%=pageNum%>'"></td>
 		</tr></table>
 </body>
 </html>

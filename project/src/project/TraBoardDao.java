@@ -192,7 +192,8 @@ public class TraBoardDao {
 					rs.close();  pstmt.close();
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, bnum);
-					result = pstmt.executeUpdate();
+					pstmt.executeUpdate();
+					result = 1;
 				} else result = 0;
 			} else result = -1;
 		} catch(Exception e) {	System.out.println(e.getMessage()); 

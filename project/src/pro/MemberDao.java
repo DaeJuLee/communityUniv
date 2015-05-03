@@ -62,7 +62,6 @@ public class MemberDao {
 		return result;
 	}
 
-	//È¸¿ø°¡ÀÔ
 	public int insert(Member member) throws SQLException {
 		int result = 0;
 		Connection conn = null;
@@ -73,27 +72,27 @@ public class MemberDao {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, member.getSnum());
-			pstmt.setString(2, member.getName());
+			pstmt.setString(2, toKor(member.getName()));
 			pstmt.setString(3, member.getId());
 			pstmt.setString(4, member.getPass());
 			/* pstmt.setInt(5, member.getStatement()); */
 			/* pstmt.setInt(6, member.getGrade()); */
-			pstmt.setString(5, member.getWriter());
+			pstmt.setString(5, toKor(member.getWriter()));
 			pstmt.setInt(6, member.getPost1());
-			System.out.println("¿ìÆí¹øÈ£1  : " + member.getPost1());
+			System.out.println("ìš°í¸ë²ˆí˜¸1  : " + member.getPost1());
 			pstmt.setInt(7, member.getPost2());
-			System.out.println("¿ìÆí¹øÈ£2 : " + member.getPost2());
+			System.out.println("ìš°í¸ë²ˆí˜¸2 : " + member.getPost2());
 			pstmt.setString(8, toKor(member.getAddr2()));
-			System.out.println("ÁÖ¼Ò 1 :  " + toKor(member.getAddr()));
+			System.out.println("ì£¼ì†Œ 1 :  " + toKor(member.getAddr()));
 			pstmt.setString(9, toKor(member.getAddr()));
-			System.out.println("ÁÖ¼Ò 2 :  " + toKor(member.getAddr2()));
+			System.out.println("ì£¼ì†Œ 2 :  " + toKor(member.getAddr2()));
 			pstmt.setString(10, toKor(member.getAddr3()));
-			System.out.println("ÁÖ¼Ò 3 :  " + toKor(member.getAddr3()));
+			System.out.println("ì£¼ì†Œ 3 :  " + toKor(member.getAddr3()));
 			pstmt.setString(11, toKor(member.getJibeon()));
-			System.out.println("Áö¹ø :  " + toKor(member.getJibeon()));
+			System.out.println("ì§€ë²ˆ :  " + toKor(member.getJibeon()));
 			pstmt.setString(12, member.getEmail());
 			pstmt.setString(13, toKor(member.getMajor()));
-			System.out.println("Àü°ø :  " + toKor(member.getMajor()));
+			System.out.println("ì „ê³µ :  " + toKor(member.getMajor()));
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -106,7 +105,6 @@ public class MemberDao {
 		return result;
 	}
 
-
 	public static String toKor(String en) {
 		if (en == null) {
 			return null;
@@ -117,8 +115,7 @@ public class MemberDao {
 			return en;
 		}
 	}
-	
-//
+
 	public int check(String id, String pass) throws SQLException {
 		int result = 0;
 		String sql = "select pass from member where id=?";
@@ -152,7 +149,6 @@ public class MemberDao {
 
 	}
 
-	//°ü¸®ÀÚ È¸¿ø»èÁ¦¸¦ À§ÇÑ ¸â¹öÃ¼Å©
 	public int checkM(String id) throws SQLException {
 		int result = 0;
 		String sql = "select pass from member where id=?";
@@ -182,7 +178,6 @@ public class MemberDao {
 
 	}
 
-	//°ü¸®ÀÚ È¸¿ø»èÁ¦
 	public int deleteM(String id) throws SQLException {
 		int result = 0;
 		result = checkM(id);
@@ -208,7 +203,6 @@ public class MemberDao {
 		return result;
 	}
 
-//È¸¿øÁ¤º¸ °¡Á®¿À±â
 	public Member select(String id) throws SQLException {
 		Member member = new Member();
 		String sql = "select * from member where id=?";
@@ -252,7 +246,6 @@ public class MemberDao {
 
 	}
 
-	//È¸¿øÁ¤º¸ ¼öÁ¤
 	public int update(Member member) throws SQLException {
 		int result = 0;
 		Connection conn = null;
@@ -264,10 +257,10 @@ public class MemberDao {
 			pstmt.setString(1, member.getPass());
 			pstmt.setInt(2, member.getPost1());
 			pstmt.setInt(3, member.getPost1());
-			pstmt.setString(4, member.getAddr2());
-			pstmt.setString(5, member.getAddr2());
-			pstmt.setString(6, member.getAddr3());
-			pstmt.setString(7, member.getJibeon());
+			pstmt.setString(4, toKor(member.getAddr2()));
+			pstmt.setString(5, toKor(member.getAddr2()));
+			pstmt.setString(6, toKor(member.getAddr3()));
+			pstmt.setString(7, toKor(member.getJibeon()));
 			/* pstmt.setInt(8, member.getStatement()); */
 			pstmt.setString(8, member.getEmail());
 			pstmt.setString(9, member.getId());
@@ -284,7 +277,6 @@ public class MemberDao {
 
 	}
 
-//È¸¿øÅ»Åğ (Å»ÅğÆäÀÌÁö¸¦ ¸¸µéÁö ¾Ê¾Æ¼­ »ç¿ëÀº ¾ÈÇÔ)
 	public int delete(String id, String pass) throws SQLException {
 		int result = 0;
 		result = check(id, pass);
@@ -310,7 +302,6 @@ public class MemberDao {
 		return result;
 	}
 
-	//È¸¿ø¸í´ÜÃâ·Â
 	public List<Member> list(int startRow, int endRow) throws SQLException {
 		List<Member> list = new ArrayList<Member>();
 
@@ -359,7 +350,6 @@ public class MemberDao {
 
 	}
 
-//È¸¿ø°¡ÀÔ½Ã ID Áßº¹Ã¼Å©
 	public int confirmId(String id) throws SQLException {
 		int result = 1;
 		Connection conn = null;
@@ -393,7 +383,6 @@ public class MemberDao {
 		return result;
 	}
 
-	//È¸¿ø°¡ÀÔ½Ã º°¸íÁßº¹Ã¼Å©
 	public int confirmWriter(String writer) throws SQLException {
 		int result = 1;
 		Connection conn = null;
@@ -427,7 +416,6 @@ public class MemberDao {
 		return result;
 	}
 
-	//È¸¿ø°¡ÀÔ½Ã ÇĞ¹ø Áßº¹Ã¼Å© (ÇĞÀûºÎ¶û ºñ±³ÇÏ´Â °Í Ãß°¡ ÇÊ¿ä)
 	public int confirmSnum(int snum) throws SQLException {
 		int result = 1;
 		Connection conn = null;
@@ -461,7 +449,6 @@ public class MemberDao {
 		return result;
 	}
 
-	//È¸¿ø¸ñ·Ï Ãâ·Â½Ã È¸¿ø¼ö Ã¼Å©
 	public int getTotalCnt() throws SQLException {
 		Connection conn = null;
 		Statement stmt = null;
@@ -487,8 +474,7 @@ public class MemberDao {
 		}
 		return tot;
 	}
-	
-//id¶û ºñ¹ø Ã£±â(name ÀÌ nullÀÌ ¾Æ´Ò¶§ ¾ÆÀÌµğÃ£±â·Î ÇØ¼®ÇÏ¿© sqlÄõ¸®¹®À» ½ÇÇà½ÃÄÑ ¾ÆÀÌµğ¸¦ Ãâ·ÂÇÑ´Ù.)
+
 	public String findMember(String id, int snum, String email, String name)
 			throws SQLException {
 		Connection conn = null;
@@ -496,31 +482,41 @@ public class MemberDao {
 		ResultSet rs = null;
 		String resultId = null;
 		String resultPw = null;
-		String result = "";
+		String result = null;
 		String sql = "select pass from Member where id=? and snum=? and email = ?";
 		String sql1 = "select id from Member where name=? and snum=? and email = ?";
+		System.out.println("id : "  + id);
+		System.out.println("email : " + email);
+		System.out.println("snum : " + snum);
+		System.out.println("name : " + name);
 		try {
 			conn = getConnection();
 			if (name == null) {
 				pstmt = conn.prepareStatement(sql);
+				System.out.println("ë¹„ë²ˆì°¾ê¸° ì‹œì‘");
 				pstmt.setString(1, id);
 				pstmt.setInt(2, snum);
 				pstmt.setString(3, email);
 				rs = pstmt.executeQuery();
 				if (rs.next()) {
 					resultPw = rs.getString("pass");
+					System.out.println("resultPw : " + resultPw);
 				}
 				result = resultPw;
-			} else {
+				System.out.println("result : " + result);
+			} else { // name ì´ nullì´ ì•„ë‹ë•Œ ì•„ì´ë””ì°¾ê¸°ë¡œ í•´ì„í•˜ì—¬ sqlì¿¼ë¦¬ë¬¸ì„ ì‹¤í–‰ì‹œì¼œ ì•„ì´ë””ë¥¼ ì¶œë ¥í•œë‹¤.
 				pstmt = conn.prepareStatement(sql1);
+				System.out.println("ì•„ì´ë””ì°¾ê¸° ì‹œì‘");
 				pstmt.setString(1, name);
 				pstmt.setInt(2, snum);
 				pstmt.setString(3, email);
 				rs = pstmt.executeQuery();
 				if (rs.next()) {
 					resultId = rs.getString("id");
+					System.out.println("resultId : " + resultId);
 				}
 				result = resultId;
+				System.out.println("result : " + result);
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -535,4 +531,31 @@ public class MemberDao {
 		return result;
 	}
 
+	public String getNick(String id) throws SQLException{
+		String writer = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select writer from member where id = ?";
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				writer = rs.getString("writer");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		return writer;
+	}
+	
 }

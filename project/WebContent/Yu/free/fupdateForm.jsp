@@ -17,7 +17,7 @@
 			Board board = bd.select(bnum);
 		%>
 
-		<form action="fupdatePro.jsp" method="post">
+		<form action="homeMainPage.jsp?pgm=../Yu/free/fupdatePro.jsp" method="post">
 			<input type="hidden" name="bnum" value="<%=board.getBnum()%>">
 			<input type="hidden" name="pageNum" value="<%=pageNum%>">
 			<div class="contents">

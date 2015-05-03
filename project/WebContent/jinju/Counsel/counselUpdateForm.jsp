@@ -22,7 +22,7 @@
 		CounselBoardDAO cbd = CounselBoardDAO.getInstance();
 		CounselBoard cboard = cbd.select(bnum);
 	%>
-	<form action="counselUpdatePro.jsp" method="post">
+	<form action="homeMainPage.jsp?pgm=../jinju/Counsel/counselUpdatePro.jsp" method="post">
 		<input type="hidden" name="bnum" value="<%=cboard.getBnum()%>">
 		<input type="hidden" name="pageNum" value="<%=pageNum%>">
 		

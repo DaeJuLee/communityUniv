@@ -11,8 +11,12 @@
 	board.setIp(request.getRemoteAddr());
 	BoardDao bd = BoardDao.getInstance();
 	int result = bd.update(board);
-	if (result > 0) {
-		response.sendRedirect("freeList.jsp?pageNum="+pageNum);
+	if (result > 0) {%>
+	<script type="text/javascript">
+	alert("수정이 완료 되었습니다.");
+	location.href="homeMainPage.jsp?pgm=../Yu/free/freeList.jsp";
+	</script>
+<%
 	} else {
 %>
 	<script type="text/javascript">

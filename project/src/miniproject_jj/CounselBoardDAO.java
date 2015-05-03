@@ -86,7 +86,7 @@ public class CounselBoardDAO {
 		return list;
 	}
 
-	// ´äº¯´äº¯´äº¯
+	// ï¿½äº¯ï¿½äº¯ï¿½äº¯
 	public int insert(CounselBoard cboard) throws SQLException {
 		int bnum = cboard.getBnum();
 		Connection conn = null;
@@ -96,7 +96,7 @@ public class CounselBoardDAO {
 		String sql1 = "select nvl(max(bnum),0) from cboard";
 		String sql = "insert into cboard(bnum, ref, re_level, re_step, category, title, writer, bpass, content, s_date) "
 				+ "values(?,?,?,?,?,?,?,?,?,sysdate)";
-		// ÁøÁÖ¾ß ¿©±â°¡ Æ²·Á¼­... consoleÃ¢¿¡ 'not enough values'¶ó´Â ¸Þ¼¼Áö°¡ ¶á°Å¾ß ^^ (sql1)
+		// ï¿½ï¿½ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½â°¡ Æ²ï¿½ï¿½ï¿½ï¿½... consoleÃ¢ï¿½ï¿½ 'not enough values'ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¾ï¿½ ^^ (sql1)
 		String sql2 = "update cboard set re_step = re_step+1 where ref=? and re_step > ?";
 		try {
 			conn = getConnection();
@@ -124,8 +124,8 @@ public class CounselBoardDAO {
 			pstmt.setInt(2, cboard.getRef());
 			pstmt.setInt(3, cboard.getRe_level());
 			pstmt.setInt(4, cboard.getRe_step());
-			pstmt.setString(5, cboard.getCategory());
-			pstmt.setString(6, cboard.getTitle());
+			pstmt.setString(5, toKor(cboard.getCategory()));
+			pstmt.setString(6, toKor(cboard.getTitle()));
 			pstmt.setString(7, cboard.getWriter());
 			pstmt.setString(8, cboard.getBpass());
 			pstmt.setString(9, cboard.getContent());
@@ -211,8 +211,8 @@ public class CounselBoardDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, cboard.getTitle());
-			pstmt.setString(2, cboard.getCategory());
+			pstmt.setString(1, toKor(cboard.getTitle()));
+			pstmt.setString(2, toKor(cboard.getCategory()));
 			pstmt.setString(3, cboard.getWriter());
 			pstmt.setString(4, cboard.getBpass());
 			pstmt.setString(5, cboard.getContent());
@@ -291,7 +291,7 @@ public class CounselBoardDAO {
 		return tot;
 	}
 
-	// ´ñ±Û´ñ±Û´ñ±Û ³»°¡ ÇÏ´Â °Å!! mine ´ëÁÖ
+	// ï¿½ï¿½Û´ï¿½Û´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½!! mine ï¿½ï¿½ï¿½ï¿½
 	public List<CounselReplyBoard> listRippleSelect(int boardNum)
 			throws SQLException {
 		List<CounselReplyBoard> list = new ArrayList<CounselReplyBoard>();
@@ -307,7 +307,7 @@ public class CounselBoardDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				CounselReplyBoard crboard = new CounselReplyBoard();
-				crboard.setBnum(boardNum);// ¿©±â°¡ Æ²·È³×..¤Ð¤Ð
+				crboard.setBnum(boardNum);// ï¿½ï¿½ï¿½â°¡ Æ²ï¿½È³ï¿½..ï¿½Ð¤ï¿½
 				crboard.setRe_step(rs.getInt("re_step"));
 				crboard.setRe_level(rs.getInt("re_level"));
 				crboard.setContent(rs.getString("content"));
@@ -327,7 +327,7 @@ public class CounselBoardDAO {
 		}
 		return list;
 	}
-	// ´ñ±Û´ñ±Û´ñ±Û ³»°¡ ÇÏ´Â °Å!! mine ´ëÁÖ
+	// ï¿½ï¿½Û´ï¿½Û´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½!! mine ï¿½ï¿½ï¿½ï¿½
 	public int insertReply(CounselReplyBoard crb) throws SQLException {
 		int result = 0;
 		Connection conn = null;
@@ -346,13 +346,13 @@ public class CounselBoardDAO {
 			pstmt.close();
 			crb.setRe_step(crb.getRe_step() + 1);
 			pstmt = conn.prepareStatement(sql1);
-			//primary key°ª 1¾¿ Áõ°¡
+			//primary keyï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			rs = pstmt.executeQuery();
 			rs.next();
 			int number = rs.getInt(1) + 1;
 			rs.close();
 			pstmt.close();
-			//insert¹®À» ¼öÇàÇÏ´Â °÷
+			//insertï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½
 			pstmt = conn.prepareStatement(sql2);
 			pstmt.setInt(1, number);
 			pstmt.setInt(2, crb.getBnum());
@@ -361,7 +361,7 @@ public class CounselBoardDAO {
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println("error°¡ ³­°Å¾ß??? ");
+			System.out.println("errorï¿½ï¿½ ï¿½ï¿½ï¿½Å¾ï¿½??? ");
 			System.out.println(e.getMessage());
 		} finally {
 			if (rs != null)
@@ -387,7 +387,7 @@ public class CounselBoardDAO {
 			pstmt.setInt(2, re_step);
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("error°¡ ³­°Å¾ß??? ");
+			System.out.println("errorï¿½ï¿½ ï¿½ï¿½ï¿½Å¾ï¿½??? ");
 			System.out.println(e.getMessage());
 		} finally {
 			if (pstmt != null)
@@ -398,4 +398,16 @@ public class CounselBoardDAO {
 		
 		return result;
 	}
+	
+	public static String toKor(String en) {
+		if (en == null) {
+			return null;
+		}
+		try {
+			return new String(en.getBytes("8859_1"), "utf-8");
+		} catch (Exception e) {
+			return en;
+		}
+	}
+
 }

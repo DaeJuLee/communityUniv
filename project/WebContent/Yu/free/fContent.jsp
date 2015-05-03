@@ -65,11 +65,11 @@
 
 				<div class="btnArea">
 					<span class="btnR"> <input type="button" value="수정" class = "btnTy3"
-						onclick="location.href='fupdateForm.jsp?bnum=<%=board.getBnum()%>&pageNum=<%=pageNum%>'">
+						onclick="location.href='homeMainPage.jsp?pgm=../Yu/free/fupdateForm.jsp?bnum=<%=board.getBnum()%>&pageNum=<%=pageNum%>'">
 						<input type="button" value="삭제" class = "btnTy2"
-						onclick="location.href='fdeleteForm.jsp?bnum=<%=board.getBnum()%>'">
+						onclick="location.href='homeMainPage.jsp?pgm=../Yu/free/fdeleteForm.jsp?bnum=<%=board.getBnum()%>'">
 						<input type="button" value="목록" class = "btnTy3"
-						onclick="location.href='freeList.jsp?pageNum=<%=pageNum%>'">
+						onclick="location.href='homeMainPage.jsp?pgm=../Yu/free/freeList.jsp?pageNum=<%=pageNum%>'">
 					</span>
 				</div>
 

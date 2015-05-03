@@ -12,7 +12,7 @@ font: 13px Arial, Verdana, Tahoma, sans-serif;
 line-height: 17px;
 }
 
-img {border: none;}
+/* img {border: none;} */
 a{ color: #043b72; text-decoration: none; }
 a:hover {  color: #000; }
 
@@ -80,9 +80,9 @@ font-size: 20px;
 color:#000;
 text-decoration:none;
 }
-
+/* 게시글 그리고 답변에 영향을 미치는 css .left */
 .left {
-margin-top: 10px;
+/* margin-top: 10px; 테이블 깨지는 현상 없앰*/
 float: left;
 width: 200px;
 line-height: 15px;
@@ -108,6 +108,9 @@ list-style-type:none;
 padding: 2px 0 2px 0px;
 margin: 0 2px;	
 }
+.left a:hover{
+	color:#aaa;
+}
 .left ul a {
 font-weight: 600;
 color: #043b72;
@@ -118,18 +121,18 @@ color: #043b72;
 .middle { 
 margin-top: 10px;
 float: left;
-width: 510px;
+width: 700px;
 margin-left: 10px;
 line-height: 20px;
 }
 .middle h2 {
-font: bold 14px Verdana, 'Trebuchet MS', Sans-serif;
+font: bold 20px Verdana, 'Trebuchet MS', Sans-serif;
 color: #fff;	
 background: #8b9cae url(images/contenth2.jpg) repeat-x;
 margin-bottom: 5px;
 margin-top: 10px;
-height: 30px;
-line-height: 30px;
+height: 40px;
+line-height: 40px;
 padding-left: 10px;
 }
 .middle h2 a {
@@ -139,7 +142,7 @@ color: #fff;
 color: #000;
 }
 
-.right {
+/* .right {
 margin-top: 10px;
 float: right;
 width: 200px;
@@ -152,7 +155,7 @@ background: #8b9cae url(images/contenth2.jpg) repeat-x;
 height: 30px;
 color: #fff;
 padding-left: 10px;
-}
+} */
 
 #footer { 
 color: #777;

@@ -39,14 +39,14 @@ create table professor (
 );
 
 create table subject(
-	scode varchar2(20) primary key, --scode´Â ½Ã°£ + ¿äÀÏ + ±³¼öÄÚµå Â«»Í
+	scode varchar2(20) primary key, --scodeï¿½ï¿½ ï¿½Ã°ï¿½ + ï¿½ï¿½ï¿½ï¿½ + ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ Â«ï¿½ï¿½
 	sname varchar2(20) not null,
 	stime varchar2(15) not null,
-	sday varchar2(15) not null, --Ãß°¡  ¿äÀÏ ±¸º°
+	sday varchar2(15) not null, --ï¿½ß°ï¿½  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	pcode varchar2(10) not null,
-	scategory varchar2(2) --Àü°ø, ±³¾ç
+	scategory varchar2(2) --ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½
 );
---mon, tues, wed, thu, fri, sat ½Ã°£Àº 9½ÃºÎÅÍ 1·Î Ç¥±â 6½Ã±îÁö
+--mon, tues, wed, thu, fri, sat ï¿½Ã°ï¿½ï¿½ï¿½ 9ï¿½Ãºï¿½ï¿½ï¿½ 1ï¿½ï¿½ Ç¥ï¿½ï¿½ 6ï¿½Ã±ï¿½ï¿½ï¿½
 select * from subject;
 select * from subject where scategory = '2';
 select * from subject where scategory = '2' and sname = 'subject1';
@@ -65,8 +65,8 @@ create table timeTable(
 	sub9 varchar2(20),
 	sub10 varchar2(20)
 )
---subµéÀº °ú¸ñÄÚµåµéÀÌ µé¾î°¥ Ç×¸ñÀÌ´Ù.
---ÀÚÀ¯°Ô½ÃÆÇ º¸µå ¡å--
+--subï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¥ ï¿½×¸ï¿½ï¿½Ì´ï¿½.
+--ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½--
 create table board (
 	bnum number primary key,
 	title varchar2(50) not null,
