@@ -16,10 +16,11 @@
 	NoticeDao nd = NoticeDao.getInstance();
 	int result = nd.update(notice);
 	if(result > 0) { 
-	response.sendRedirect("noticeList.jsp?pageNum="+pageNum);
+	//response.sendRedirect("noticeList.jsp?pageNum="+pageNum);
 	%>
 	<script type="text/javascript">
 		alert("공지사항 내용 수정 완료");
+		location.href = "homeMainPage.jsp?pgm=../hyun/noticeList.jsp";
 	</script>
 	<%
 	}else{

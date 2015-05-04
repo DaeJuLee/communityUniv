@@ -10,19 +10,19 @@
 <%
 	int bnum = Integer.parseInt(request.getParameter("bnum"));
 	AdminDao ad = AdminDao.getInstance();
-	int result = ad.deleteCounselboard(bnum);
+	int result = ad.deletetraceboard(bnum);
 	if(result > 0){
 %>
 	<script type="text/javascript">
 		alert("게시판 삭제 성공");
-		location.href="../combinePage/homeMainPage.jsp?pgm=../jinju/Counsel/counselList.jsp";
+		location.href="../combinePage/homeMainPage.jsp?pgm=../Yu/trace/traceList.jsp";
 	</script>
 <%
 	}else{
 %>
 	<script type="text/javascript">
 		alert("게시판 삭제 실패");
-		location.href="../combinePage/homeMainPage.jsp?pgm=../jinju/Counsel/counselList.jsp";
+		location.href="../combinePage/homeMainPage.jsp?pgm=../Yu/trace/traceList.jsp";
 	</script>
 <%
 	}

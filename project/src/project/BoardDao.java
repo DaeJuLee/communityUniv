@@ -2,6 +2,7 @@ package project;
 
 import java.sql.*;
 import java.util.*;
+
 import javax.naming.*;
 import javax.sql.DataSource;
 
@@ -88,9 +89,9 @@ public class BoardDao {
 			if (num == 0) board.setRef(number);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, number);
-			pstmt.setString(2, board.getTitle());
-			pstmt.setString(3, board.getWriter());
-			pstmt.setString(4, board.getContent());
+			pstmt.setString(2, toKor(board.getTitle()));
+			pstmt.setString(3, toKor(board.getWriter()));
+			pstmt.setString(4, toKor(board.getContent()));
 			pstmt.setInt(5, board.getHits());
 			pstmt.setString(6, board.getBpass());
 			pstmt.setString(7, board.getFileName());
@@ -99,7 +100,7 @@ public class BoardDao {
 			pstmt.setInt(10, board.getRe2_level());
 			pstmt.setString(11, board.getIp());
 			pstmt.setInt(12, board.getRef());
-			pstmt.setString(13, board.getCategory());
+			pstmt.setString(13, toKor(board.getCategory()));
 		
 			result = pstmt.executeUpdate();
 		} catch(Exception e) {	System.out.println(e.getMessage()); 
@@ -165,10 +166,10 @@ public class BoardDao {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, board.getTitle());
-			pstmt.setString(2, board.getCategory());
+			pstmt.setString(1, toKor(board.getTitle()));
+			pstmt.setString(2, toKor(board.getCategory()));
 			pstmt.setString(3, board.getBpass());
-			pstmt.setString(4, board.getContent());
+			pstmt.setString(4, toKor(board.getContent()));
 			pstmt.setInt(5, board.getBnum());
 			
 			result = pstmt.executeUpdate();
@@ -272,5 +273,16 @@ public class BoardDao {
 			if (conn !=null) conn.close();
 		}
 		return result;
+	}
+	
+	public static String toKor(String en) {
+		if (en == null) {
+			return null;
+		}
+		try {
+			return new String(en.getBytes("8859_1"), "utf-8");
+		} catch (Exception e) {
+			return en;
+		}
 	}
 }

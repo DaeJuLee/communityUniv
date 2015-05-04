@@ -88,9 +88,9 @@ public class NoticeDao {
 				notice.setRef(number);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, number);
-			pstmt.setString(2, notice.getTitle());
-			pstmt.setString(3, notice.getWriter());
-			pstmt.setString(4, notice.getContent());
+			pstmt.setString(2, toKor(notice.getTitle()));
+			pstmt.setString(3, toKor(notice.getWriter()));
+			pstmt.setString(4, toKor(notice.getContent()));
 			pstmt.setInt(5, notice.getHits());
 			pstmt.setInt(6, notice.getRef());
 
@@ -167,8 +167,8 @@ public class NoticeDao {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, notice.getTitle());
-			pstmt.setString(2, notice.getContent());
+			pstmt.setString(1, toKor(notice.getTitle()));
+			pstmt.setString(2, toKor(notice.getContent()));
 			pstmt.setInt(3, notice.getBnum());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -232,5 +232,16 @@ public class NoticeDao {
 				conn.close();
 		}
 		return tot;
+	}
+	
+	public static String toKor(String en) {
+		if (en == null) {
+			return null;
+		}
+		try {
+			return new String(en.getBytes("8859_1"), "utf-8");
+		} catch (Exception e) {
+			return en;
+		}
 	}
 }

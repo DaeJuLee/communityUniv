@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원 명단</title>
-<link rel="stylesheet" type="text/css" href="../common.css">
+<link rel="stylesheet" type="text/css" href="../combinePage/homeMainPage.css">
 </head>
 <body>
 

@@ -25,7 +25,7 @@
 
 			}
 		%>
-		<form action="noticeWritePro.jsp?pageNum=<%=pageNum%>" method="post">
+		<form action="homeMainPage.jsp?pgm=../hyun/noticeWritePro.jsp?pageNum=<%=pageNum%>" method="post">
 			<input type="hidden" name="bnum" value="<%=bnum%>">
 			<div class="contents">
 				<table class="tbTy1 detaLeft">

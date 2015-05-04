@@ -19,7 +19,7 @@
 	%>
 	<script type="text/javascript">
 		alert("댓글달기 성공");
-		location.href = "../Counsel/counselSelect.jsp?bnum=" + <%=crd.getBnum()%> + "&pageNum="
+		location.href = "homeMainPage.jsp?pgm=../jinju/Counsel/counselSelect.jsp?bnum=" + <%=crd.getBnum()%> + "&pageNum="
 				+ <%=pageNum%>;
 		histroy.back();
 	</script>

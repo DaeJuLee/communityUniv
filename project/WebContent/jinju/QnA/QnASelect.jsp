@@ -83,11 +83,12 @@ function chk(){
 		</span>
 	</div>
 
-	<form action = "../QnAReply/QnASelectReplyPro.jsp" name = "frm" method = "get" onsubmit = "return chk()">
+	<form action = "homeMainPage.jsp" name = "frm" method = "get" onsubmit = "return chk()">
 		<!-- 위에  name => bnum과 pageNum 두개의 값을 정해놨다.action을 취하면 값이 넘어간다. -->
 		<table class="tbTy1 detaLeft">
 			<tr>
 				<td colspan="2">
+					<input type = "hidden" name = "pgm" value = "../jinju/QnAReply/QnASelectReplyPro.jsp">
 					<textarea cols="100%" name = "content"></textarea>
 					<input type="hidden" name="bnum" value=<%=bnum%>> 
 					<input type="hidden" name="pageNum" value=<%=pageNum %>>
@@ -113,13 +114,13 @@ function chk(){
 				out.println("<tr><td> 작성자 : *****" + "</td>");
 				out.println("<td> 날짜 : " + QnAList.get(i).getR_date() + "</td>");
 				out.println("<td> <input type = 'button' value = '수정'"+
-						"onclick = location.href='../QnAReply/QnAUpdateReply.jsp?bnum=" +
+						"onclick = location.href='homeMainPage.jsp?pgm=../jinju/QnAReply/QnAUpdateReply.jsp?bnum=" +
 						bnum + "&pageNum=" + pageNum + "&re_step=" + QnAList.get(i).getRe_step() + 
 						"'></td></tr>");
 				//두번째 줄
 				out.println("<tr><td colspan = '2'>" + QnAList.get(i).getContent() + "</td>");
 				out.println("<td> <input type = 'button' value = '삭제'"+
-						"onclick = location.href='../QnAReply/QnADeleteReplyPro.jsp?bnum=" +
+						"onclick = location.href='homeMainPage.jsp?pgm=../jinju/QnAReply/QnADeleteReplyPro.jsp?bnum=" +
 						bnum + "&pageNum=" + pageNum + "&re_step=" + QnAList.get(i).getRe_step() + 
 						"'></td>");
 				out.println("</tr>");

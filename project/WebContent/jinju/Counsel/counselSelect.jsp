@@ -80,19 +80,21 @@ function chk(){
 		</span>
 	</div>
 
-	<form action="../CounselReply/counselSelectReplyPro.jsp" name="frm" method="get" onsubmit="return chk()">
+	<!-- <form action="homeMainPage.jsp?pgm=../CounselReply/counselSelectReplyPro.jsp" name="frm" method="get" onsubmit="return chk()"> -->
+	<form action="homeMainPage.jsp" name="frm" method="get" onsubmit="return chk()">
 		<table class="tbTy1 detaLeft">
 			<tbody>
 					
 			<tr>
 				<td colspan="2">
+					<input type = "hidden" name = "pgm" value = "../jinju/CounselReply/counselSelectReplyPro.jsp">
 					<textarea cols="100%" name = "content"></textarea>
 					<input type="hidden" name="bnum" value=<%=bnum%>> 
 					<input type="hidden" name="pageNum" value=<%=pageNum %>>
 				
 					<div class="btnArea">
 						<span class="btnR">
-							<input type="submit" value="확인" class="btnTy3">
+							<input type="submit" value="댓글달기" class="btnTy3">
 						</span>
 					</div>
 				</td>
@@ -111,13 +113,13 @@ function chk(){
 				out.println("<tr><td> 작성자 : *****" + "</td>");
 				out.println("<td> 날짜 : " + replyList.get(i).getR_date() + "</td>");
 				out.println("<td> <input type = 'button' value = '수정'"+
-						"onclick = location.href='../CounselReply/counselUpdateReply.jsp?bnum=" +
+						"onclick = location.href='homeMainPage.jsp?pgm=../jinju/CounselReply/counselUpdateReply.jsp?bnum=" +
 						bnum + "&pageNum=" + pageNum + "&re_step=" + replyList.get(i).getRe_step() + 
 						"'></td></tr>");
 				//두번째 줄
 				out.println("<tr><td colspan = '2'>" + replyList.get(i).getContent() + "</td>");
 				out.println("<td> <input type = 'button' value = '삭제'"+
-						"onclick = location.href='../CounselReply/counselDeleteReplyPro.jsp?bnum=" +
+						"onclick = location.href='homeMainPage.jsp?pgm=../jinju/CounselReply/counselDeleteReplyPro.jsp?bnum=" +
 						bnum + "&pageNum=" + pageNum + "&re_step=" + replyList.get(i).getRe_step() + 
 						"'></td></tr>");
 				out.println("</tr>");

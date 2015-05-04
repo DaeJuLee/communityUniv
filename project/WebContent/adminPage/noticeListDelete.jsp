@@ -15,14 +15,14 @@
 %>
 	<script type="text/javascript">
 		alert("게시판 삭제 성공");
-		location.href="../hyun/noticeList.jsp";
+		location.href="../combinePage/homeMainPage.jsp?pgm=../hyun/noticeList.jsp";
 	</script>
 <%
 	}else{
 %>
 	<script type="text/javascript">
 		alert("게시판 삭제 실패");
-		location.href="../hyun/noticeList.jsp";
+		location.href="../combinePage/homeMainPage.jsp?pgm=../hyun/noticeList.jsp";
 	</script>
 <%
 	}

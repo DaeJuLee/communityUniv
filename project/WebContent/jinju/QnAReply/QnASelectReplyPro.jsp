@@ -19,7 +19,7 @@
 	%>
 	<script type="text/javascript">
 		alert("댓글달기 성공");
-		location.href = "../QnA/QnASelect.jsp?bnum=" + <%=qrd.getBnum()%> + "&pageNum="
+		location.href = "homeMainPage.jsp?pgm=../jinju/QnA/QnASelect.jsp?bnum=" + <%=qrd.getBnum()%> + "&pageNum="
 				+ <%=pageNum%>;
 		histroy.back();
 	</script>

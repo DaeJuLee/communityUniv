@@ -201,9 +201,9 @@ public class QnABoardDAO {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, toKor(qboard.getTitle()));
-			pstmt.setString(2, qboard.getWriter());
+			pstmt.setString(2, toKor(qboard.getWriter()));
 			pstmt.setString(3, qboard.getBpass());
-			pstmt.setString(4, qboard.getContent());
+			pstmt.setString(4, toKor(qboard.getContent()));
 			pstmt.setInt(5, qboard.getBnum());
 
 			result = pstmt.executeUpdate();

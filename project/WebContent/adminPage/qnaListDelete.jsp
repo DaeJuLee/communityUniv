@@ -15,14 +15,14 @@
 %>
 	<script type="text/javascript">
 		alert("게시판 삭제 성공");
-		location.href="../jinju/QnA/QnAList.jsp";
+		location.href="../combinePage/homeMainPage.jsp?pgm=../jinju/QnA/QnAList.jsp";
 	</script>
 <%
 	}else{
 %>
 	<script type="text/javascript">
 		alert("게시판 삭제 실패");
-		location.href="../jinju/QnA/QnAList.jsp";
+		location.href="../combinePage/homeMainPage.jsp?pgm=../jinju/QnA/QnAList.jsp";
 	</script>
 <%
 	}

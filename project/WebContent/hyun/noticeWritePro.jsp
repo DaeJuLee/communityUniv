@@ -22,14 +22,14 @@
 	%>
 	<script type="text/javascript">
 		alert("공지사항 입력 완료");
-		location.href = "noticeList.jsp?pageNum="+<%=pageNum%>;
+		location.href = "homeMainPage.jsp?pgm=../hyun/noticeList.jsp?pageNum="+<%=pageNum%>;
 	</script>
 	<%
 		} else {
 	%>
 	<script type="text/javascript">
 		alert("공지사항 입력 실패");
-		location.href = "noticeWriteForm.jsp?bnum=<%=notice.getBnum()%>&pageNum="+<%=pageNum%>;
+		location.href = "homeMainPage.jsp?pgm=../hyun/noticeWriteForm.jsp?bnum=<%=notice.getBnum()%>&pageNum="+<%=pageNum%>;
 	</script>
 	<%
 		}
