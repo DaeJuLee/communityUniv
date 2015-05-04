@@ -1,4 +1,4 @@
---íšŒì›
+--È¸¿øÁ¤º¸
 create table member (
 	snum number(10) primary key,
 	name varchar2(20) not null,
@@ -17,7 +17,7 @@ create table member (
 select * from member;
 --drop table member;
 --------------------------------------------------------------------------------
---ê³µì§€
+--°øÁö»çÇ×
 create table notice (
 	bnum number primary key,
 	title varchar2(50) not null,
@@ -29,25 +29,25 @@ create table notice (
 );
 select * from notice;
 --------------------------------------------------------------------------------
---êµìˆ˜
+--±³¼ö Å×ÀÌºí
 create table professor (
 	pcode varchar2(10) primary key,	
 	pname varchar2(10) not null
 );
 select * from professor;
 --------------------------------------------------------------------------------
---ê³¼ëª©
+--°ú¸ñÅ×ÀÌºí
 create table subject(
-	scode varchar2(20) primary key, --scodeëŠ” ì‹œê°„ + ìš”ì¼ + êµìˆ˜ì½”ë“œ ì§¬ë½•
+	scode varchar2(20) primary key, --scode = ½Ã°£ + ¿äÀÏ +±³¼öÄÚµå
 	sname varchar2(20) not null,
 	stime varchar2(15) not null,
-	sday varchar2(15) not null, --ì¶”ê°€  ìš”ì¼ êµ¬ë³„
+	sday varchar2(15) not null, --Ãß°¡ ¿äÀÏ ±¸º°
 	pcode varchar2(10) not null,
-	scategory varchar2(2) --ì „ê³µ, êµì–‘
+	scategory varchar2(2) --Àü°ø, ±³¾ç
 );
 select * from subject;
 --------------------------------------------------------------------------------
---ì‹œê°„í‘œ
+--½Ã°£Ç¥
 create table timeTable(
 	snum number(10),
 	sub1 varchar2(20),
@@ -61,10 +61,10 @@ create table timeTable(
 	sub9 varchar2(20),
 	sub10 varchar2(20)
 )
---subë“¤ì€ ê³¼ëª©ì½”ë“œë“¤ì´ ë“¤ì–´ê°ˆ í•­ëª©ì´ë‹¤.
+--subµéÀº °ú¸ñÄÚµåµéÀÌ µé¾î°¥ Ç×¸ñ
 select * from timeTable;
 --------------------------------------------------------------------------------
---ììœ ê²Œì‹œíŒ ë³´ë“œ â–¼--
+--ÀÚÀ¯°Ô½ÃÆÇ-
 create table fboard (
 	bnum number primary key,
 	title varchar2(50) not null,
@@ -82,7 +82,7 @@ create table fboard (
 );
 select * from fboard;
 drop table fboard;
---title nullë¡œ í•œê±°ë¡œ í•˜ì ì•„ë˜ í…Œì´ë¸” ìƒì„±
+--title null·Î ÇÑ°Å·Î ÇÏÀÚ ¾Æ·¡ Å×ÀÌºí »ı¼º
 create table fboard (
 	bnum number primary key,
 	title varchar2(50) ,
@@ -140,7 +140,7 @@ create table cboard(
 );
 select * from cboard;
 --------------------------------------------------------------------------------
---ì¡±ë³´
+--Á·º¸
 create table traBoard (
 	bnum number primary key,
 	title varchar2(50) ,
@@ -161,7 +161,7 @@ select * from traBoard;
 --------------------------------------------------------------------------------
 --maBoard?
 --------------------------------------------------------------------------------
---ììœ ê²Œì‹œíŒ ë¦¬í”Œ
+--ÀÚÀ¯°Ô½ÃÆÇ ¸®ÇÃ
 create table fReplyComment(
 reply_code number primary key,
 bnum number,
@@ -171,7 +171,27 @@ content varchar2(255),
 r_date date not null
 );
 --------------------------------------------------------------------------------
---counselê²Œì‹œíŒ ë¦¬í”Œ
+--ÀåÅÍ°Ô½ÃÆÇ ¸®ÇÃ
+create table mReplyComment(
+reply_code number primary key,
+bnum number,
+re_step number,
+re_level number,
+content varchar2(255),
+r_date date not null
+);
+--------------------------------------------------------------------------------
+--Á·º¸°Ô½ÃÆÇ ¸®ÇÃ
+create table tReplyComment(
+reply_code number primary key,
+bnum number,
+re_step number,
+re_level number,
+content varchar2(255),
+r_date date not null
+);
+--------------------------------------------------------------------------------
+--counsel°Ô½ÃÆÇ ¸®ÇÃ
 create table cReplyComment(
 reply_code number primary key,
 bnum number,
@@ -181,7 +201,7 @@ content varchar2(255),
 r_date date not null
 );
 --------------------------------------------------------------------------------
---Q&Aê²Œì‹œíŒ ë¦¬í”Œ
+--Q&A°Ô½ÃÆÇ ¸®ÇÃ
 create table qReplyComment(
 reply_code number primary key,
 bnum number,
