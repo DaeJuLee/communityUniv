@@ -21,7 +21,7 @@
 
 		<div id="header">
 			<h1>
-				<a href="#">대학커뮤니티</a>
+				<a href="homeMainPage.jsp">대학커뮤니티</a>
 			</h1>
 			<h2>Welcome to our community</h2>
 		</div>
