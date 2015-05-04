@@ -2,6 +2,16 @@
     pageEncoding="UTF-8" import="project.*" %>
 <!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>글작성</title>
+<script type="text/javascript">
+function chk() {
+	if (frm.file.value == null || frm.file.value == '') {
+		alert("반드시 파일을 첨부하세요!"); 
+		frm.file.focus();
+		return false;		
+		}
+	return true;
+}
+</script>
 </head><body>
 <%	
 	
@@ -20,7 +30,7 @@
 	} 
 %>
 <div align="center"><h2>족보게시판 글쓰기</h2>
-<form action="homeMainPage.jsp?pgm=../Yu/trace/twritePro.jsp" method="post" enctype="multipart/form-data">
+<form action="twritePro.jsp" method="post" enctype="multipart/form-data" name="frm" onsubmit="return chk()">
 	<input type="hidden" name="bnum" value="<%=bnum%>">
 	<input type="hidden" name="pageNum" value="<%=pageNum%>">
 <table  border="1">
@@ -37,7 +47,7 @@
   <td><%=tboard.getWriter() %><input type="hidden" name="writer" value="<%=tboard.getWriter() %>"> </td>
   </tr>
  <tr><td>파일첨부</td>
-		<td><input type="file" name="file" id="file" ></td>
+		<td><input type="file" name="file" id="file"></td>
   </tr>
   <tr><td>내 용</td>
   <td><textarea name="content" rows="13" cols="40"></textarea> </td>
