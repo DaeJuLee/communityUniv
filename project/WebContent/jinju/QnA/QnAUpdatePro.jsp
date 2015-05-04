@@ -22,13 +22,16 @@
 		QnABoardDAO qbd = QnABoardDAO.getInstance();
 		int result =qbd.update(qboard);
 	
-		if (result > 0) {
-			response.sendRedirect("QnAList.jsp?pageNum=" + pageNum);
-		} else {
+		if (result > 0) {%>
+			<script type="text/javascript">
+				alert("수정완료하였습니다.");
+				location.href="homeMainPage.jsp?pgm=../jinju/QnA/QnAList.jsp";
+			</script>
+		<%} else {
 	%>
 	<script type="text/javascript">
 		alert("수정에 실패하셨습니다.");
-		location.href="QnAUpdateForm.jsp?bnum=<%=qboard.getBnum()%>&pageNum=<%=pageNum%>";
+		location.href="homeMainPage.jsp?pgm=../jinju/QnA/QnAUpdateForm.jsp?bnum=<%=qboard.getBnum()%>&pageNum=<%=pageNum%>";
 	</script>
 	<%
 		}

@@ -11,20 +11,20 @@
 <link rel="stylesheet" type="text/css" href="../../common.css">
 </head>
 <body>
+	<div class="columnMain">
 	<%
 		if(id.equals("not") || id == "not"){//회원이 아닌경우
 	%>
 	<script type="text/javascript">
 		alert("회원들만 사용할 수 있습니다.");
-		location.href = "../../combinePage/homeMainPage.jsp";
+		location.href = "../combinePage/homeMainPage.jsp";
 	</script>
 	<%
 		} else {
 	%>
-	<div class="columnMain">
 		<h2>자유게시판</h2>
 		<p class="location">
-			<span><a href="fwriteForm.jsp" class="btnTy3">글쓰기</a></span>
+			<span><a href="homeMainPage.jsp?pgm=../Yu/free/fwriteForm.jsp" class="btnTy3">글쓰기</a></span>
 		</p>
 
 		<div class="contents">
@@ -87,7 +87,7 @@
 												+ width + ">"
 												+ "<img src='../images/re.gif'>");
 									}
-									out.println("<a href='fContent.jsp?bnum="
+									out.println("<a href='homeMainPage.jsp?pgm=../Yu/free/fContent.jsp?bnum="
 											+ list.get(i).getBnum() + "&pageNum="
 											+ currentPage + "'>" + list.get(i).getTitle()
 											+ "</a></td>");

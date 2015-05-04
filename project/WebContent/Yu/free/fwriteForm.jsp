@@ -24,7 +24,7 @@
 				re2_step = board.getRe2_step();
 			}
 		%>
-		<form action="fwritePro.jsp?pageNum=<%=pageNum%>" method="post">
+		<form action="homeMainPage.jsp?pgm=../Yu/free/fwritePro.jsp?pageNum=<%=pageNum%>" method="post">
 			<input type="hidden" name="bnum" value="<%=bnum%>">
 			<%-- <input type="hidden" name="ref" value="<%=ref%>">
 	<input type="hidden" name="re2_level" value="<%=re2_level%>">

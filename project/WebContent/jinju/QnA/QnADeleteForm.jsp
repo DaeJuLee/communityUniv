@@ -21,8 +21,8 @@
 			int bnum = Integer.parseInt(request.getParameter("bnum"));
 		%>
 		<div class="contents">	
-			<form action="QnADeletePro.jsp">
-				
+			<form action="homeMainPage.jsp">
+				<input type = "hidden" name = "pgm" value = "../jinju/QnA/QnADeletePro.jsp">
 				글 번호 : <%=bnum %> <p>
 				<input type="hidden" name="bnum" value="<%=bnum%>">
 				암호 : <input type="password" name="bpass">

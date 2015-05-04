@@ -8,12 +8,15 @@
 	String passwd = request.getParameter("bpass");
 	BoardDao bd = BoardDao.getInstance();
 	int result = bd.delete(bnum, passwd);
-	if (result > 0) {
-		response.sendRedirect("freeList.jsp");
-	} else { %>
+	if (result > 0) {%>
+	<script type="text/javascript">
+	alert("삭제가 완료 되었습니다.");
+	location.href="homeMainPage.jsp?pgm=../Yu/free/freeList.jsp";
+	</script>
+	<%} else { %>
 	<script type="text/javascript">
 		alert("비밀번호가 틀렸습니다.");
-		location.href="fdeleteForm.jsp?bnum=<%=bnum%>";
+		location.href="homeMainPage.jsp?pgm=../Yu/free/fdeleteForm.jsp?bnum=<%=bnum%>";
 	</script>	
 <% 	} %>
 </body>

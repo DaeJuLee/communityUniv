@@ -56,7 +56,7 @@
 						int endRow = startRow + pageSize - 1;
 						int startNum = totCnt - startRow + 1;
 
-						List<Member> list = md.list();
+						List<Member> list = md.list(startRow,endRow);
 
 						if (list == null) {
 							out.println("회원 정보가 없습니다.");

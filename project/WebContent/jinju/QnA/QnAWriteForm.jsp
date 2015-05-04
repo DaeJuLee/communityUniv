@@ -33,7 +33,7 @@
 			re_step = qboard.getRe_step();
 		}
 	%>
-	<form action="QnAWritePro.jsp?pageNum=<%=pageNum%>" method="post">
+	<form action="homeMainPage.jsp?pgm=../jinju/QnA/QnAWritePro.jsp?pageNum=<%=pageNum%>" method="post">
 		<input type="hidden" name="bnum" value="<%=bnum%>"> 
 		<input type="hidden" name="ref" value="<%=ref%>"> 
 		<input type="hidden" name="re_level" value="<%=re_level%>"> 
@@ -65,7 +65,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th scope="row">작성자</th>
+				<th scope="row">작성자</th><!-- 작성자명을 세션과 연동해서 할 것... -->
 				<td><%=writer %></td>
 			</tr>
 			<tr>

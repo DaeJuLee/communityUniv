@@ -85,9 +85,9 @@ public class QnABoardDAO {
 		int result = 0;
 		ResultSet rs = null;
 		String sql1 = "select nvl(max(bnum),0) from qboard";
-		String sql = "insert into qboard(bnum, ref, re_level, re_step, category, title, writer, bpass, content, s_date) "
-		+ "values(?,?,?,?,?,?,?,?,?,sysdate)";
-		String sql2 = "update qboard set re_step = re_step+1 where ref=? and re_step > ?"; //´ä±Û
+		String sql = "insert into qboard(bnum, ref, re_level, re_step, title, bpass, content, s_date) "
+		+ "values(?,?,?,?,?,?,?,sysdate)";
+		String sql2 = "update qboard set re_step = re_step+1 where ref=? and re_step > ?"; //ï¿½ï¿½ï¿½
 		try {
 			conn = getConnection();
 			if (bnum != 0) {
@@ -111,17 +111,14 @@ public class QnABoardDAO {
 				qboard.setRef(number);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, number);
-			pstmt.setString(2, qboard.getWriter());
-			pstmt.setString(3, qboard.getTitle());
-			pstmt.setString(4, qboard.getContent());
-			pstmt.setInt(5, qboard.getHits());
+			pstmt.setInt(2, qboard.getRef());
+			pstmt.setInt(3, qboard.getRe_level());
+			pstmt.setInt(4, qboard.getRe_step());
+			pstmt.setString(5, toKor(qboard.getTitle()));
+			//pstmt.setString(2, qboard.getWriter());
 			pstmt.setString(6, qboard.getBpass());
-			pstmt.setString(7, qboard.getFileName());
-			pstmt.setInt(8, qboard.getFileSize());
-			pstmt.setInt(9, qboard.getRe_step());
-			pstmt.setInt(10, qboard.getRe_level());
-			pstmt.setInt(11, qboard.getRef());
-			pstmt.setString(12, qboard.getIp());
+			pstmt.setString(7, qboard.getContent());
+			//pstmt.setString(12, qboard.getIp());
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -203,7 +200,7 @@ public class QnABoardDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, qboard.getTitle());
+			pstmt.setString(1, toKor(qboard.getTitle()));
 			pstmt.setString(2, qboard.getWriter());
 			pstmt.setString(3, qboard.getBpass());
 			pstmt.setString(4, qboard.getContent());
@@ -281,7 +278,7 @@ public class QnABoardDAO {
 		}
 		return tot;
 	}
-	public List<QnAReplyBoard> listRippleSelect(int boardNum) //boardNum ÀÌ¶ó°í µÇ¾î ÀÖÀ½
+	public List<QnAReplyBoard> listRippleSelect(int boardNum) //boardNum ï¿½Ì¶ï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½
 			throws SQLException {
 		List<QnAReplyBoard> QnAList = new ArrayList<QnAReplyBoard>();
 		Connection conn = null;
@@ -296,7 +293,7 @@ public class QnABoardDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				QnAReplyBoard qrboard = new QnAReplyBoard();
-				qrboard.setBnum(boardNum);// ¿©±â°¡ Æ²·È¾ú´ë;;
+				qrboard.setBnum(boardNum);// ï¿½ï¿½ï¿½â°¡ Æ²ï¿½È¾ï¿½ï¿½ï¿½;;
 				qrboard.setRe_step(rs.getInt("re_step"));
 				qrboard.setRe_level(rs.getInt("re_level"));
 				qrboard.setContent(rs.getString("content"));
@@ -316,7 +313,7 @@ public class QnABoardDAO {
 		}
 		return QnAList;
 	}
-	// ´ñ±Û´ñ±Û´ñ±Û ³»°¡ ÇÏ´Â °Å!! mine ´ëÁÖ
+	// ï¿½ï¿½Û´ï¿½Û´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½!! mine ï¿½ï¿½ï¿½ï¿½
 	public int insertReply(QnAReplyBoard qrb) throws SQLException {
 		int result = 0;
 		Connection conn = null;
@@ -335,13 +332,13 @@ public class QnABoardDAO {
 			pstmt.close();
 			qrb.setRe_step(qrb.getRe_step() + 1);
 			pstmt = conn.prepareStatement(sql1);
-			//primary key°ª 1¾¿ Áõ°¡
+			//primary keyï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			rs = pstmt.executeQuery();
 			rs.next();
 			int number = rs.getInt(1) + 1;
 			rs.close();
 			pstmt.close();
-			//insert¹®À» ¼öÇàÇÏ´Â °÷
+			//insertï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½
 			pstmt = conn.prepareStatement(sql2);
 			pstmt.setInt(1, number);
 			pstmt.setInt(2, qrb.getBnum());
@@ -350,7 +347,7 @@ public class QnABoardDAO {
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println("error ¹ß»ý ");
+			System.out.println("error ï¿½ß»ï¿½ ");
 			System.out.println(e.getMessage());
 		} finally {
 			if (rs != null)
@@ -376,7 +373,7 @@ public class QnABoardDAO {
 			pstmt.setInt(2, re_step);
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("error ¹ß»ý ");
+			System.out.println("error ï¿½ß»ï¿½ ");
 			System.out.println(e.getMessage());
 		} finally {
 			if (pstmt != null)
@@ -386,5 +383,16 @@ public class QnABoardDAO {
 		}
 		
 		return result;
+	}
+	
+	public static String toKor(String en) {
+		if (en == null) {
+			return null;
+		}
+		try {
+			return new String(en.getBytes("8859_1"), "utf-8");
+		} catch (Exception e) {
+			return en;
+		}
 	}
 }

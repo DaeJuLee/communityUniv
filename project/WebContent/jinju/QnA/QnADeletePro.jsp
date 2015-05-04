@@ -17,12 +17,17 @@
 	
 		int result = qbd.delete(bnum, bpass);
 		if (result > 0) {
-			response.sendRedirect("QnAList.jsp");
+			/* response.sendRedirect("QnAList.jsp"); */%>
+			<script type="text/javascript">
+				alert("삭제완료했습니다.");
+				location.href="homeMainPage.jsp?pgm=../jinju/QnA/QnAList.jsp";
+			</script>
+		<%
 		} else {
-	%>
+		%>
 	<script type="text/javascript">
 		alert("패스워드를 틀렸습니다.");
-		location.href="QnADeleteForm.jsp?bnum=<%=bnum%>";
+		location.href="homeMainPage.jsp?pgm=../jinju/QnA/QnADeleteForm.jsp?bnum=<%=bnum%>";
 	</script>
 	<%
 		}

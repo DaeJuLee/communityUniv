@@ -23,7 +23,7 @@
 		QnABoardDAO qbd = QnABoardDAO.getInstance();
 		QnABoard qboard = qbd.select(bnum);
 	%>
-	<form action="QnAUpdatePro.jsp" method="post">
+	<form action="homeMainPage.jsp?pgm=../jinju/QnA/QnAUpdatePro.jsp" method="post">
 		<input type="hidden" name="bnum" value="<%=qboard.getBnum()%>">
 		<input type="hidden" name="pageNum" value="<%=pageNum%>">
 		

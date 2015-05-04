@@ -45,12 +45,12 @@
 	if (result > 0) {
 %>
 	<script type="text/javascript">
-		alert("입력 완료");  location.href = "traceList.jsp?pageNum="+<%=pageNum%>;
+		alert("입력 완료");  location.href = "homeMainPage.jsp?pgm=../Yu/trace/traceList.jsp?pageNum="+<%=pageNum%>;
 	</script>
 <% } else { %>
 	<script type="text/javascript">
 		alert("ㅠㅜㅜ다시");  
-		location.href="twriteForm.jsp?bnum=<%=traBoard.getBnum()%>&pageNum=<%=pageNum%>";
+		location.href="homeMainPage.jsp?pgm=../Yu/tracetwriteForm.jsp?bnum=<%=traBoard.getBnum()%>&pageNum=<%=pageNum%>";
 	</script>
 <% } %>
 </body>

@@ -17,10 +17,20 @@
 <body>
 	<div class="columnMain">
 		<h2>QnA게시판</h2>
-
-
+		<%
+			//이거 정리할 때 체크
+			System.out.println(id);
+			if (id.equals("not") || id=="not") {
+		%>
+			<script type="text/javascript">
+				alert("회원만 볼 수 있습니다.");
+				location.href="../combinePage/homeMainPage.jsp";
+			</script>
+		<%
+			}else{
+		%>
 		<p class="location">
-			<span><a href="QnAWriteForm.jsp" class="btnTy3">글쓰기</a></span>
+			<span><a href="homeMainPage.jsp?pgm=../jinju/QnA/QnAWriteForm.jsp" class="btnTy3">글쓰기</a></span>
 		</p>
 
 		<div class="contents">
@@ -82,7 +92,7 @@
 									out.println("<img src='images/level.gif' width="
 											+ width + ">" + "<img src='images/re.gif'>");
 								}
-								out.println("<a href='QnASelect.jsp?bnum="
+								out.println("<a href='homeMainPage.jsp?pgm=../jinju/QnA/QnASelect.jsp?bnum="
 										+ list.get(i).getBnum() + "&pageNum=" + currentPage
 										+ "'>" + list.get(i).getTitle() + "</a></td>");
 								out.println("<td>" + list.get(i).getWriter() + "</td>");
@@ -93,7 +103,7 @@
 									"value =" + list.get(i).getBnum() +
 									 "</td>"); */
 									 //글삭제시 checkbox이용 할려 했으나.. 일단 삭제 부터..
-									 out.println("<td><a href = '../../adminPage/counselListDelete.jsp?bnum="+
+									 out.println("<td><a href = '../../adminPage/qnaListDelete.jsp?bnum="+
 											 	list.get(i).getBnum() +"'>게시글 삭제");
 									 out.println("</a></td>");
 									} else {
@@ -144,6 +154,9 @@
 				href="#none" class="btnTy3">검색</a>
 			<!-- 여기를 어디로 연결해야함  -->
 		</p>
+		<%
+			}//else 끝 문장
+		%>
 	</div>
 
 </body>

@@ -11,7 +11,7 @@
 		TraBoardDao bd = TraBoardDao.getInstance();
 		TraBoard tboard = bd.select(bnum);
 	%>
-<form action="tupdatePro.jsp" method="post" enctype="multipart/form-data">
+<form action="homeMainPage.jsp?pgm=../Yu/trace/tupdatePro.jsp" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="bnum" value="<%=tboard.getBnum()%>">
 		<input type="hidden" name="pageNum" value="<%=pageNum%>">
 		<table border="1">

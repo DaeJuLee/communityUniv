@@ -22,8 +22,9 @@
 		%>
 	
 		<div class="contents">	
-			<form action="counselDeletePro.jsp">
+			<form action="homeMainPage.jsp">
 				글 번호 : <%=bnum %><p>
+				<input type="hidden" name = "pgm" value = "../jinju/Counsel/counselDeletePro.jsp">
 				<input type="hidden" name="bnum" value="<%=bnum%>"> 
 				암호 : <input type="text" name="bpass">
 				<input type="submit" value="확인" class="btnTy3">

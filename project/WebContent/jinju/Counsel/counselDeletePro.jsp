@@ -17,12 +17,17 @@
 	
 		int result = cbd.delete(bnum, bpass);
 		if (result > 0) {
-			response.sendRedirect("counselList.jsp");
+		%>
+			<script type="text/javascript">
+				alert("삭제 완료");
+				location.href="homeMainPage.jsp?pgm=../jinju/Counsel/counselList.jsp";
+			</script>
+		<%
 		} else {
-	%>
+		%>
 	<script type="text/javascript">
 		alert("패스워드를 틀렸습니다.");
-		location.href="counselDeleteForm.jsp?bnum=<%=bnum%>";
+		location.href="homeMainPage.jsp?pgm=../jinju/Counsel/counselDeleteForm.jsp?bnum=<%=bnum%>";
 	</script>
 	<%
 		}

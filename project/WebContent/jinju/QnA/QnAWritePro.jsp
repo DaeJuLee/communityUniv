@@ -25,14 +25,14 @@
 	%>
 	<script type="text/javascript">
 		alert("입력 완료했습니다");  
-		location.href="QnAList.jsp?pageNum="+<%=pageNum%>;
+		location.href="homeMainPage.jsp?pgm=../jinju/QnA/QnAList.jsp?pageNum="+<%=pageNum%>;
 	</script>
 	<%
 		} else {
 	%>
 	<script type="text/javascript">
 		alert("다시 작성해주세요");  
-		location.href="QnAWriteForm.jsp?bnum=<%=qboard.getBnum()%>&pageNum=<%=pageNum%>";
+		location.href="homeMainPage.jsp?pgm=../jinju/QnA/QnAWriteForm.jsp?bnum=<%=qboard.getBnum()%>&pageNum=<%=pageNum%>";
 	</script>
 	<%
 		}

@@ -16,7 +16,7 @@
 	if (result > 0) {
 %>
 	<script type="text/javascript">
-		alert("입력 완료");  location.href = "freeList.jsp?pageNum="+<%=pageNum%>;
+		alert("입력 완료");  location.href = "homeMainPage.jsp?pgm=../Yu/free/freeList.jsp?pageNum="+<%=pageNum%>;
 	</script>
 <% } else { %>
 	<script type="text/javascript">

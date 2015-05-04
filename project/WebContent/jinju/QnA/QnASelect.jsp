@@ -76,10 +76,10 @@ function chk(){
 
 	<div class="btnArea">
 		<span class="btnR">
-			<input type="button" value="수정" class="btnTy3" onclick="location.href='QnAUpdateForm.jsp?bnum=<%=qboard.getBnum()%>&pageNum=<%=pageNum%>'">
-			<input type="button" value="삭제" class="btnTy2" onclick="location.href='QnADeleteForm.jsp?bnum=<%=qboard.getBnum()%>&pageNum=<%=pageNum%>'">
-			<input type="button" value="목록" class="btnTy3" onclick="location.href='QnAList.jsp?pageNum=<%=pageNum%>'">
-			<input type="button" value="답변작성" class="btnTy2" onclick="location.href='QnAWriteForm.jsp?bnum=<%=qboard.getBnum()%>&pageNum=<%=pageNum%>'">
+			<input type="button" value="수정" class="btnTy3" onclick="location.href='homeMainPage.jsp?pgm=../jinju/QnA/QnAUpdateForm.jsp?bnum=<%=qboard.getBnum()%>&pageNum=<%=pageNum%>'">
+			<input type="button" value="삭제" class="btnTy2" onclick="location.href='homeMainPage.jsp?pgm=../jinju/QnA/QnADeleteForm.jsp?bnum=<%=qboard.getBnum()%>&pageNum=<%=pageNum%>'">
+			<input type="button" value="목록" class="btnTy3" onclick="location.href='homeMainPage.jsp?pgm=../jinju/QnA/QnAList.jsp?pageNum=<%=pageNum%>'">
+			<input type="button" value="답변작성" class="btnTy2" onclick="location.href='homeMainPage.jsp?pgm=../jinju/QnA/QnAWriteForm.jsp?bnum=<%=qboard.getBnum()%>&pageNum=<%=pageNum%>'">
 		</span>
 	</div>
 

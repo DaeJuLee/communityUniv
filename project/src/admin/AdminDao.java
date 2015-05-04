@@ -37,7 +37,7 @@ public class AdminDao {
 		return conn;
 	}
 
-	// ÀÚÀ¯°Ô½ÃÆÇ ±Û »èÁ¦
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int deleteFreeboard(int bnum) throws SQLException {
 		int result = 0;
 		String sql = "delete from fboard where bnum=?";
@@ -61,7 +61,7 @@ public class AdminDao {
 		return result;
 	}
 
-	// »ó´ã°Ô½ÃÆÇ ±Û »èÁ¦
+	// ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int deleteCounselboard(int bnum) throws SQLException {
 		int result = 0;
 		String sql = "delete from cboard where bnum=?";
@@ -85,10 +85,33 @@ public class AdminDao {
 		return result;
 	}
 
-	// »ó´ã°Ô½ÃÆÇ ±Û »èÁ¦
+	// ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int deleteQnAboard(int bnum) throws SQLException {
 		int result = 0;
 		String sql = "delete from qboard where bnum=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bnum);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			result = -1;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		return result;
+	}
+	
+	public int deleteNoticeBoard(int bnum) throws SQLException {
+		int result = 0;
+		String sql = "delete from notice where bnum=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
