@@ -9,7 +9,7 @@
 	int re_step = 9;
 /* 1번째 컬럼부터 4번째 까지 number형, 그 뒤에 두개는 varchar2형 */
 /*추가사항 : ip 컬럼을 추가해야한다.  */
-	String sql="insert into replyComment values(?, ?, ?, ?, ?, sysdate)";
+	String sql="insert into cReplyComment values(?, ?, ?, ?, ?, sysdate)";
 	Context ctx = new InitialContext();
 	DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/OracleDB");
 	Connection conn = ds.getConnection();

@@ -126,9 +126,9 @@ public class CounselBoardDAO {
 			pstmt.setInt(4, cboard.getRe_step());
 			pstmt.setString(5, toKor(cboard.getCategory()));
 			pstmt.setString(6, toKor(cboard.getTitle()));
-			pstmt.setString(7, cboard.getWriter());
+			pstmt.setString(7, toKor(cboard.getWriter()));
 			pstmt.setString(8, cboard.getBpass());
-			pstmt.setString(9, cboard.getContent());
+			pstmt.setString(9, toKor(cboard.getContent()));
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -215,7 +215,7 @@ public class CounselBoardDAO {
 			pstmt.setString(2, toKor(cboard.getCategory()));
 			pstmt.setString(3, cboard.getWriter());
 			pstmt.setString(4, cboard.getBpass());
-			pstmt.setString(5, cboard.getContent());
+			pstmt.setString(5, toKor(cboard.getContent()));
 			pstmt.setInt(6, cboard.getBnum());
 
 			result = pstmt.executeUpdate();

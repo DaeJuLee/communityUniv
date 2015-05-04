@@ -16,13 +16,17 @@
 	int result = nd.delete(bnum);
 
 	if(result>0) {
-	response.sendRedirect("noticeList.jsp");
-		
-	}else{
+		//response.sendRedirect("noticeList.jsp");
+	%>
+		<script type="text/javascript">
+			alert("공지가 삭제 되었습니다.");
+			location.href = "homeMainPage.jsp?pgm=../hyun/noticeList.jsp";
+		</script>
+	<%}else{
 		%>
 	<script type="text/javascript">
 		alert("에러입니다.");
-		location.href = "noticeDeleteForm.jsp?bnum=<%=bnum%>";
+		location.href = "homeMainPage.jsp?pgm=../hyun/noticeDeleteForm.jsp?bnum=<%=bnum%>";
 		</script>
 	<%
 	} 

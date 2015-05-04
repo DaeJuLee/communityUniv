@@ -15,14 +15,14 @@
 %>
 	<script type="text/javascript">
 		alert("게시판 삭제 성공");
-		location.href="../Yu/free/freeList.jsp";
+		location.href="../combinePage/homeMainPage.jsp?pgm=../Yu/free/freeList.jsp";
 	</script>
 <%
 	}else{
 %>
 	<script type="text/javascript">
 		alert("게시판 삭제 실패");
-		location.href="../Yu/free/freeList.jsp";
+		location.href="../combinePage/homeMainPage.jsp?pgm=../Yu/free/freeList.jsp";
 	</script>
 <%
 	}

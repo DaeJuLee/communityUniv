@@ -20,7 +20,7 @@
 			Notice notice = nd.select(bnum);
 		%>
 
-		<form action="noticeUpdatePro.jsp" method="post">
+		<form action="homeMainPage.jsp?pgm=../hyun/noticeUpdatePro.jsp" method="post">
 			<input type="hidden" name="bnum" value="<%=notice.getBnum()%>">
 			<input type="hidden" name="pageNum" value="<%=pageNum%>">
 			<div class="contents">

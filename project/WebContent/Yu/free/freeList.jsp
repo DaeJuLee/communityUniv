@@ -100,7 +100,7 @@
 									"value =" + list.get(i).getBnum() +
 									 "</td>"); */
 									 //글삭제시 checkbox이용 할려 했으나.. 일단 삭제 부터..
-									 out.println("<td><a href = '../../adminPage/freeListDelete.jsp?bnum="+
+									 out.println("<td><a href = '../combinePage/homeMainPage.jsp?pgm=../adminPage/freeListDelete.jsp?bnum="+
 											 	list.get(i).getBnum() +"'>게시글 삭제");
 									 out.println("</a></td>");
 									} else {

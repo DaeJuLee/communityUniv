@@ -18,7 +18,7 @@
 	%>
 	<script type="text/javascript">
 		alert("댓글삭제  성공");
-		location.href = "../Counsel/counselSelect.jsp?bnum=" + <%=bnum%> + "&pageNum="
+		location.href = "homeMainPage.jsp?pgm=../jinju/Counsel/counselSelect.jsp?bnum=" + <%=bnum%> + "&pageNum="
 				+ <%=pageNum%>;
 		histroy.back();
 	</script>

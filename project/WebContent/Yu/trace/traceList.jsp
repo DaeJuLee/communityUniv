@@ -38,7 +38,17 @@ table {
 			<th>제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
-			<th>조회수</th>
+			<%
+				if (id.equals("admin") || id == "admin") {
+			%>
+				<th scope="col">게시글 삭제 여부</th>
+			<%
+				} else {
+			%>
+				<th scope="col">조회수</th>
+			<%
+				}
+			%>
 		</tr>
 		<%
 			TraBoardDao bd = TraBoardDao.getInstance();
@@ -80,8 +90,18 @@ table {
 
 						out.println("<td>" + list.get(i).getWriter() + "</td>");
 						out.println("<td>" + list.get(i).getS_date() + "</td>");
-						out.println("<td>" + list.get(i).getHits()
-								+ "</td></tr>");
+						if (id.equals("admin") || id == "admin") {
+							/*out.println("<td><input type = 'checkbox' name = 'list'"+
+							"value =" + list.get(i).getBnum() +
+							 "</td>"); */
+							 //글삭제시 checkbox이용 할려 했으나.. 일단 삭제 부터..
+							 out.println("<td><a href = '../adminPage/traceListDelete.jsp?bnum="+
+									 	list.get(i).getBnum() +"'>게시글 삭제");
+							 out.println("</a></td>");
+							} else {
+								out.println("<td>" + list.get(i).getHits()
+										+ "</td></tr>");
+							}
 					}
 				} else {
 					out.println("<tr><td colspan=7>데이터가 없네</td></tr>");
