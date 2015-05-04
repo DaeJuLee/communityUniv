@@ -9,12 +9,12 @@
 <script type="text/javascript">
 	function chk() {
 		if (!frm.id.value) {
-			alert("ID 입력해야지, 알겠니 ?");
+			alert("ID 입력하세요");
 			frm.id.focus();
 			return false;
 		}
 		if (!frm.pass.value) {
-			alert("패스워드 빼 먹었잖아 !");
+			alert("패스워드를 입력하세요");
 			frm.pass.focus();
 			return false;
 		}
