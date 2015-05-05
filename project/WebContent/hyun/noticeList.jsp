@@ -79,7 +79,7 @@
 							if (totCnt > 0) {
 								for (int i = 0; i < list.size(); i++) {
 									out.println("<tr><td>" + startNum-- + "</td>");
-									out.println("<td class=left width=200>");
+									out.println("<td>");
 									out.println("<a href=homeMainPage.jsp?pgm=../hyun/noticeContent.jsp?bnum="
 											+ list.get(i).getBnum() + "&pageNum="
 											+ currentPage + ">" + list.get(i).getTitle()

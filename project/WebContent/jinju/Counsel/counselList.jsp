@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>고민상담 게시판</title>
 
-<link rel="stylesheet" type="text/css" href="../../common.css">
+<!-- <link rel="stylesheet" type="text/css" href="../../common.css"> -->
 
 </head>
 <body>
@@ -27,11 +27,13 @@
 			} else {
 		%>
 		<p class="location">
-			<span><a href="homeMainPage.jsp?pgm=../jinju/Counsel/counselWriteForm.jsp" class="btnTy3">글쓰기</a></span>
+			<span><a
+				href="homeMainPage.jsp?pgm=../jinju/Counsel/counselWriteForm.jsp"
+				class="btnTy3">글쓰기</a></span>
 		</p>
 
 		<div class="contents">
-			<table>
+			<table class="tbTy1">
 				<colgroup>
 					<col width="10%">
 					<col width="10%">
@@ -40,7 +42,7 @@
 					<col width="20%">
 					<col width="10%">
 				</colgroup>
-				<table>
+				<thead>
 					<tr>
 						<th scope="col">번호</th>
 						<th scope="col">분류</th>
@@ -59,6 +61,8 @@
 							}
 						%>
 					</tr>
+				</thead>
+				<tbody>
 
 					<%
 						CounselBoardDAO cbd = CounselBoardDAO.getInstance();
@@ -84,7 +88,7 @@
 											+ "</td>");
 
 									int width = list.get(i).getRe_level() * 10;
-									out.println("<td class=left width=200>");
+									out.println("<td>");
 
 									if (list.get(i).getHits() > 20) {
 										out.println("<img src='images/hot.gif'>");
@@ -94,8 +98,11 @@
 												+ width + ">" + "<img src='images/re.gif'>");
 									}
 									out.println("<a href='homeMainPage.jsp?pgm=../jinju/Counsel/counselSelect.jsp?bnum="
-											+ list.get(i).getBnum() + "&pageNum="
-											+ currentPage + "'>" + list.get(i).getTitle()
+											+ list.get(i).getBnum()
+											+ "&pageNum="
+											+ currentPage
+											+ "'>"
+											+ list.get(i).getTitle()
 											+ "</a></td>");
 									out.println("<td>*****" + "</td>");
 
@@ -104,20 +111,21 @@
 										/*out.println("<td><input type = 'checkbox' name = 'list'"+
 										"value =" + list.get(i).getBnum() +
 										 "</td>"); */
-										 //글삭제시 checkbox이용 할려 했으나.. 일단 삭제 부터..
-										 out.println("<td><a href = '../combinePage/homeMainPage.jsp?pgm=../adminPage/counselListDelete.jsp?bnum="+
-												 	list.get(i).getBnum() +"'>게시글 삭제");
-										 out.println("</a></td>");
-										} else {
-											out.println("<td>" + list.get(i).getHits()
-													+ "</td></tr>");
-										}
+										//글삭제시 checkbox이용 할려 했으나.. 일단 삭제 부터..
+										out.println("<td><a href = '../combinePage/homeMainPage.jsp?pgm=../adminPage/counselListDelete.jsp?bnum="
+												+ list.get(i).getBnum() + "'>게시글 삭제");
+										out.println("</a></td>");
+									} else {
+										out.println("<td>" + list.get(i).getHits()
+												+ "</td></tr>");
+									}
 								}
 							} else {
 								out.println("<tr><td colspan=7>데이터가 없습니다.</td></tr>");
 							}
 					%>
-				<table>
+
+				</tbody>
 			</table>
 		</div>
 
@@ -154,7 +162,6 @@
 			}//else 끝 문장
 		%>
 	</div>
-
 
 </body>
 </html>

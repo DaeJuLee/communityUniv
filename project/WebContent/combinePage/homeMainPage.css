@@ -80,9 +80,9 @@ font-size: 20px;
 color:#000;
 text-decoration:none;
 }
-/* 게시글 그리고 답변에 영향을 미치는 css .left */
+/* css .left */
 .left {
-/* margin-top: 10px; 테이블 깨지는 현상 없앰*/
+/* margin-top: 10px;*/
 float: left;
 width: 200px;
 line-height: 15px;
@@ -117,7 +117,6 @@ color: #043b72;
 }
 .left ul a:hover { color : #333; }
 
-@CHARSET "UTF-8";
 .middle { 
 margin-top: 10px;
 float: left;
@@ -164,3 +163,54 @@ padding-bottom: 10px;
 }
 #footer a {  color: #777; text-decoration: none; }
 #footer  a:hover { color: #000; } 
+
+/*html reset*/
+
+a { color:inherit; text-decoration:none; }
+a:hover { color:inherit; text-decoration:underline; }
+a:active { background-color:transparent; }
+
+/* FORM */
+.selTy { height:30px; border:solid 1px #8b9cae; vertical-align:middle; font-size:11px; line-height:30px; padding:0 0 0 8px; color:#333; }
+.intTy { background-color:#fff; height:28px; border:solid 1px #8b9cae; vertical-align:middle; font-size:11px; line-height:28px; padding:0 0 0 11px; }
+
+/* TABLE */
+.tbTy1 { width:100%; margin-top:10px; border-top:solid 2px #043b72; border-bottom:solid 1px #b3b3b3; line-height:1; position:relative; }
+.tbTy1 thead tr th { background-color:#e5e7ec; color:#333; text-align:center; border-bottom:solid 1px #043b72; border-left:solid 1px #ccc; padding-top:10px; padding-bottom:10px; }
+.tbTy1 tr th:first-child, .tbTy1 tr > td:first-child { border-left:none; }
+.tbTy1.dataLeft th, .tbTy1.dataLeft td { padding-left:10px; text-align:left; padding-top:10px; }
+.tbTy1 tbody th { background-color:#e5e7ec; color:#333; border-top:solid 1px #ccc; border-right:solid 1px #ccc; border-left:solid 1px #ccc; vertical-align:middle; }
+.tbTy1 tbody td { border-top:solid 1px #ccc; border-left:solid 1px #ccc; vertical-align:middle; text-align:center; padding-top:10px; padding-bottom:10px; padding-left:10px; padding-right:10px; /* vertical-align:top; */ }
+.tbTy1 tbody td.caL { text-align:left; }
+.btnArea { position:relative; padding-top:20px; height:20px; overflow:hidden; text-align:center; line-height:20px; }
+.btnArea.line { border-top:solid 1px #b3b3b3; }
+.btnArea .btnL { position:absolute; left:0; top:20px; }
+.btnArea .btnR { position:absolute; right:0; top:20px; }
+.btnArea .paging a { display:inline-block; color:#333; padding:0 6px; vertical-align:middle; }
+.btnArea .paging a:hover, .btnArea .paging a.active { color:#ef8009; text-decoration:underline; }
+.btnArea .paging a.prev { width:5px; height:9px; background:url("/newir/iradm/images/common.png") 2px -110px no-repeat; }
+
+/* BUTTON */
+.btnTy1, .btnTy1:hover { display:inline-block; height:26px; padding:0 10px; border:solid 1px #b9cbde; border-radius:2px; font-size:10px; color:#175491; }
+.btnTy2, .btnTy2:hover { display:inline-block; height:28px; padding:0 20px; border:solid 1px #7799bb; border-radius:2px; font-size:12px; color:#043b72; line-height:28px; }
+.btnTy3, .btnTy3:hover { display:inline-block; height:29px; padding:0 20px; background:#175491; border-radius:2px; font-size:12px; color:#fff; line-height:28px; }
+.btnTy4, .btnTy4:hover { display:block; width:100%; height:50px; background:#175491; border-radius:2px; font-size:16px; color:#fff; line-height:50px; text-align:center; }
+.btnUp { display:inline-block; width:20px; height:20px; background:url("/newir/iradm/images/common.png") 6px -226px no-repeat; border:solid 1px #b9cbde; border-radius:2px; }
+.btnDown { display:inline-block; width:20px; height:20px; background:url("/newir/iradm/images/common.png") -31px -226px no-repeat; border:solid 1px #b9cbde; border-radius:2px; }
+.btnUp.end { background-position:6px -249px; }
+.btnDown.end { background-position:-29px -249px; }
+.btnClose, .btnClose:hover { display:inline-block; margin-top:3px; width:23px; height:23px; border:solid 1px #8b9cae; border-radius:2px; text-align:center; line-height:23px; vertical-align:middle; text-decoration:none; }
+
+.btnArea .paging a.next { width:5px; height:9px; background:url("/newir/iradm/images/common.png") 11px -129px  no-repeat; }
+.btnArea + .tbTy1 { margin-top:10px; }
+.i-ess { background:url("/newir/iradm/images/bul-1.png") 0 0 no-repeat; width:4px; height:4px; vertical-align:middle; margin:-2px 5px 0 10px; }
+.photoImg { overflow:hidden; position:relative; background:#ddd; width:190px; }
+.photoImg img { width:100%; }
+.photoImg .close { position:absolute; top:5px; right:7px; width:20px; display:inline-block; font-weight:bold; text-decoration:none; font-size:20px; text-align:center; }
+
+
+/* MARGIN */
+.mgTB10 { margin:10px 0; }
+.mgT10 { margin-top:10px; }
+.mgB10 { margin-bottom:10px; }
+.mgL10 {margin-left:10px;}

@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>QnA게시판</title>
 
-<link rel="stylesheet" type="text/css" href="../../common.css">
+<!-- <link rel="stylesheet" type="text/css" href="../../common.css"> -->
 
 </head>
 <body>
@@ -30,7 +30,7 @@
 			}else{
 		%>
 		<p class="location">
-			<span><a href="homeMainPage.jsp?pgm=../jinju/QnA/QnAWriteForm.jsp" class="btnTy3">글쓰기</a></span>
+			<span><a href="homeMainPage.jsp?pgm=../jinju/QnA/QnAWriteForm.jsp?writer=<%=writer %>" class="btnTy3">글쓰기</a></span>
 		</p>
 
 		<div class="contents">
@@ -84,7 +84,7 @@
 							for (int i = 0; i < list.size(); i++) {
 								out.println("<tr><td>" + startNum-- + "</td>");
 								int width = list.get(i).getRe_level() * 10;
-								out.println("<td class=left width=200>");
+								out.println("<td>");
 								if (list.get(i).getHits() > 20) {
 									out.println("<img src='images/hot.gif'>");
 								}
