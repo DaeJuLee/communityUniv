@@ -14,7 +14,7 @@
 	String uri  = request.getRequestURI(); 
 	String path = request.getContextPath(); 
 	String command = uri.substring(path.length()+1);
-	String fileSave = "../upload";
+	String fileSave = "/upload";
 	String realPath = request.getServletContext().getRealPath(fileSave);
 	MultipartRequest multi = new MultipartRequest(request,realPath,maxSize,"utf-8", new DefaultFileRenamePolicy());
 	Enumeration en = multi.getFileNames();

@@ -30,7 +30,7 @@ function chk() {
 	} 
 %>
 <div align="center"><h2>족보게시판 글쓰기</h2>
-<form action="twritePro.jsp" method="post" enctype="multipart/form-data" name="frm" onsubmit="return chk()">
+<form action="homeMainPage.jsp?pgm=../Yu/trace/twritePro.jsp" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="bnum" value="<%=bnum%>">
 	<input type="hidden" name="pageNum" value="<%=pageNum%>">
 <table  border="1">

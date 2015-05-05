@@ -28,16 +28,18 @@
 		</p>
 
 		<div class="contents">
+			<!-- <table class="tbTy1"> -->
 			<table class="tbTy1">
-				<colgroup>
+				<!-- <colgroup>
 					<col width="10%">
 					<col width="10%">
 					<col width="40%">
 					<col width="10%">
 					<col width="20%">
 					<col width="10%">
-				</colgroup>
-				<thead>
+				</colgroup> -->
+				
+				<!-- <table> -->
 					<tr>
 						<th scope="col">번호</th>
 						<th scope="col">분류</th>
@@ -56,8 +58,6 @@
 							}
 						%>
 					</tr>
-				</thead>
-				<tbody>
 
 					<%
 						BoardDao bd = BoardDao.getInstance();
@@ -96,10 +96,7 @@
 									out.println("<td>" + list.get(i).getS_date() + "</td>");
 
 									if (id.equals("admin") || id == "admin") {
-									/*out.println("<td><input type = 'checkbox' name = 'list'"+
-									"value =" + list.get(i).getBnum() +
-									 "</td>"); */
-									 //글삭제시 checkbox이용 할려 했으나.. 일단 삭제 부터..
+									
 									 out.println("<td><a href = '../combinePage/homeMainPage.jsp?pgm=../adminPage/freeListDelete.jsp?bnum="+
 											 	list.get(i).getBnum() +"'>게시글 삭제");
 									 out.println("</a></td>");
@@ -113,7 +110,7 @@
 							}
 					%>
 
-				</tbody>
+				<!-- </table> -->
 			</table>
 		</div>
 		<div style="text-align: center;">

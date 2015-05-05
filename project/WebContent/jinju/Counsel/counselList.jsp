@@ -31,7 +31,7 @@
 		</p>
 
 		<div class="contents">
-			<table class="tbTy1">
+			<table>
 				<colgroup>
 					<col width="10%">
 					<col width="10%">
@@ -40,7 +40,7 @@
 					<col width="20%">
 					<col width="10%">
 				</colgroup>
-				<thead>
+				<table>
 					<tr>
 						<th scope="col">번호</th>
 						<th scope="col">분류</th>
@@ -59,8 +59,6 @@
 							}
 						%>
 					</tr>
-				</thead>
-				<tbody>
 
 					<%
 						CounselBoardDAO cbd = CounselBoardDAO.getInstance();
@@ -119,7 +117,7 @@
 								out.println("<tr><td colspan=7>데이터가 없습니다.</td></tr>");
 							}
 					%>
-				</tbody>
+				<table>
 			</table>
 		</div>
 
