@@ -12,6 +12,7 @@
 		<h2>게시판 글쓰기</h2>
 		<%
 			int bnum = 0;
+			String writer = request.getParameter("writer");
 			NoticeDao nd = NoticeDao.getInstance();
 			Notice notice = nd.select(bnum);
 			String pageNum = request.getParameter("pageNum");
@@ -25,7 +26,9 @@
 
 			}
 		%>
-		<form action="homeMainPage.jsp?pgm=../hyun/noticeWritePro.jsp?pageNum=<%=pageNum%>" method="post">
+		<form
+			action="homeMainPage.jsp?pgm=../hyun/noticeWritePro.jsp?pageNum=<%=pageNum%>"
+			method="post">
 			<input type="hidden" name="bnum" value="<%=bnum%>">
 			<div class="contents">
 				<table class="tbTy1 detaLeft">
@@ -36,29 +39,29 @@
 					</colgroup>
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="title" required="required"class="intTy" style="width:88%">
-						</td>
+						<td><input type="text" name="title" required="required"
+							class="intTy" style="width: 88%"></td>
 					</tr>
 					<tr>
 						<th>작성자</th>
-						<td>관리자<input type = "hidden" name ="writer" class = "intTy" style="width:88%" value = "관리자"></td>
+						<td><input type="hidden" name="writer" value="<%=writer%>"><%=writer%></td>
 					</tr>
 					<tr>
 						<th>내용</th>
 						<td><textarea rows="10" cols="30" name="content"
-								required="required"  style="width:465px; height:100px;"></textarea></td>
+								required="required" style="width: 465px; height: 100px;"></textarea></td>
 					</tr>
 
 					</tbody>
 				</table>
-				<div class = "btnArea">
-				<span class = "btnR">
-				<input type="submit" value="확인" class = "btnTy3"> <input type="reset"
-					value="다시작성" class = " btnTy2">
+				<div class="btnArea">
+					<span class="btnR"> <input type="submit" value="확인"
+						class="btnTy3"> <input type="reset" value="다시작성"
+						class=" btnTy2">
 					</span>
-					</div>
-					</div>
+				</div>
+			</div>
 		</form>
-		</div>
+	</div>
 </body>
 </html>

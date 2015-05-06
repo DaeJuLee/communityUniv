@@ -25,7 +25,7 @@
 		%>
 
 		<p class="location">
-			<span><a href="homeMainPage.jsp?pgm=../Yu/free/fwriteForm.jsp"
+			<span><a href="homeMainPage.jsp?pgm=../Yu/free/fwriteForm.jsp?writer=<%=writer %>"
 				class="btnTy3">글쓰기</a></span>
 		</p>
 

@@ -28,7 +28,7 @@
 		%>
 		<p class="location">
 			<span><a
-				href="homeMainPage.jsp?pgm=../jinju/Counsel/counselWriteForm.jsp"
+				href="homeMainPage.jsp?pgm=../jinju/Counsel/counselWriteForm.jsp?writer=<%=writer %>"
 				class="btnTy3">글쓰기</a></span>
 		</p>
 

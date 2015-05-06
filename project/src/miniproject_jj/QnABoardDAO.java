@@ -111,7 +111,7 @@ public class QnABoardDAO {
 				qboard.setRef(number);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, number);
-			pstmt.setString(2, qboard.getWriter());
+			pstmt.setString(2, toKor(qboard.getWriter()));
 			pstmt.setInt(3, qboard.getRef());
 			pstmt.setInt(4, qboard.getRe_level());
 			pstmt.setInt(5, qboard.getRe_step());

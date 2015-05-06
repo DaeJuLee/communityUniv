@@ -24,7 +24,7 @@
 		%>
 		<p class="location">
 			<span> <a
-				href="homeMainPage.jsp?pgm=../Yu/trace/twriteForm.jsp">글쓰기</a>
+				href="homeMainPage.jsp?pgm=../Yu/trace/twriteForm.jsp?writer=<%=writer%>">글쓰기</a>
 			</span>
 		</p>
 		<div class="contents">
