@@ -104,8 +104,7 @@
 											 	list.get(i).getBnum() +"'>게시글 삭제");
 									 out.println("</a></td>");
 									} else {
-										out.println("<td>" + list.get(i).getHits()
-												+ "</td></tr>");
+										out.println("<td>" + list.get(i).getHits() + "</td></tr>");
 									}
 								}
 							} else {

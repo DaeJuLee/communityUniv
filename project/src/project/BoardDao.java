@@ -148,7 +148,7 @@ public class BoardDao {
 	
 	public void hits(int bnum) throws SQLException {
 		Connection conn = null;	PreparedStatement pstmt= null; 
-		String sql="update board set hits=hits+1 where bnum=?";
+		String sql="update fboard set hits=hits+1 where bnum=?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
