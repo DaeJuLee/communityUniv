@@ -20,7 +20,7 @@
 			System.out.println(id);
 			if (id.equals("admin")) {
 		%>
-		<p class="location">
+		<p class="btnArea">
 			<span class = "btnR"><a href="homeMainPage.jsp?pgm=../hyun/noticeWriteForm.jsp?writer=<%=writer %>" class="btnTy3">공지쓰기</a></span>
 		</p>
 		<%
