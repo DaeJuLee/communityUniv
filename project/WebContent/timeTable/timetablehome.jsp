@@ -11,7 +11,7 @@
 <script type="text/javascript">
 	function initPage() {
 		selectOption.selectHAKKI.value = 1;
-		selectOption.scategory.value = 0;
+		selectOption.scategory.value = 1;
 		selectOption.sname.value = "";
 	}
 	function initialData() {
