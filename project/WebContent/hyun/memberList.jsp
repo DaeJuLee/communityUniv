@@ -97,17 +97,17 @@
 					if (endPage > pageCnt)
 						endPage = pageCnt;
 					if (startPage > blockSize) {
-						out.println("<a href='memberList.jsp?pageNum="
+						out.println("<a class= 'prev'  href='homeMainPage.jsp?pgm=../memberList.jsp?pageNum="
 								+ (startPage - blockSize) + "'>[이전]</a>");
 					}
 
 					for (int i = startPage; i <= endPage; i++) {
-						out.println("<a href='memberList.jsp?pageNum=" + i + "'>[" + i
+						out.println("<a href='homeMainPage.jsp?pgm=../hyun/memberList.jsp?pageNum=" + i + "'>[" + i
 								+ "]</a>");
 					}
 
 					if (endPage < pageCnt) {
-						out.println("<a href='memberList.jsp?pageNum="
+						out.println("<a class = 'next ir'  href='homeMainPage.jsp?pgm=../hyun/memberList.jsp?pageNum="
 								+ (startPage + blockSize) + "'>[다음]</a>");
 					}
 				%>

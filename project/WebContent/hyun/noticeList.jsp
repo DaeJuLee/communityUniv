@@ -113,23 +113,22 @@
 			<p class="paging">
 				<%
 					int pageCnt = (int) Math.ceil((double) totCnt / pageSize);
-						int startPage = (int) (currentPage - 1) / blockSize * blockSize
-								+ 1;
+						int startPage = (int) (currentPage - 1) / blockSize * blockSize	+ 1;
 						int endPage = startPage + blockSize - 1;
 						if (endPage > pageCnt) {
 							endPage = pageCnt;
 						}
 						if (startPage > blockSize) {
-							out.println("<a href=noticeList.jsp?pageNum="
+							out.println("<a href=homeMainPage.jsp?pgm=../hyun/noticeList.jsp?pageNum="
 									+ (startPage - blockSize) + ">[이전]</a>");
 
 						}
 						for (int i = startPage; i < endPage; i++) {
-							out.println("<a href = noticeList.jsp?pageNum=" + i + ">["
+							out.println("<a href =homeMainPage.jsp?pgm=../hyun/noticeList.jsp?pageNum=" + i + ">["
 									+ i + "]</a>");
 						}
 						if (endPage < pageCnt) {
-							out.println("<a href=noticeList.jsp?pageNum="
+							out.println("<a href=homeMainPage.jsp?pgm=../hyun/noticeList.jsp?pageNum="
 									+ (startPage + blockSize) + ">[다음]</a>");
 						}
 				%>

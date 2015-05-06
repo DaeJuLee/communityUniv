@@ -112,7 +112,7 @@
 										"value =" + list.get(i).getBnum() +
 										 "</td>"); */
 										//글삭제시 checkbox이용 할려 했으나.. 일단 삭제 부터..
-										out.println("<td><a href = '../combinePage/homeMainPage.jsp?pgm=../adminPage/counselListDelete.jsp?bnum="
+										out.println("<td><a href = 'homeMainPage.jsp?pgm=../adminPage/counselListDelete.jsp?bnum="
 												+ list.get(i).getBnum() + "'>게시글 삭제");
 										out.println("</a></td>");
 									} else {
@@ -141,17 +141,17 @@
 							endPage = pageCnt;
 
 						if (startPage > blockSize) {
-							out.println("<a href='counselList.jsp?pageNum="
+							out.println("<a href='homeMainPage.jsp?pgm=../jinju/Counsel/counselList.jsp?pageNum="
 									+ (startPage - blockSize) + "'>[이전]</a>");
 						}
 
 						for (int i = startPage; i <= endPage; i++) {
-							out.println("<a href='counselList.jsp?pageNum=" + i + "'>["
+							out.println("<a href='homeMainPage.jsp?pgm=../jinju/Counsel/counselList.jsp?pageNum=" + i + "'>["
 									+ i + "]</a>");
 						}
 
 						if (endPage < pageCnt) {
-							out.println("<a href='counselList.jsp?pageNum="
+							out.println("<a href='homeMainPage.jsp?pgm=../jinju/Counsel/counselList.jsp?pageNum="
 									+ (startPage + blockSize) + "'>[다음]</a>");
 						}
 				%>

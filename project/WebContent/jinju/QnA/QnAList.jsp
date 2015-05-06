@@ -131,18 +131,18 @@
 						endPage = pageCnt;
 
 					if (startPage > blockSize) {
-						out.println("<a class='prev' href='QnAList.jsp?pageNum="
+						out.println("<a class='prev' href='homeMainPage.jsp?pgm=../jinju/QnA/QnAList.jsp?pageNum="
 								+ (startPage - blockSize)
 								+ "'><span class='ir'>[이전]</span></a>");
 					}
 
 					for (int i = startPage; i <= endPage; i++) {
-						out.println("<a href='QnAList.jsp?pageNum=" + i + "'>[" + i
+						out.println("<a href='homeMainPage.jsp?pgm=../jinju/QnA/QnAList.jsp?pageNum=" + i + "'>[" + i
 								+ "]</a>");
 					}
 
 					if (endPage < pageCnt) {
-						out.println("<a class='next ir' href='QnAList.jsp?pageNum="
+						out.println("<a class='next ir' href='homeMainPage.jsp?pgm=../jinju/QnA/QnAList.jsp?pageNum="
 								+ (startPage + blockSize) + "'>[다음]</a>");
 					}
 				%>
