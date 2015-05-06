@@ -65,6 +65,10 @@
 					<th>내용</th>
 					<td><%=tboard.getContent()%></td>
 				</tr>
+				<tr>
+					<th>첨부파일</th>
+					<td><a href = "../Yu/trace/filedown.jsp?fileName=<%=fileName%>"><%=fileName%></td>
+				</tr>
 				</table>
 				<div class="btnArea">
 					<span class="btnR"> <input type="button" value="수정" class = "btnTy3"

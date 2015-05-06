@@ -49,7 +49,7 @@
 						</select></td>
 </tr>
 <tr>
-						<th scope="row">제목</th>
+						<th scope="row">제목<%=bnum %></th>
 						<td><input type="text" size="50" maxlength="50" name="title"
 							class="intTy" style="width: 88%;"></td>
 					</tr>

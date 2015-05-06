@@ -39,12 +39,15 @@
 
 	<%
 		List<Subject> list = new ArrayList<Subject>();
+		List<TimeTable> listTable = new ArrayList<TimeTable>();
 		String sname = request.getParameter("sname");//과목이름
 		String scategory = request.getParameter("scategory");//Subject의 DTO scategory
+		String subjectList = request.getParameter("subjectList");
 		Subject subject = new Subject();
 		TimeTableDao ttd = TimeTableDao.getInstance();
 		out.println("sname : " + sname); //console창에 띄우기
 		out.println("scategory : " + scategory);
+		out.println("subjectList : " + subjectList);
 		if(sname != null || scategory != null){
 			if(sname.equals("")){
 				list = ttd.selectSubject1(scategory);
@@ -54,6 +57,11 @@
 				list = ttd.selectSubject2(sname, scategory);
 			}
 		}
+		/* if(subjectList.equals("") || subjectList == null){
+			out.println("subjectList 널띁다.!@!@");
+		}else{
+			out.println("DAO시작이다.");
+		} */
 	%>
 
 	<form action="timetablehome.jsp" name="selectOption"
@@ -86,26 +94,38 @@
 				<td></td>
 			</tr>
 		</table>
-	</form>
-
+		
 		<table>
 			<tr colspan = "4"><h2>수업 목록</h2> </tr>
 			<tr><th>과목코드</th><th>과목이름</th><th>시간</th><th>교수코드</th></tr>
 			<%
-				for(int i = 0 ; i < list.size(); i++){
-					out.println("<tr><td>" + list.get(i).getScode() + "</td>");
-					out.println("<td>" + list.get(i).getSname() + "</td>");
-					out.println("<td>" + list.get(i).getStime() + "</td>");
-					out.println("<td>" + list.get(i).getPcode()+ "</td></tr>");
+				if(list.size()==0){
+					out.println("<tr><td colspan = '4'>");
+					out.println("<select multiple = 'multiple' size = '5'>");
+					out.println("<option>조회된 데이터가 없습니다....</option>");
+					//out.println("<table><tr><td colspan = '4'>조회된 데이터가 없습니다....</td></tr></table>");
+					out.println("</select>");
+					out.println("</td></tr>");
+				}else{
+					out.println("<tr><td colspan = '4'>");
+					out.println("<select name = 'subjectList' multiple = 'multiple' size = '5'>");
+					for(int i = 0 ; i < list.size(); i++){
+						out.println("<option value = " + list.get(i).getScode() + ">");
+						out.println("<div><ul><li>" + list.get(i).getScode() + "</li>");
+						out.println("<li>" + list.get(i).getSname() + "</li>");
+						out.println("<li>" + list.get(i).getStime() + "</li>");
+						out.println("<li>" + list.get(i).getPcode() + "</li>");
+						out.println("</ul></div>");
+					}
+					out.println("</select></td></tr>");
 				}
 			%>
+			<tr><td colspan="4"><input type="submit" value = "시간표 저장"></td></tr>
 		</table>
-
-	<form action="timetablehome.jsp">
-		<input type="hidden" name="selectHAKKI" value="${param.selectHAKKI }">
-		<input type="hidden" name="scategory" value="${param.scategory }">
-		<input type="hidden" name="sname" value="${param.sname }"> <input
-			type="submit" value="시간표 추가">
 	</form>
+	
+	<table>
+		
+	</table>
 </body>
 </html>
