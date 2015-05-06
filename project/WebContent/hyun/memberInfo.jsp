@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원정보</title>
-<link rel="stylesheet" media="all" href="memberJoin.css">
+<!-- <link rel="stylesheet" media="all" href="memberJoin.css"> -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.js"></script>
@@ -79,7 +79,7 @@
 			<%
 				} else {
 			%>
-			<legend>회원정보수정</legend>
+			<h2>회원정보수정</h2>
 			<div class="form_table">
 				<table border="1" cellspacing="0" summary="회원정보수정입니다.">
 					<tbody>
