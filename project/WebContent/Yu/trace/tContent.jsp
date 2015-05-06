@@ -8,14 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<style type="text/css">
-	table {	width: 80%;}
-	.jiin {	text-align: left; }
-	h2 {text-align: center;}
-	.yu{ text-align: left;  width: 10%; }
-	.nn{ text-align: right; width: 90%;}
-	.r{ border-top: thick;}
-</style>
 </head>
 <body>
 <%
