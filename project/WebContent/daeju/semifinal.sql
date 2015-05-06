@@ -168,9 +168,11 @@ bnum number,
 re_step number,
 re_level number,
 content varchar2(255),
+writer varchar2(20), --추가
 r_date date not null
 );
 select * from fReplyComment;
+--drop table fReplyComment;
 --------------------------------------------------------------------------------
 --장터게시판 리플
 create table mReplyComment(
@@ -202,8 +204,11 @@ bnum number,
 re_step number,
 re_level number,
 content varchar2(255),
+writer varchar2(20),
 r_date date not null
 );
+select * from CREPLYCOMMENT;
+--drop table CREPLYCOMMENT;
 --------------------------------------------------------------------------------
 --Q&A게시판 리플
 create table qReplyComment(
@@ -212,5 +217,8 @@ bnum number,
 re_step number,
 re_level number,
 content varchar2(255),
+writer varchar2(20),
 r_date date not null
 );
+select * from QREPLYCOMMENT;
+--drop table qReplyComment;

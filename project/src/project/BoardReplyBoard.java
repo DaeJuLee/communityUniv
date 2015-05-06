@@ -9,6 +9,7 @@ public class BoardReplyBoard {
 	int re_step;
 	int re_level;
 	String content;
+	String writer;
 	Date r_date;
 // -------------------------------------------------
 //	String ip √ﬂ∞°«“ ∞Ë»π
@@ -43,13 +44,18 @@ public class BoardReplyBoard {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 	public Date getR_date() {
 		return r_date;
 	}
 	public void setR_date(Date r_date) {
 		this.r_date = r_date;
 	}
-
-	
 	
 }

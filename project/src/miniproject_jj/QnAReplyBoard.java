@@ -9,6 +9,7 @@ public class QnAReplyBoard {
 	int re_step;
 	int re_level;
 	String content;
+	String writer;
 	Date r_date;
 // -------------------------------------------------
 //	String ip √ﬂ∞°«“ ∞Ë»π
@@ -42,6 +43,12 @@ public class QnAReplyBoard {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 	public Date getR_date() {
 		return r_date;

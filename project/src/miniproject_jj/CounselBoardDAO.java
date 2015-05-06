@@ -86,7 +86,7 @@ public class CounselBoardDAO {
 		return list;
 	}
 
-	// �亯�亯�亯
+	// 占썰변占썰변占썰변
 	public int insert(CounselBoard cboard) throws SQLException {
 		int bnum = cboard.getBnum();
 		Connection conn = null;
@@ -96,7 +96,7 @@ public class CounselBoardDAO {
 		String sql1 = "select nvl(max(bnum),0) from cboard";
 		String sql = "insert into cboard(bnum, ref, re_level, re_step, category, title, writer, bpass, content, s_date) "
 				+ "values(?,?,?,?,?,?,?,?,?,sysdate)";
-		// ���־� ���Ⱑ Ʋ����... consoleâ�� 'not enough values'��� �޼����� ��ž� ^^ (sql1)
+		// 占쏙옙占쌍억옙 占쏙옙占썩가 틀占쏙옙占쏙옙... console창占쏙옙 'not enough values'占쏙옙占� 占쌨쇽옙占쏙옙占쏙옙 占쏙옙탑占� ^^ (sql1)
 		String sql2 = "update cboard set re_step = re_step+1 where ref=? and re_step > ?";
 		try {
 			conn = getConnection();
@@ -291,7 +291,7 @@ public class CounselBoardDAO {
 		return tot;
 	}
 
-	// ��۴�۴�� ���� �ϴ� ��!! mine ����
+	// 占쏙옙榜占쌜댐옙占� 占쏙옙占쏙옙 占싹댐옙 占쏙옙!! mine 占쏙옙占쏙옙
 	public List<CounselReplyBoard> listRippleSelect(int boardNum)
 			throws SQLException {
 		List<CounselReplyBoard> list = new ArrayList<CounselReplyBoard>();
@@ -307,11 +307,12 @@ public class CounselBoardDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				CounselReplyBoard crboard = new CounselReplyBoard();
-				crboard.setBnum(boardNum);// ���Ⱑ Ʋ�ȳ�..�Ф�
+				crboard.setBnum(boardNum);// 占쏙옙占썩가 틀占싫놂옙..占싻ㅿ옙
 				crboard.setRe_step(rs.getInt("re_step"));
 				crboard.setRe_level(rs.getInt("re_level"));
 				crboard.setContent(rs.getString("content"));
 				crboard.setR_date(rs.getDate("r_date"));
+				crboard.setWriter(rs.getString("writer"));
 				list.add(crboard);
 			}
 		} catch (Exception e) {
@@ -327,14 +328,14 @@ public class CounselBoardDAO {
 		}
 		return list;
 	}
-	// ��۴�۴�� ���� �ϴ� ��!! mine ����
+	// 占쏙옙榜占쌜댐옙占� 占쏙옙占쏙옙 占싹댐옙 占쏙옙!! mine 占쏙옙占쏙옙
 	public int insertReply(CounselReplyBoard crb) throws SQLException {
 		int result = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql1 = "select nvl(max(reply_code),0) from cReplyComment";
-		String sql2 = "insert into cReplyComment values(?, ?, ?, 1, ?, sysdate)";
+		String sql2 = "insert into cReplyComment values(?, ?, ?, 1, ?, ?, sysdate)";
 		String sql3 = "update cReplyComment set re_step = re_step+1 where bnum=? and re_step > ?";
 		
 		try {
@@ -346,22 +347,23 @@ public class CounselBoardDAO {
 			pstmt.close();
 			crb.setRe_step(crb.getRe_step() + 1);
 			pstmt = conn.prepareStatement(sql1);
-			//primary key�� 1�� ����
+			//primary key占쏙옙 1占쏙옙 占쏙옙占쏙옙
 			rs = pstmt.executeQuery();
 			rs.next();
 			int number = rs.getInt(1) + 1;
 			rs.close();
 			pstmt.close();
-			//insert���� �����ϴ� ��
+			//insert占쏙옙占쏙옙 占쏙옙占쏙옙占싹댐옙 占쏙옙
 			pstmt = conn.prepareStatement(sql2);
 			pstmt.setInt(1, number);
 			pstmt.setInt(2, crb.getBnum());
 			pstmt.setInt(3, crb.getRe_step());
-			pstmt.setString(4, crb.getContent());
+			pstmt.setString(4, toKor(crb.getContent()));
+			pstmt.setString(5, toKor(crb.getWriter()));
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println("error�� ���ž�??? ");
+			System.out.println("error占쏙옙 占쏙옙占신억옙??? ");
 			System.out.println(e.getMessage());
 		} finally {
 			if (rs != null)
@@ -387,7 +389,7 @@ public class CounselBoardDAO {
 			pstmt.setInt(2, re_step);
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("error�� ���ž�??? ");
+			System.out.println("error占쏙옙 占쏙옙占신억옙??? ");
 			System.out.println(e.getMessage());
 		} finally {
 			if (pstmt != null)

@@ -296,6 +296,7 @@ public class BoardDao {
 				frboard.setRe_level(rs.getInt("re_level"));
 				frboard.setContent(rs.getString("content"));
 				frboard.setR_date(rs.getDate("r_date"));
+				frboard.setWriter(rs.getString("writer"));
 				list.add(frboard);
 			}
 		} catch (Exception e) {
@@ -318,7 +319,7 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql1 = "select nvl(max(reply_code),0) from fReplyComment";
-		String sql2 = "insert into fReplyComment values(?, ?, ?, 1, ?, sysdate)";
+		String sql2 = "insert into fReplyComment values(?, ?, ?, 1, ?, ?, sysdate)";
 		String sql3 = "update fReplyComment set re_step = re_step+1 where bnum=? and re_step > ?";
 		
 		try {
@@ -342,6 +343,7 @@ public class BoardDao {
 			pstmt.setInt(2, crb.getBnum());
 			pstmt.setInt(3, crb.getRe_step());
 			pstmt.setString(4, crb.getContent());
+			pstmt.setString(5, crb.getWriter());
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {

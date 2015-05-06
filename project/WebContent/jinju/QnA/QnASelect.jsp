@@ -4,7 +4,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ include file="../../memberCheck.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,7 +92,7 @@ function chk(){
 					<textarea cols="100%" name = "content"></textarea>
 					<input type="hidden" name="bnum" value=<%=bnum%>> 
 					<input type="hidden" name="pageNum" value=<%=pageNum %>>
-				
+					<input type="hidden" name="writer" value="<%=writer %>">
 					<div class="btnArea">
 						<span class="btnR">
 							<input type="submit" value="확인" class="btnTy3">
@@ -105,24 +105,33 @@ function chk(){
 	<div class = "contents">
 	<table class="tbTy1 detaLeft">
 		<%
-			QnABoardDAO qbdd = QnABoardDAO.getInstance();
 			/* replyResult = cbd.inputRipple(bnum); */
-			QnAList = qbdd.listRippleSelect(bnum);
+			QnAList = qbd.listRippleSelect(bnum);
 			for(int i = 0 ; i < QnAList.size(); i++){
 				int width = QnAList.get(i).getRe_level() * 10;
 				
-				out.println("<tr><td> 작성자 : *****" + "</td>");
+				out.println("<tr><td> 작성자 :" + QnAList.get(i).getWriter() + "</td>");
 				out.println("<td> 날짜 : " + QnAList.get(i).getR_date() + "</td>");
-				out.println("<td> <input type = 'button' value = '수정'"+
-						"onclick = location.href='homeMainPage.jsp?pgm=../jinju/QnAReply/QnAUpdateReply.jsp?bnum=" +
-						bnum + "&pageNum=" + pageNum + "&re_step=" + QnAList.get(i).getRe_step() + 
-						"'></td></tr>");
-				//두번째 줄
+				
+				if(writer.equals(QnAList.get(i).getWriter())){
+					out.println("<td> <input type = 'button' value = '수정'"+
+							"onclick = location.href='homeMainPage.jsp?pgm=../jinju/CounselReply/counselUpdateReply.jsp?bnum=" +
+							bnum + "&pageNum=" + pageNum + "&re_step=" + QnAList.get(i).getRe_step() + 
+							"'></td></tr>");
+				}else{
+					//out.println("<td>"+writer+"는 get출력을 하는" + replyList.get(i).getWriter() +"와 같냐?</td></tr>");
+					out.println("<td>"+writer+","+QnAList.get(i).getWriter()+"</td></tr>");
+				}
 				out.println("<tr><td colspan = '2'>" + QnAList.get(i).getContent() + "</td>");
-				out.println("<td> <input type = 'button' value = '삭제'"+
-						"onclick = location.href='homeMainPage.jsp?pgm=../jinju/QnAReply/QnADeleteReplyPro.jsp?bnum=" +
-						bnum + "&pageNum=" + pageNum + "&re_step=" + QnAList.get(i).getRe_step() + 
-						"'></td>");
+				if(writer.equals(QnAList.get(i).getWriter())){
+					out.println("<td> <input type = 'button' value = '삭제'"+
+							"onclick = location.href='homeMainPage.jsp?pgm=../jinju/CounselReply/counselDeleteReplyPro.jsp?bnum=" +
+							bnum + "&pageNum=" + pageNum + "&re_step=" + QnAList.get(i).getRe_step() + 
+							"'></td></tr>");
+				}else{
+					out.println("<td></td></tr>");
+				}
+				
 				out.println("</tr>");
 				/* if (replyList.get(i).getRe_level() > 0) {
 					out.println("<img src='images/level.gif' width="

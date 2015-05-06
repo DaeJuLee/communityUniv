@@ -87,7 +87,7 @@ public class QnABoardDAO {
 		String sql1 = "select nvl(max(bnum),0) from qboard";
 		String sql = "insert into qboard(bnum, writer, ref, re_level, re_step, title, bpass, content, s_date) "
 		+ "values(?,?,?,?,?,?,?,?,sysdate)";
-		String sql2 = "update qboard set re_step = re_step+1 where ref=? and re_step > ?"; //占쏙옙占�
+		String sql2 = "update qboard set re_step = re_step+1 where ref=? and re_step > ?"; //�뜝�룞�삕�뜝占�
 		try {
 			conn = getConnection();
 			if (bnum != 0) {
@@ -118,7 +118,7 @@ public class QnABoardDAO {
 			pstmt.setString(6, toKor(qboard.getTitle()));
 			
 			pstmt.setString(7, qboard.getBpass());
-			pstmt.setString(8, qboard.getContent());
+			pstmt.setString(8, toKor(qboard.getContent()));
 			//pstmt.setString(12, qboard.getIp());
 
 			result = pstmt.executeUpdate();
@@ -279,7 +279,7 @@ public class QnABoardDAO {
 		}
 		return tot;
 	}
-	public List<QnAReplyBoard> listRippleSelect(int boardNum) //boardNum 占싱띰옙占� 占실억옙 占쏙옙占쏙옙
+	public List<QnAReplyBoard> listRippleSelect(int boardNum) //boardNum �뜝�떛�씛�삕�뜝占� �뜝�떎�뼲�삕 �뜝�룞�삕�뜝�룞�삕
 			throws SQLException {
 		List<QnAReplyBoard> QnAList = new ArrayList<QnAReplyBoard>();
 		Connection conn = null;
@@ -294,11 +294,12 @@ public class QnABoardDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				QnAReplyBoard qrboard = new QnAReplyBoard();
-				qrboard.setBnum(boardNum);// 占쏙옙占썩가 틀占싫억옙占쏙옙;;
+				qrboard.setBnum(boardNum);// �뜝�룞�삕�뜝�뜦媛� ���뜝�떕�뼲�삕�뜝�룞�삕;;
 				qrboard.setRe_step(rs.getInt("re_step"));
 				qrboard.setRe_level(rs.getInt("re_level"));
 				qrboard.setContent(rs.getString("content"));
 				qrboard.setR_date(rs.getDate("r_date"));
+				qrboard.setWriter(rs.getString("writer"));
 				QnAList.add(qrboard);
 			}
 		} catch (Exception e) {
@@ -314,14 +315,14 @@ public class QnABoardDAO {
 		}
 		return QnAList;
 	}
-	// 占쏙옙榜占쌜댐옙占� 占쏙옙占쏙옙 占싹댐옙 占쏙옙!! mine 占쏙옙占쏙옙
+	// �뜝�룞�삕礖쒎뜝�뙗�뙋�삕�뜝占� �뜝�룞�삕�뜝�룞�삕 �뜝�떦�뙋�삕 �뜝�룞�삕!! mine �뜝�룞�삕�뜝�룞�삕
 	public int insertReply(QnAReplyBoard qrb) throws SQLException {
 		int result = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql1 = "select nvl(max(reply_code),0) from qReplyComment";
-		String sql2 = "insert into qReplyComment values(?, ?, ?, 1, ?, sysdate)";
+		String sql2 = "insert into qReplyComment values(?, ?, ?, 1, ?, ?, sysdate)";
 		String sql3 = "update qReplyComment set re_step = re_step+1 where bnum=? and re_step > ?";
 		
 		try {
@@ -333,22 +334,23 @@ public class QnABoardDAO {
 			pstmt.close();
 			qrb.setRe_step(qrb.getRe_step() + 1);
 			pstmt = conn.prepareStatement(sql1);
-			//primary key占쏙옙 1占쏙옙 占쏙옙占쏙옙
+			//primary key�뜝�룞�삕 1�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 			rs = pstmt.executeQuery();
 			rs.next();
 			int number = rs.getInt(1) + 1;
 			rs.close();
 			pstmt.close();
-			//insert占쏙옙占쏙옙 占쏙옙占쏙옙占싹댐옙 占쏙옙
+			//insert�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�뜝�떦�뙋�삕 �뜝�룞�삕
 			pstmt = conn.prepareStatement(sql2);
 			pstmt.setInt(1, number);
 			pstmt.setInt(2, qrb.getBnum());
 			pstmt.setInt(3, qrb.getRe_step());
-			pstmt.setString(4, qrb.getContent());
+			pstmt.setString(4, toKor(qrb.getContent()));
+			pstmt.setString(5, toKor(qrb.getWriter()));
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println("error 占쌩삼옙 ");
+			System.out.println("error");
 			System.out.println(e.getMessage());
 		} finally {
 			if (rs != null)
@@ -374,7 +376,7 @@ public class QnABoardDAO {
 			pstmt.setInt(2, re_step);
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("error 占쌩삼옙 ");
+			System.out.println("error ");
 			System.out.println(e.getMessage());
 		} finally {
 			if (pstmt != null)
