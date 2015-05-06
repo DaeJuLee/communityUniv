@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="../common.css">
+<!-- <link rel="stylesheet" type="text/css" href="../common.css"> -->
 <title>아이디 / 비밀번호 찾기</title>
 </head>
 <body>

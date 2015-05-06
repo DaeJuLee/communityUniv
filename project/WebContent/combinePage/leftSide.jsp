@@ -72,14 +72,14 @@
 					</p>
 
 					<ul class="help">
-						<li class="first"><a href="../hyun/searchMember.jsp">아이디/비밀번호 찾기</a></li>
-						<li><a href="../hyun/memberJoin.jsp">회원 가입</a></li>
+						<li class="first"><a href="homeMainPage.jsp?pgm=../hyun/searchMember.jsp">아이디/비밀번호 찾기</a></li>
+						<li><a href="homeMainPage.jsp?pgm=../hyun/memberJoin.jsp">회원 가입</a></li>
 					</ul>
 					<%}else if(id.equals("admin") || id == "admin"){ %>
 					<legend><%=writer %>님 반갑습니다.</legend>
 					<ul class="help">
 						<li class="first"><a href="#">마이페이지</a></li>
-						<li><a href="../hyun/memberList.jsp">회원관리</a></li>
+						<li><a href="homeMainPage.jsp?pgm=../hyun/memberList.jsp">회원관리</a></li>
 						<li><a href="../sessionLogout.jsp">로그아웃</a></li>
 						<li><input type = "button" onclick = "location.href='../sessionLogout.jsp'"
 							value = "로그아웃"></li>
