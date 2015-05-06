@@ -155,7 +155,7 @@
 									+ (startPage + blockSize) + "'>[다음]</a>");
 						}
 				%>
-			
+			</p>
 		</div>
 
 		<%

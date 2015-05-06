@@ -8,38 +8,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
-<link rel="stylesheet" type="text/css" href="../../common.css">
+<!-- <link rel="stylesheet" type="text/css" href="../../common.css"> -->
 </head>
 <body>
 	<div class="columnMain">
-	<%
-		if(id.equals("not") || id == "not"){//회원이 아닌경우
-	%>
-	<script type="text/javascript">
-		alert("회원들만 사용할 수 있습니다.");
-		location.href = "../combinePage/homeMainPage.jsp";
-	</script>
-	<%
-		} else {
-	%>
 		<h2>자유게시판</h2>
+		<%
+			if(id.equals("not") || id == "not"){//회원이 아닌경우
+		%>
+		<script type="text/javascript">
+			alert("회원들만 사용할 수 있습니다.");
+			location.href = "../combinePage/homeMainPage.jsp";
+		</script>
+		<%
+			} else {
+		%>
+
 		<p class="location">
-			<span><a href="homeMainPage.jsp?pgm=../Yu/free/fwriteForm.jsp" class="btnTy3">글쓰기</a></span>
+			<span><a href="homeMainPage.jsp?pgm=../Yu/free/fwriteForm.jsp"
+				class="btnTy3">글쓰기</a></span>
 		</p>
 
 		<div class="contents">
-			<!-- <table class="tbTy1"> -->
 			<table class="tbTy1">
-				<!-- <colgroup>
+				<colgroup>
 					<col width="10%">
 					<col width="10%">
 					<col width="40%">
 					<col width="10%">
 					<col width="20%">
 					<col width="10%">
-				</colgroup> -->
-				
-				<!-- <table> -->
+				</colgroup>
+				<thead>
 					<tr>
 						<th scope="col">번호</th>
 						<th scope="col">분류</th>
@@ -58,6 +58,8 @@
 							}
 						%>
 					</tr>
+				</thead>
+				<tbody>
 
 					<%
 						BoardDao bd = BoardDao.getInstance();
@@ -78,7 +80,7 @@
 									out.println("<td>" + list.get(i).getCategory()
 											+ "</td>");
 									int width = list.get(i).getRe2_level() * 10;
-									out.println("<td class=left width=200>");
+									out.println("<td>");
 									if (list.get(i).getHits() > 20) {
 										out.println("<img src='../images/hot.gif'>");
 									}
@@ -88,18 +90,21 @@
 												+ "<img src='../images/re.gif'>");
 									}
 									out.println("<a href='homeMainPage.jsp?pgm=../Yu/free/fContent.jsp?bnum="
-											+ list.get(i).getBnum() + "&pageNum="
-											+ currentPage + "'>" + list.get(i).getTitle()
+											+ list.get(i).getBnum()
+											+ "&pageNum="
+											+ currentPage
+											+ "'>"
+											+ list.get(i).getTitle()
 											+ "</a></td>");
 
 									out.println("<td>" + list.get(i).getWriter() + "</td>");
 									out.println("<td>" + list.get(i).getS_date() + "</td>");
 
 									if (id.equals("admin") || id == "admin") {
-									
-									 out.println("<td><a href = '../combinePage/homeMainPage.jsp?pgm=../adminPage/freeListDelete.jsp?bnum="+
-											 	list.get(i).getBnum() +"'>게시글 삭제");
-									 out.println("</a></td>");
+
+										out.println("<td><a href = '../combinePage/homeMainPage.jsp?pgm=../adminPage/freeListDelete.jsp?bnum="
+												+ list.get(i).getBnum() + "'>게시글 삭제");
+										out.println("</a></td>");
 									} else {
 										out.println("<td>" + list.get(i).getHits()
 												+ "</td></tr>");
@@ -109,10 +114,10 @@
 								out.println("<tr><td colspan=7>데이터가 없네</td></tr>");
 							}
 					%>
-
-				<!-- </table> -->
+				</tbody>
 			</table>
 		</div>
+
 		<div style="text-align: center;">
 			<p class="paging">
 				<%
@@ -155,6 +160,6 @@
 		<%
 			}//회원구분 if/else에서 else 끝에 마무리 괄호
 		%>
-	
+	</div>
 </body>
 </html>

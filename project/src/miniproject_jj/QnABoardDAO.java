@@ -85,9 +85,9 @@ public class QnABoardDAO {
 		int result = 0;
 		ResultSet rs = null;
 		String sql1 = "select nvl(max(bnum),0) from qboard";
-		String sql = "insert into qboard(bnum, ref, re_level, re_step, title, bpass, content, s_date) "
-		+ "values(?,?,?,?,?,?,?,sysdate)";
-		String sql2 = "update qboard set re_step = re_step+1 where ref=? and re_step > ?"; //���
+		String sql = "insert into qboard(bnum, writer, ref, re_level, re_step, title, bpass, content, s_date) "
+		+ "values(?,?,?,?,?,?,?,?,sysdate)";
+		String sql2 = "update qboard set re_step = re_step+1 where ref=? and re_step > ?"; //占쏙옙占�
 		try {
 			conn = getConnection();
 			if (bnum != 0) {
@@ -111,13 +111,14 @@ public class QnABoardDAO {
 				qboard.setRef(number);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, number);
-			pstmt.setInt(2, qboard.getRef());
-			pstmt.setInt(3, qboard.getRe_level());
-			pstmt.setInt(4, qboard.getRe_step());
-			pstmt.setString(5, toKor(qboard.getTitle()));
-			//pstmt.setString(2, qboard.getWriter());
-			pstmt.setString(6, qboard.getBpass());
-			pstmt.setString(7, qboard.getContent());
+			pstmt.setString(2, qboard.getWriter());
+			pstmt.setInt(3, qboard.getRef());
+			pstmt.setInt(4, qboard.getRe_level());
+			pstmt.setInt(5, qboard.getRe_step());
+			pstmt.setString(6, toKor(qboard.getTitle()));
+			
+			pstmt.setString(7, qboard.getBpass());
+			pstmt.setString(8, qboard.getContent());
 			//pstmt.setString(12, qboard.getIp());
 
 			result = pstmt.executeUpdate();
@@ -278,7 +279,7 @@ public class QnABoardDAO {
 		}
 		return tot;
 	}
-	public List<QnAReplyBoard> listRippleSelect(int boardNum) //boardNum �̶�� �Ǿ� ����
+	public List<QnAReplyBoard> listRippleSelect(int boardNum) //boardNum 占싱띰옙占� 占실억옙 占쏙옙占쏙옙
 			throws SQLException {
 		List<QnAReplyBoard> QnAList = new ArrayList<QnAReplyBoard>();
 		Connection conn = null;
@@ -293,7 +294,7 @@ public class QnABoardDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				QnAReplyBoard qrboard = new QnAReplyBoard();
-				qrboard.setBnum(boardNum);// ���Ⱑ Ʋ�Ⱦ���;;
+				qrboard.setBnum(boardNum);// 占쏙옙占썩가 틀占싫억옙占쏙옙;;
 				qrboard.setRe_step(rs.getInt("re_step"));
 				qrboard.setRe_level(rs.getInt("re_level"));
 				qrboard.setContent(rs.getString("content"));
@@ -313,7 +314,7 @@ public class QnABoardDAO {
 		}
 		return QnAList;
 	}
-	// ��۴�۴�� ���� �ϴ� ��!! mine ����
+	// 占쏙옙榜占쌜댐옙占� 占쏙옙占쏙옙 占싹댐옙 占쏙옙!! mine 占쏙옙占쏙옙
 	public int insertReply(QnAReplyBoard qrb) throws SQLException {
 		int result = 0;
 		Connection conn = null;
@@ -332,13 +333,13 @@ public class QnABoardDAO {
 			pstmt.close();
 			qrb.setRe_step(qrb.getRe_step() + 1);
 			pstmt = conn.prepareStatement(sql1);
-			//primary key�� 1�� ����
+			//primary key占쏙옙 1占쏙옙 占쏙옙占쏙옙
 			rs = pstmt.executeQuery();
 			rs.next();
 			int number = rs.getInt(1) + 1;
 			rs.close();
 			pstmt.close();
-			//insert���� �����ϴ� ��
+			//insert占쏙옙占쏙옙 占쏙옙占쏙옙占싹댐옙 占쏙옙
 			pstmt = conn.prepareStatement(sql2);
 			pstmt.setInt(1, number);
 			pstmt.setInt(2, qrb.getBnum());
@@ -347,7 +348,7 @@ public class QnABoardDAO {
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println("error �߻� ");
+			System.out.println("error 占쌩삼옙 ");
 			System.out.println(e.getMessage());
 		} finally {
 			if (rs != null)
@@ -373,7 +374,7 @@ public class QnABoardDAO {
 			pstmt.setInt(2, re_step);
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("error �߻� ");
+			System.out.println("error 占쌩삼옙 ");
 			System.out.println(e.getMessage());
 		} finally {
 			if (pstmt != null)

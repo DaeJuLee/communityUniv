@@ -66,7 +66,7 @@
 			</tr>
 			<tr>
 				<th scope="row">작성자</th><!-- 작성자명을 세션과 연동해서 할 것... -->
-				<td><input type = "text "  name = "writer"  value="<%=writer %>"></td>
+				<td><input type = "hidden"  name = "writer"  value="<%=writer %>"><%=writer %></td>
 			</tr>
 			<tr>
 				<th scope="row">암호</th>
