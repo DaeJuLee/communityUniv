@@ -182,7 +182,7 @@ a:active { background-color:transparent; }
 .tbTy1 tbody th { background-color:#e5e7ec; color:#333; border-top:solid 1px #ccc; border-right:solid 1px #ccc; border-left:solid 1px #ccc; vertical-align:middle; }
 .tbTy1 tbody td { border-top:solid 1px #ccc; border-left:solid 1px #ccc; vertical-align:middle; text-align:center; padding-top:10px; padding-bottom:10px; padding-left:10px; padding-right:10px; /* vertical-align:top; */ }
 .tbTy1 tbody td.caL { text-align:left; }
-.btnArea { position:relative; padding-top:20px; height:20px; overflow:hidden; text-align:center; line-height:20px; }
+.btnArea { position:relative; padding-top:30px; height:30px; overflow:hidden; text-align:center; line-height:30px; }
 .btnArea.line { border-top:solid 1px #b3b3b3; }
 .btnArea .btnL { position:absolute; left:0; top:20px; }
 .btnArea .btnR { position:absolute; right:0; top:20px; }

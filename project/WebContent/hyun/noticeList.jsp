@@ -21,7 +21,7 @@
 			if (id.equals("admin")) {
 		%>
 		<p class="location">
-			<span><a href="homeMainPage.jsp?pgm=../hyun/noticeWriteForm.jsp?writer=<%=writer %>" class="btnTy3">공지쓰기</a></span>
+			<span class = "btnR"><a href="homeMainPage.jsp?pgm=../hyun/noticeWriteForm.jsp?writer=<%=writer %>" class="btnTy3">공지쓰기</a></span>
 		</p>
 		<%
 			}else if(id.equals("not") || id=="not"){

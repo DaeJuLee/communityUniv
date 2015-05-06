@@ -172,7 +172,7 @@ writer varchar2(20), --추가
 r_date date not null
 );
 select * from fReplyComment;
---drop table fReplyComment;
+drop table fReplyComment;
 --------------------------------------------------------------------------------
 --장터게시판 리플
 create table mReplyComment(
@@ -183,6 +183,8 @@ re_level number,
 content varchar2(255),
 r_date date not null
 );
+select * from mReplyComment;
+drop table mReplyComment;
 --------------------------------------------------------------------------------
 --족보게시판 리플 5월 6일 수정 writer를 추가
 create table tReplyComment(
