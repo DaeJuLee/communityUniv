@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="project.*"%>
+<%@ include file="../../memberCheck.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,6 @@
 	<div class="columnMain">
 		<h2>자유게시판 글쓰기</h2>
 		<%
-			String writer = request.getParameter("writer");
 			BoardDao bd = BoardDao.getInstance();
 			String pageNum = request.getParameter("pageNum");
 			int bnum = 0, ref = 0, re2_level = 0, re2_step = 0;
@@ -25,9 +25,7 @@
 				re2_step = board.getRe2_step();
 			}
 		%>
-		<form
-			action="homeMainPage.jsp?pgm=../Yu/free/fwritePro.jsp?pageNum=<%=pageNum%>"
-			method="post">
+		<form action="homeMainPage.jsp?pgm=../Yu/free/fwritePro.jsp?pageNum=<%=pageNum%>" method="post">
 			<input type="hidden" name="bnum" value="<%=bnum%>">
 			<%-- <input type="hidden" name="ref" value="<%=ref%>">
 	<input type="hidden" name="re2_level" value="<%=re2_level%>">
@@ -49,17 +47,17 @@
 								<option value="생활팁">[생활팁]</option>
 								<option value="기타">[기타]</option>
 						</select></td>
-					</tr>
-					<tr>
+</tr>
+<tr>
 						<th scope="row">제목</th>
 						<td><input type="text" size="50" maxlength="50" name="title"
 							class="intTy" style="width: 88%;"></td>
 					</tr>
 					<tr>
 						<th scope="row">작성자</th>
-						<td><input type="hidden" name="writer" value="<%=writer%>"><%=writer%></td>
+						<td><input type = "hidden" name = "writer" value = "<%=writer%>"><%=writer %></td>
 					</tr>
-					<tr>
+						<tr>
 						<th scope="row">비밀번호</th>
 						<td><input type="password" size="5" maxlength="10"
 							name="bpass"></td>
@@ -70,17 +68,17 @@
 								required="required" style="width: 465px; height: 100px;"></textarea></td>
 					</tr>
 				</table>
-				<div class="btnArea">
-					<span class="btnR"> <input type="submit" value="확인"
-						class="btnTy3"> <input type="reset" value="다시작성"
-						class="btnTy2">
-					</span>
-				</div>
-
-			</div>
-		</form>
-
+			<div class="btnArea">
+			<span class="btnR">
+				<input type="submit" value="확인" class="btnTy3">
+				<input type="reset" value="다시작성" class="btnTy2">
+			</span>
+		</div>
+		
+		</div>
+	</form>
+	
 	</div>
-
+	
 </body>
 </html>

@@ -3,16 +3,7 @@
 <!DOCTYPE html><html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 수정</title>
-<script type="text/javascript">
-function chk() {
-	if (frm.file.value == null || frm.file.value == '') {
-		alert("반드시 파일을 첨부하세요!"); 
-		frm.file.focus();
-		return false;		
-		}
-	return true;
-}
-</script>
+
 </head><body>
 	<%
 		int bnum = Integer.parseInt(request.getParameter("bnum"));
@@ -20,7 +11,7 @@ function chk() {
 		TraBoardDao bd = TraBoardDao.getInstance();
 		TraBoard tboard = bd.select(bnum);
 	%>
-<form action="tupdatePro.jsp" method="post" enctype="multipart/form-data" name="frm" onsubmit="return chk()">
+<form action="homeMainPage.jsp?pgm=../Yu/trace/tupdatePro.jsp" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="bnum" value="<%=tboard.getBnum()%>">
 		<input type="hidden" name="pageNum" value="<%=pageNum%>">
 		<table border="1">

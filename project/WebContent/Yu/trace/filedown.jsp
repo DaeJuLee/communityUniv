@@ -4,7 +4,8 @@
 	 FileInputStream fileStream = null;
 	 try {
 	  String fileName = request.getParameter("fileName");
-	  String filePath = request.getServletContext().getRealPath("/")+"upload/";  
+	  String filePath = request.getSession().getServletContext().getRealPath("/")+"upload/";
+	  //String filePath = "../upload/";  
 	  
 	
 	  response.setContentType("application/x-msdownload");

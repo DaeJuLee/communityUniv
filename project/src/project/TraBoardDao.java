@@ -3,9 +3,11 @@ package project;
 import java.io.*;
 import java.sql.*;
 import java.util.*;
+
 import javax.naming.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
+
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -220,5 +222,126 @@ public class TraBoardDao {
 		}
 		return tot;
 	}
+	//족보
+	public List<TraReplyBoard> listRippleSelect(int boardNum)
+			throws SQLException {
+		List<TraReplyBoard> list = new ArrayList<TraReplyBoard>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectRipple = "select * from tReplyComment where bnum = ? order by re_step";
 
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(selectRipple);
+			pstmt.setInt(1, boardNum);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				TraReplyBoard traboard = new TraReplyBoard();
+				traboard.setBnum(boardNum);// 占쏙옙占썩가 틀占싫놂옙..占싻ㅿ옙
+				traboard.setRe_step(rs.getInt("re_step"));
+				traboard.setRe_level(rs.getInt("re_level"));
+				traboard.setContent(rs.getString("content"));
+				traboard.setR_date(rs.getDate("r_date"));
+				traboard.setWriter(rs.getString("writer"));
+				list.add(traboard);
+			}
+		} catch (Exception e) {
+			System.out.println("error ");
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		return list;
+	}
+	// 占쏙옙榜占쌜댐옙占� 占쏙옙占쏙옙 占싹댐옙 占쏙옙!! mine 占쏙옙占쏙옙
+	public int insertReply(TraReplyBoard trb) throws SQLException {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql1 = "select nvl(max(reply_code),0) from tReplyComment";
+		String sql2 = "insert into tReplyComment values(?, ?, ?, 1, ?, ?, sysdate)";
+		String sql3 = "update tReplyComment set re_step = re_step+1 where bnum=? and re_step > ?";
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql3);
+			pstmt.setInt(1, trb.getBnum());
+			pstmt.setInt(2, trb.getRe_step());
+			pstmt.executeUpdate();
+			pstmt.close();
+			trb.setRe_step(trb.getRe_step() + 1);
+			pstmt = conn.prepareStatement(sql1);
+			//primary key占쏙옙 1占쏙옙 占쏙옙占쏙옙
+			rs = pstmt.executeQuery();
+			rs.next();
+			int number = rs.getInt(1) + 1;
+			rs.close();
+			pstmt.close();
+			//insert占쏙옙占쏙옙 占쏙옙占쏙옙占싹댐옙 占쏙옙
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setInt(1, number);
+			pstmt.setInt(2, trb.getBnum());
+			pstmt.setInt(3, trb.getRe_step());
+//			pstmt.setString(4, toKor(trb.getContent()));
+			pstmt.setString(4, trb.getContent());
+			pstmt.setString(5, trb.getWriter());
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("error?? ");
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+
+		return result;
+	}
+	
+	public int deleteReply(int bnum, int re_step) throws SQLException{
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "delete from tReplyComment where bnum = ? and re_step = ?";
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bnum);
+			pstmt.setInt(2, re_step);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("error? ");
+			System.out.println(e.getMessage());
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		
+		return result;
+	}
+	
+	public static String toKor(String en) {
+		if (en == null) {
+			return null;
+		}
+		try {
+			return new String(en.getBytes("8859_1"), "utf-8");
+		} catch (Exception e) {
+			return en;
+		}
+	}
+	
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="project.*"%>
+	pageEncoding="UTF-8" import="project.*" import = "project.*"%>
 <%@page import="java.util.*"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="../../memberCheck.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,16 +14,20 @@
 		<h2>게시판 상세내역</h2>
 
 		<%
-			int replyResult = 1; /* 이건 하는건지 아닌건지 모르겠음 */
-			BoardReplyBoard fboard = new BoardReplyBoard();
-			List<BoardReplyBoard> replyList = new ArrayList<BoardReplyBoard>();
-		
 			BoardDao bd = BoardDao.getInstance();
 			int bnum = Integer.parseInt(request.getParameter("bnum"));
 			String pageNum = request.getParameter("pageNum");
+			List<BoardReplyBoard> replyList = new ArrayList<BoardReplyBoard>();
 			int ref = 0, re2_level = 0, re2_step = 0;
 			bd.hits(bnum);
 			Board board = bd.select(bnum);
+			if (pageNum == null)
+				pageNum = "1";
+			if (bnum != 0) {
+				ref = board.getRef();
+				re2_level = board.getRe2_level();
+				re2_step = board.getRe2_step();
+			}
 		%>
 		<div class="contents">
 			<table class="tbTy1 detaLeft">
@@ -73,46 +77,59 @@
 				</div>
 
 
-<form action="homeMainPage.jsp" name="frm" method="get" onsubmit="return chk()">
-		<table>
+	<form action="homeMainPage.jsp" name="frm" method="get" onsubmit="return chk()">
+		<table class="tbTy1 detaLeft">
 			<tbody>
+					
 			<tr>
 				<td colspan="2">
-					<input type = "hidden"  value = "../Yu/free/fContentReplyPro.jsp">
+					<input type = "hidden" name = "pgm" value = "../Yu/freeReply/fContentReplyPro.jsp">
 					<textarea cols="100%" name = "content"></textarea>
 					<input type="hidden" name="bnum" value=<%=bnum%>> 
-					<input type="hidden" name="pageNum" value=<%=pageNum %>>				
-					<div>
-						<span>
-							<input type="submit" value="댓글달기">
+					<input type="hidden" name="pageNum" value=<%=pageNum %>>
+				
+					<div class="btnArea">
+						<span class="btnR">
+							<input type="submit" value="댓글달기" class="btnTy3">
 						</span>
 					</div>
 				</td>
 			</tr>
 		</table>
 	</form>
-<div>
-	<table >
+	<div class = "contents">
+	<table class="tbTy1 detaLeft">
 		<%
-			replyList = bd.listRippleSelect(bnum);
+			BoardDao cbdd = BoardDao.getInstance();
+			/* replyResult = cbd.inputRipple(bnum); */
+			replyList = cbdd.listRippleSelect(bnum);
 			for(int i = 0 ; i < replyList.size(); i++){
 				int width = replyList.get(i).getRe_level() * 10;
 				
-				out.println("<tr><td> 작성자 : *****" + "</td>");
+				out.println("<tr><td> 작성자 :" + writer + "</td>");
 				out.println("<td> 날짜 : " + replyList.get(i).getR_date() + "</td>");
+				out.println("<td> <input type = 'button' value = '수정'"+
+						"onclick = location.href='homeMainPage.jsp?pgm=../Yu/freeReply/fUpdateReply.jsp?bnum=" +
+						bnum + "&pageNum=" + pageNum + "&re_step=" + replyList.get(i).getRe_step() + 
+						"'></td></tr>");
+				//두번째 줄
 				out.println("<tr><td colspan = '2'>" + replyList.get(i).getContent() + "</td>");
 				out.println("<td> <input type = 'button' value = '삭제'"+
-						"onclick = location.href='homeMainPage.jsp?pgm=../Yu/free/fDeleteReplyPro.jsp?bnum=" +
+						"onclick = location.href='homeMainPage.jsp?pgm=../Yu/freeReply/fDeleteReplyPro.jsp?bnum=" +
 						bnum + "&pageNum=" + pageNum + "&re_step=" + replyList.get(i).getRe_step() + 
 						"'></td></tr>");
 				out.println("</tr>");
+				/* if (replyList.get(i).getRe_level() > 0) {
+					out.println("<img src='images/level.gif' width="
+							+ width + ">" + "<img src='images/re.gif'>");
+				} */
 			}
 		%>
 	</table>
 	</div>
+	
 	</div>
 	</div>
-
 
 </body>
 </html>

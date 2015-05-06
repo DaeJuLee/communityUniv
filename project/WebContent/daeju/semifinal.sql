@@ -81,7 +81,7 @@ create table fboard (
 	ref number not null
 );
 select * from fboard;
-drop table fboard;
+--drop table fboard;
 --title null로 한거로 하자 아래 테이블 생성
 create table fboard (
 	bnum number primary key,
@@ -170,6 +170,7 @@ re_level number,
 content varchar2(255),
 r_date date not null
 );
+select * from fReplyComment;
 --------------------------------------------------------------------------------
 --장터게시판 리플
 create table mReplyComment(
@@ -181,15 +182,18 @@ content varchar2(255),
 r_date date not null
 );
 --------------------------------------------------------------------------------
---족보게시판 리플
+--족보게시판 리플 5월 6일 수정 writer를 추가
 create table tReplyComment(
 reply_code number primary key,
 bnum number,
 re_step number,
 re_level number,
 content varchar2(255),
+writer varchar2(20), --추가
 r_date date not null
 );
+select * from tReplyComment;
+--drop table tReplyComment;
 --------------------------------------------------------------------------------
 --counsel게시판 리플
 create table cReplyComment(
