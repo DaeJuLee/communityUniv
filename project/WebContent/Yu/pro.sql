@@ -76,3 +76,30 @@ create table maBoard (
 	ref number ,
 	category varchar2(20) 
 );
+--자유게시판 댓글 ▼--
+create table fReplyComment(
+	reply_code number primary key,
+	bnum number,
+	re_step number,
+	re_level number,
+	content varchar2(255),
+	r_date date not null
+);
+--족보게시판 댓글 ▼--
+create table tReplyComment(
+	reply_code number primary key,
+	bnum number,
+	re_step number,
+	re_level number,
+	content varchar2(255),
+	r_date date not null
+);
+--장터게시판 댓글 ▼--
+create table mReplyComment(
+	reply_code number primary key,
+	bnum number,
+	re_step number,
+	re_level number,
+	content varchar2(255),
+	r_date date not null
+);

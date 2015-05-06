@@ -6,8 +6,6 @@ import java.util.*;
 import javax.naming.*;
 import javax.sql.DataSource;
 
-import project.Board;
-import project.BoardDao;
 
 public class BoardDao {
 	private static BoardDao instance;
@@ -31,7 +29,7 @@ public class BoardDao {
 		Connection conn = null;	PreparedStatement pstmt= null;
 		ResultSet rs = null;
 		 String sql = "select * from (select rownum rn ,a.* from " + 
-			" (select * from fboard order by ref desc,re2_step) a ) "+
+			" (select * from board order by ref desc,re2_step) a ) "+
 			" where rn between ? and ?";
 		try {
 			conn = getConnection();
@@ -67,8 +65,8 @@ public class BoardDao {
 		int num = board.getBnum();		
 		Connection conn = null;	PreparedStatement pstmt= null; 
 		int result = 0;			ResultSet rs = null;
-		String sql1 = "select nvl(max(bnum),0) from fboard";
-		String sql="insert into fboard values(?,?,sysdate,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql1 = "select nvl(max(bnum),0) from board";
+		String sql="insert into board values(?,?,sysdate,?,?,?,?,?,?,?,?,?,?,?)";
 		/*String sql2="update board set re2_step = re2_step+1 where " +
 			" ref=? and re2_step > ?";*/
 		try {	
@@ -89,9 +87,9 @@ public class BoardDao {
 			if (num == 0) board.setRef(number);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, number);
-			pstmt.setString(2, toKor(board.getTitle()));
-			pstmt.setString(3, toKor(board.getWriter()));
-			pstmt.setString(4, toKor(board.getContent()));
+			pstmt.setString(2, board.getTitle());
+			pstmt.setString(3, board.getWriter());
+			pstmt.setString(4, board.getContent());
 			pstmt.setInt(5, board.getHits());
 			pstmt.setString(6, board.getBpass());
 			pstmt.setString(7, board.getFileName());
@@ -100,7 +98,7 @@ public class BoardDao {
 			pstmt.setInt(10, board.getRe2_level());
 			pstmt.setString(11, board.getIp());
 			pstmt.setInt(12, board.getRef());
-			pstmt.setString(13, toKor(board.getCategory()));
+			pstmt.setString(13, board.getCategory());
 		
 			result = pstmt.executeUpdate();
 		} catch(Exception e) {	System.out.println(e.getMessage()); 
@@ -114,7 +112,7 @@ public class BoardDao {
 	
 	public Board select(int bnum) throws SQLException {
 		Connection conn = null;	Statement stmt= null; ResultSet rs = null;
-		String sql = "select * from fboard where bnum="+bnum;
+		String sql = "select * from board where bnum="+bnum;
 		Board board = new Board();
 		try {
 			conn = getConnection();
@@ -162,14 +160,14 @@ public class BoardDao {
 	public int update(Board board) throws SQLException {
 		Connection conn = null;	PreparedStatement pstmt= null; 
 		int result = 0;			
-		String sql="update fboard set title=?,category=?,bpass=?,content=?where bnum=?";
+		String sql="update board set title=?,category=?,bpass=?,content=?where bnum=?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, toKor(board.getTitle()));
-			pstmt.setString(2, toKor(board.getCategory()));
+			pstmt.setString(1, board.getTitle());
+			pstmt.setString(2, board.getCategory());
 			pstmt.setString(3, board.getBpass());
-			pstmt.setString(4, toKor(board.getContent()));
+			pstmt.setString(4, board.getContent());
 			pstmt.setInt(5, board.getBnum());
 			
 			result = pstmt.executeUpdate();
@@ -183,8 +181,8 @@ public class BoardDao {
 	public int delete(int bnum, String bpass) throws SQLException {
 		Connection conn = null;	PreparedStatement pstmt= null; 
 		int result = 0;		    ResultSet rs = null;
-		String sql1 = "select bpass from fboard where bnum=?";
-		String sql="delete from fboard where bnum=?";
+		String sql1 = "select bpass from board where bnum=?";
+		String sql="delete from board where bnum=?";
 		try {
 			String dbPasswd = "";
 			conn = getConnection();
@@ -210,7 +208,7 @@ public class BoardDao {
 	public int getTotalCnt() throws SQLException {
 		Connection conn = null;	Statement stmt= null; 
 		ResultSet rs = null;    int tot = 0;
-		String sql = "select count(*) from fboard";
+		String sql = "select count(*) from board";
 		try {
 			conn = getConnection();
 			stmt = conn.createStatement();
@@ -224,54 +222,107 @@ public class BoardDao {
 		}
 		return tot;
 	}
-	public int ripple(Board board) throws SQLException {
-		int num = board.getBnum();		
-		Connection conn = null;	PreparedStatement pstmt= null; 
-		int result = 0;			ResultSet rs = null;
-		String sql1 = "select nvl(max(bnum),0) from fboard";
-		String sql="insert into fboard values(?,?,sysdate,?,?,?,?,?,?,?,?,?,?,?)";
-		String sql2="update fboard set re2_step = re2_step+1 where " +
-			" ref=? and re2_step > ?";
-		try {			
+	public List<BoardReplyBoard> listRippleSelect(int boardNum)
+			throws SQLException {
+		List<BoardReplyBoard> list = new ArrayList<BoardReplyBoard>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectRipple = "select * from fReplyComment where bnum = ? order by re_step";
+
+		try {
 			conn = getConnection();
-			if (num != 0) {
-				pstmt = conn.prepareStatement(sql2);
-				pstmt.setInt(1, board.getRef());
-				pstmt.setInt(2, board.getRe2_step());
-				pstmt.executeUpdate();
-				pstmt.close();
-				board.setRe2_step(board.getRe2_step()+1);
-				board.setRe2_level(board.getRe2_level()+1);
+			pstmt = conn.prepareStatement(selectRipple);
+			pstmt.setInt(1, boardNum);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BoardReplyBoard fboard = new BoardReplyBoard();
+				fboard.setBnum(boardNum);
+				fboard.setRe_step(rs.getInt("re_step"));
+				fboard.setRe_level(rs.getInt("re_level"));
+				fboard.setContent(rs.getString("content"));
+				fboard.setR_date(rs.getDate("r_date"));
+				list.add(fboard);
 			}
+		} catch (Exception e) {
+			System.out.println("error ");
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		return list;
+	}
+	public int insertReply(BoardReplyBoard rboard) throws SQLException {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql1 = "select nvl(max(reply_code),0) from fReplyComment";
+		String sql2 = "insert into fReplyComment values(?, ?, ?, 1, ?, sysdate)";
+		String sql3 = "update fReplyComment set re_step = re_step+1 where bnum=? and re_step > ?";
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql3);
+			pstmt.setInt(1, rboard.getBnum());
+			pstmt.setInt(2, rboard.getRe_step());
+			pstmt.executeUpdate();
+			pstmt.close();
+			rboard.setRe_step(rboard.getRe_step() + 1);
 			pstmt = conn.prepareStatement(sql1);
 			rs = pstmt.executeQuery();
 			rs.next();
-			int number = rs.getInt(1) + 1;  
-			rs.close();   pstmt.close();
-			if (num == 0) board.setRef(number);
-			pstmt = conn.prepareStatement(sql);
+			int number = rs.getInt(1) + 1;
+			rs.close();
+			pstmt.close();
+			pstmt = conn.prepareStatement(sql2);
 			pstmt.setInt(1, number);
-			pstmt.setString(2, board.getTitle());
-			pstmt.setString(3, board.getWriter());
-			pstmt.setString(4, board.getContent());
-			pstmt.setInt(5, board.getHits());
-			pstmt.setString(6, board.getBpass());
-			pstmt.setString(7, board.getFileName());
-			pstmt.setInt(8, board.getFileSize());
-			pstmt.setInt(9, board.getRe2_step());
-			pstmt.setInt(10, board.getRe2_level());
-			pstmt.setString(11, board.getIp());
-			pstmt.setInt(12, board.getRef());
-			pstmt.setString(13, board.getCategory());
-
-			
+			pstmt.setInt(2, rboard.getBnum());
+			pstmt.setInt(3, rboard.getRe_step());
+			pstmt.setString(4, rboard.getContent());
 			result = pstmt.executeUpdate();
-		} catch(Exception e) {	System.out.println(e.getMessage()); 
+
+		} catch (Exception e) {
+			System.out.println("error가 발생했습니다 ");
+			System.out.println(e.getMessage());
 		} finally {
-			if (rs !=null) rs.close();
-			if (pstmt != null) pstmt.close();
-			if (conn !=null) conn.close();
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
 		}
+
+		return result;
+	}
+	
+	public int deleteReply(int bnum, int re_step) throws SQLException{
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "delete from fReplyComment where bnum = ? and re_step = ?";
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bnum);
+			pstmt.setInt(2, re_step);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("error가 발생했습니다  ");
+			System.out.println(e.getMessage());
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		
 		return result;
 	}
 	
