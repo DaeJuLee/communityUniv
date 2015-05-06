@@ -60,7 +60,7 @@ table {
 						out.println("<td>" + list.get(i).getCategory()
 								+ "</td>");
 						int width = list.get(i).getRe2_level() * 10;
-						out.println("<td class=left width=200>");
+						out.println("<td>");
 						if (list.get(i).getHits() > 20) {
 							out.println("<img src='../images/hot.gif'>");
 						}
@@ -97,17 +97,17 @@ table {
 				if (endPage > pageCnt)
 					endPage = pageCnt;
 				if (startPage > blockSize) {
-					out.println("<a href='freeList.jsp?pageNum="
+					out.println("<a href='homeMainPage.jsp?pgm=../Yu/trace/traceList.jsp?pageNum="
 							+ (startPage - blockSize) + "'>[이전]</a>");
 				}
 
 				for (int i = startPage; i <= endPage; i++) {
-					out.println("<a href='freeList.jsp?pageNum=" + i + "'>["
+					out.println("<a href='homeMainPage.jsp?pgm=../Yu/trace/traceList.jsp?pageNum=" + i + "'>["
 							+ i + "]</a>");
 				}
 
 				if (endPage < pageCnt) {
-					out.println("<a href='freeList.jsp?pageNum="
+					out.println("<a href='homeMainPage.jsp?pgm=../Yu/trace/traceList.jsp?pageNum="
 							+ (startPage + blockSize) + "'>[다음]</a>");
 				}
 		%>

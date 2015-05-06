@@ -126,17 +126,17 @@
 						if (endPage > pageCnt)
 							endPage = pageCnt;
 						if (startPage > blockSize) {
-							out.println("<a href='freeList.jsp?pageNum="
+							out.println("<a class = 'prev' href='homeMainPage.jsp?pgm=../Yu/free/freeList.jsp?pageNum="
 									+ (startPage - blockSize) + "'>[이전]</a>");
 						}
 
 						for (int i = startPage; i <= endPage; i++) {
-							out.println("<a href='freeList.jsp?pageNum=" + i + "'>["
+							out.println("<a href='homeMainPage.jsp?pgm=../Yu/free/freeList.jsp?pageNum=" + i + "'>["
 									+ i + "]</a>");
 						}
 
 						if (endPage < pageCnt) {
-							out.println("<a href='freeList.jsp?pageNum="
+							out.println("<a class = 'next ir' href='homeMainPage.jsp?pgm=../Yu/free/freeList.jsp?pageNum="
 									+ (startPage + blockSize) + "'>[다음]</a>");
 						}
 				%>
