@@ -26,8 +26,8 @@
 		<%
 			} else {
 		%>
-		<p class="location">
-			<span><a
+		<p class="btnArea">
+			<span class = "btnR"><a
 				href="homeMainPage.jsp?pgm=../jinju/Counsel/counselWriteForm.jsp?writer=<%=writer %>"
 				class="btnTy3">글쓰기</a></span>
 		</p>

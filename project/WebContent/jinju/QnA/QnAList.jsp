@@ -29,8 +29,8 @@
 		<%
 			}else{
 		%>
-		<p class="location">
-			<span><a href="homeMainPage.jsp?pgm=../jinju/QnA/QnAWriteForm.jsp?writer=<%=writer %>" class="btnTy3">글쓰기</a></span>
+		<p class="btnArea">
+			<span class = "btnR"><a href="homeMainPage.jsp?pgm=../jinju/QnA/QnAWriteForm.jsp?writer=<%=writer %>" class="btnTy3">글쓰기</a></span>
 		</p>
 
 		<div class="contents">

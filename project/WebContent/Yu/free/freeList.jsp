@@ -23,8 +23,8 @@
 		} else {
 	%>
 		<h2>자유게시판</h2>
-		<p class="location">
-			<span><a href="homeMainPage.jsp?pgm=../Yu/free/fwriteForm.jsp" class="btnTy3">글쓰기</a></span>
+		<p class="btnArea">
+			<span class = "btnR"><a href="homeMainPage.jsp?pgm=../Yu/free/fwriteForm.jsp" class="btnTy3">글쓰기</a></span>
 		</p>
 
 		<div class="contents">
@@ -78,7 +78,7 @@
 									out.println("<td>" + list.get(i).getCategory()
 											+ "</td>");
 									int width = list.get(i).getRe2_level() * 10;
-									out.println("<td class=left width=200>");
+									out.println("<td>");
 									if (list.get(i).getHits() > 20) {
 										out.println("<img src='../images/hot.gif'>");
 									}

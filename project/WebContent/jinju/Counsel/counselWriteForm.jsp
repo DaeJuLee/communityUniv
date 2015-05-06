@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>고민상담 글쓰기</title>
 
-<link rel="stylesheet" type="text/css" href="../../common.css">
+<!-- <link rel="stylesheet" type="text/css" href="../../common.css"> -->
 
 </head>
 <body>
