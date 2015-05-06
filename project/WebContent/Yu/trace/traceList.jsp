@@ -23,7 +23,7 @@
 	<h2>족보게시판</h2>
 	<p class="btnArea">
 		<span class="btnR"> <a
-			href="homeMainPage.jsp?pgm=../Yu/trace/twriteForm.jsp" class = "btnTy3">글쓰기</a>
+			href="homeMainPage.jsp?pgm=../Yu/trace/twriteForm.jsp?writer=<%=writer %>" class = "btnTy3">글쓰기</a>
 		</span>
 	</p>
 	<div class="contents">

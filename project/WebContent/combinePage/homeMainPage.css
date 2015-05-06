@@ -214,3 +214,24 @@ a:active { background-color:transparent; }
 .mgT10 { margin-top:10px; }
 .mgB10 { margin-bottom:10px; }
 .mgL10 {margin-left:10px;}
+
+/* FORM */
+.selTy {
+	height: 30px;
+	border: solid 1px #8b9cae;
+	vertical-align: middle;
+	font-size: 11px;
+	line-height: 30px;
+	padding: 0 0 0 8px;
+	color: #333;
+}
+
+.intTy {
+	background-color: #fff;
+	height: 28px;
+	border: solid 1px #8b9cae;
+	vertical-align: middle;
+	font-size: 11px;
+	line-height: 28px;
+	padding: 0 0 0 11px;
+}
