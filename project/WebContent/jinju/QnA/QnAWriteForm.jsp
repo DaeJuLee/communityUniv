@@ -54,11 +54,11 @@
 						<%
 						if (bnum > 0) {
 						%> 
-							<input type="text" name="title" value="[답변] " required="required" class="intTy" style="width:88%;"> 
+							<input type="text" name="title" value="[답변] " required="required" class="intTy" style="width:88%;" maxlength="50"> 
 						<%
  						} else {
 						%> 
-						 <input type="text" name="title" required="required" class="intTy" style="width:88%;"> 
+						 <input type="text" name="title" required="required" class="intTy" style="width:88%;" maxlength="50"> 
 						<%
  						}
  						%>
@@ -70,7 +70,7 @@
 			</tr>
 			<tr>
 				<th scope="row">비밀번호</th>
-				<td><input type="password" name="bpass" required="required" class="intTy" style="width:88%;"></td>
+				<td><input type="password" name="bpass" required="required" class="intTy" style="width:88%;" maxlength="10"></td>
 			</tr>
 			<tr>
 				<th scope="row">내용</th>

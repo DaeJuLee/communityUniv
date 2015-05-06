@@ -49,7 +49,7 @@
 </tr>
 <tr>
 						<th scope="row">제목</th>
-						<td><input type="text" size="50" maxlength="50" name="title"
+						<td><input type="text"maxlength="50" name="title"
 							class="intTy" style="width: 88%;"></td>
 					</tr>
 					<tr>
@@ -58,8 +58,8 @@
 					</tr>
 						<tr>
 						<th scope="row">비밀번호</th>
-						<td><input type="password" size="5" maxlength="10"
-							name="bpass"></td>
+						<td><input type="password" maxlength="10"
+							name="bpass" class="intTy" style="width: 88%;"></td>
 					</tr>
 					<tr>
 						<th scope="row">내용</th>

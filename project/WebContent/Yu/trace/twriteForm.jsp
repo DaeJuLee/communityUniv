@@ -42,13 +42,13 @@
 					<tr>
 						<th scope="row">분류 선택</th>
 						<td><select name="category">
-								<option value="[교양]">[교양]</option>
-								<option value="[전공]">[전공]</option>
-								<option value="[기타]">[기타]</option>
+								<option value="교양">[교양]</option>
+								<option value="전공">[전공]</option>
+								<option value="기타">[기타]</option>
 						</select>
 					<tr>
 						<th scope="row">제목</th>
-						<td><input type="text" size="50" maxlength="50" name="title"
+						<td><input type="text" maxlength="50" name="title" class = "intTy" style = "width: 88%;"
 							placeholder="년도/학기/수업명/교수이름/(중간/기말)"></td>
 					</tr>
 
@@ -60,7 +60,7 @@
 					</tr>
 					<tr>
 						<th scope="row">비밀번호</th>
-						<td><input type="password" size="5" maxlength="10"
+						<td><input type="password" maxlength="10" class = "intTy" style = "width: 88%;"
 							name="bpass"></td>
 					</tr>
 					<tr>

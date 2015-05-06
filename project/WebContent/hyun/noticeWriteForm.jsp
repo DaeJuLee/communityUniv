@@ -40,7 +40,7 @@
 					<tr>
 						<th>제목</th>
 						<td><input type="text" name="title" required="required"
-							class="intTy" style="width: 88%"></td>
+							class="intTy" style="width: 88%" maxlength="50"></td>
 					</tr>
 					<tr>
 						<th>작성자</th>
