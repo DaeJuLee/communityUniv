@@ -69,7 +69,7 @@
 				<td><input type = "hidden"  name = "writer"  value="<%=writer %>"><%=writer %></td>
 			</tr>
 			<tr>
-				<th scope="row">암호</th>
+				<th scope="row">비밀번호</th>
 				<td><input type="password" name="bpass" required="required" class="intTy" style="width:88%;"></td>
 			</tr>
 			<tr>
