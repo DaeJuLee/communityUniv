@@ -24,7 +24,7 @@
 	%>
 		<h2>자유게시판</h2>
 		<p class="btnArea">
-			<span class = "btnR"><a href="homeMainPage.jsp?pgm=../Yu/free/fwriteForm.jsp" class="btnTy3">글쓰기</a></span>
+			<span class = "btnR"><a href="homeMainPage.jsp?pgm=../Yu/free/fwriteForm.jsp?writer=<%=writer %>" class="btnTy3">글쓰기</a></span>
 		</p>
 
 		<div class="contents">
