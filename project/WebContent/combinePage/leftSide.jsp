@@ -87,7 +87,7 @@
 					<% }else{ %>
 					<legend><%=writer %>님 반갑습니다.</legend>
 					<ul class="help">
-						<li class="first"><a href="#">마이페이지</a></li>
+						<li class="first"><a href="homeMainPage.jsp?pgm=../hyun/memberInfo.jsp">마이페이지</a></li>
 						<li><a href="../sessionLogout.jsp">로그아웃</a></li>
 					</ul>
 					<%}%>
