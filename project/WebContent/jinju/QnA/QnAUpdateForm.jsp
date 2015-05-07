@@ -46,11 +46,11 @@
 			</tr>
 			<tr>
 				<th scope="row">작성자</th>
-				<td><%=writer %></td>
+				<td><%=qboard.getWriter() %></td>
 			</tr>
 			<tr>
 				<th scope="row">암호</th>
-				<td><input type="password" name="bpass" required="required" class="intTy" style="width:88%;"></td>
+				<td><input type="password" name="bpass" required="required" class="intTy" style="width:88%;" value = "<%=qboard.getBpass()%>"></td>
 			</tr>
 			<tr>
 				<th scope="row">내용</th>
