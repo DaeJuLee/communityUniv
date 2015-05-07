@@ -10,7 +10,9 @@
 <body>
 	<div class="columnMain">
 		<h2>아이디 찾기</h2>
-		<form action="searchPro.jsp" name="frmSearchId">
+		<form
+			action="../combinePage/homeMainPage.jsp" name="frmSearchId">
+			<input type="hidden" name = "pgm" value="../hyun/searchPro.jsp">
 			<div class="contents">
 
 				<table class="tbTy1 dataLeft">
@@ -36,17 +38,19 @@
 					<span class="btnR"> <input type="hidden" name="id" value="">
 						<input type="submit" value="확인" class="btnTy3"> <input
 						type="button" name="idS" class="btnTy2"
-						onclick="location.href='../conbinePage/homeMainPage.jsp'"
+						onclick="location.href='../combinePage/homeMainPage.jsp'"
 						value="취소">
 
 					</span>
 				</div>
 			</div>
+		</form>
 	</div>
-	</form>
+
 	<div class="columnMain">
 		<h2>비밀번호 찾기</h2>
-		<form action="searchPro.jsp" name="frmSearchPw">
+		<form action="../combinePage/homeMainPage.jsp" name="frmSearchPw">
+		<input type = "hidden" name = "pgm" value="../hyun/searchPro.jsp">
 			<div class="contents">
 
 				<table class="tbTy1 dataLeft">
@@ -74,13 +78,14 @@
 				<div class="btnArea">
 					<span class="btnR"> <input type="submit" class="btnTy3"
 						value="확인"> <input type="button" name="pwS" class="btnTy2"
-						onclick="location.href='../conbinePage/homeMainPage.jsp'"
+						onclick="location.href='../combinePage/homeMainPage.jsp'"
 						value="취소">
 
 					</span>
 				</div>
 			</div>
+		</form>
 	</div>
-	</form>
+
 </body>
 </html>

@@ -79,20 +79,20 @@ public class MemberDao {
 			/* pstmt.setInt(6, member.getGrade()); */
 			pstmt.setString(5, toKor(member.getWriter()));
 			pstmt.setInt(6, member.getPost1());
-			System.out.println("우편번호1  : " + member.getPost1());
+			System.out.println("�슦�렪踰덊샇1  : " + member.getPost1());
 			pstmt.setInt(7, member.getPost2());
-			System.out.println("우편번호2 : " + member.getPost2());
+			System.out.println("�슦�렪踰덊샇2 : " + member.getPost2());
 			pstmt.setString(8, toKor(member.getAddr2()));
-			System.out.println("주소 1 :  " + toKor(member.getAddr()));
+			System.out.println("二쇱냼 1 :  " + toKor(member.getAddr()));
 			pstmt.setString(9, toKor(member.getAddr()));
-			System.out.println("주소 2 :  " + toKor(member.getAddr2()));
+			System.out.println("二쇱냼 2 :  " + toKor(member.getAddr2()));
 			pstmt.setString(10, toKor(member.getAddr3()));
-			System.out.println("주소 3 :  " + toKor(member.getAddr3()));
+			System.out.println("二쇱냼 3 :  " + toKor(member.getAddr3()));
 			pstmt.setString(11, toKor(member.getJibeon()));
-			System.out.println("지번 :  " + toKor(member.getJibeon()));
+			System.out.println("吏�踰� :  " + toKor(member.getJibeon()));
 			pstmt.setString(12, member.getEmail());
 			pstmt.setString(13, toKor(member.getMajor()));
-			System.out.println("전공 :  " + toKor(member.getMajor()));
+			System.out.println("�쟾怨� :  " + toKor(member.getMajor()));
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -491,9 +491,9 @@ public class MemberDao {
 		System.out.println("name : " + name);
 		try {
 			conn = getConnection();
-			if (name == null) {
+			if (name.equals("") || name == null) {
 				pstmt = conn.prepareStatement(sql);
-				System.out.println("비번찾기 시작");
+				System.out.println("鍮꾨쾲李얘린 �떆�옉");
 				pstmt.setString(1, id);
 				pstmt.setInt(2, snum);
 				pstmt.setString(3, email);
@@ -504,9 +504,9 @@ public class MemberDao {
 				}
 				result = resultPw;
 				System.out.println("result : " + result);
-			} else { // name 이 null이 아닐때 아이디찾기로 해석하여 sql쿼리문을 실행시켜 아이디를 출력한다.
+			} else {
 				pstmt = conn.prepareStatement(sql1);
-				System.out.println("아이디찾기 시작");
+				System.out.println("�븘�씠�뵒李얘린 �떆�옉");
 				pstmt.setString(1, name);
 				pstmt.setInt(2, snum);
 				pstmt.setString(3, email);
