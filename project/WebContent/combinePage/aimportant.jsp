@@ -16,7 +16,7 @@
 		<li><a href="homeMainPage.jsp?pgm=../Yu/free/freeList.jsp">자유게시판</a></li>
 		<li><a href="homeMainPage.jsp?pgm=../jinju/Counsel/counselList.jsp">고민상담</a></li>
 		<li><a href="#">장 터</a></li>
-		<li><a href="#">시간표제작</a></li>
+		<li><a href="homeMainPage.jsp?pgm=../timeTable/timetablehome.jsp">시간표제작</a></li>
 		<li><a href="homeMainPage.jsp?pgm=../jinju/QnA/QnAList.jsp">Q&A</a></li>
 		<li><a href="homeMainPage.jsp?pgm=../hyun/memberInfo.jsp">myPage</a></li>
 	</ul>
