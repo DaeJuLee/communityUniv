@@ -15,7 +15,6 @@ create table member (
 	major varchar2(40) not null
 );
 select * from member;
---drop table member;
 --------------------------------------------------------------------------------
 --공지사항
 create table notice (
@@ -46,7 +45,6 @@ create table subject(
 	scategory varchar2(2) --전공, 교양
 );
 select * from subject;
---drop table subject;
 --------------------------------------------------------------------------------
 --시간표
 create table timeTable(
@@ -63,7 +61,6 @@ create table timeTable(
 	sub9 varchar2(20),
 	sub10 varchar2(20)
 );
---sub들은 과목코드들이 들어갈 항목
 select * from timeTable;
 drop table timeTable;
 --5월7일 추가
@@ -77,20 +74,6 @@ create table weboutput(
 	sat varchar2(20)
 );
 select * from weboutput;
---insert into weboutput(time) values(1);
---insert into weboutput(time) values(2);
---insert into weboutput(time) values(3);
---insert into weboutput(time) values(4);
---insert into weboutput(time) values(5);
---insert into weboutput(time) values(6);
---insert into weboutput(time) values(7);
---insert into weboutput(time) values(8);
---insert into weboutput(time) values(9);
---insert into weboutput(time) values(10);
---insert into weboutput(time) values(11);
---insert into weboutput(time) values(12);
---drop table weboutput;
-insert into weboutput(mon) values('mon') where time = 1;
 --------------------------------------------------------------------------------
 --자유게시판-
 create table fboard (
@@ -226,6 +209,7 @@ bnum number,
 re_step number,
 re_level number,
 content varchar2(255),
+writer varchar2(20), --추가
 r_date date not null
 );
 select * from mReplyComment;
