@@ -35,9 +35,26 @@
 		return true;
 	}//과목 검색
 </script>
+<style type="text/css">
+table .haha{
+	display:inline;
+	border:"1";
+}
+</style>
 </head>
 <body onload="initPage()">
-
+	<h2>시간표 만들기</h2>
+	<%
+		if(id.equals("not") || id == "not"){//회원이 아닌경우
+	%>
+		<script type="text/javascript">
+			alert("회원들만 사용할 수 있습니다.");
+			location.href = "../combinePage/homeMainPage.jsp";
+		</script>
+	<%
+		} else {
+	%>
+	
 	<%
 		List<Subject> list = new ArrayList<Subject>();//과목 조회 리스트
 		List<weboutput> listTable = new ArrayList<weboutput>();//시간표 출력 리스트
@@ -46,9 +63,9 @@
 		String subjectList = request.getParameter("subjectList"); 
 		Subject subject = new Subject();
 		TimeTableDao ttd = TimeTableDao.getInstance();
-		out.println("sname : " + sname); //console창에 띄우기
-		out.println("scategory : " + scategory);
-		out.println("subjectList : " + subjectList);
+		//out.println("sname : " + sname); //console창에 띄우기
+		//out.println("scategory : " + scategory);
+		//out.println("subjectList : " + subjectList);
 		if(sname != null || scategory != null){
 			if(sname.equals("")){
 				list = ttd.selectSubject1(scategory);
@@ -65,10 +82,15 @@
 		} */
 	%>
 
-	<form action="timetablehome.jsp" name="selectOption"
+	<form action="../combinePage/homeMainPage.jsp" name="selectOption"
 		onsubmit="return selectOption()">
+		<input type = "hidden" name = "pgm" value = "../timeTable/timetablehome.jsp">
+		<table class = "haha"><tr><td align = "center">
 		<table>
-			<tr>
+			<tr height="80px">
+				<td colspan = "2"><h1>과목 찾기 카테고리 설정</h1></td>
+			</tr>
+			<tr height="80px">
 				<td>
 					<!-- 학기옵션 선택 --> 학기 선택 : <!-- 수정해야함... size를 없애고.. 해야한다. --> <select
 					name="selectHAKKI" multiple="multiple" size="2">
@@ -85,8 +107,8 @@
 				<td><input type="button" value="초기화" onclick="initialData()"></td>
 				<!-- 선택한 것 초기화 select option을 초기화 -->
 			</tr>
-			<tr>
-				<td><a href="downloadExcel.jsp">파일저장</a></td>
+			<tr height="80px">
+				<td><a href="../timeTable/downloadExcel.jsp?writer=<%=writer%>">파일저장</a></td>
 				<!-- 엑셀파일 저장 -->
 				<td>
 					<!-- 과목명 조회 --> <input type="text" name="sname">
@@ -95,24 +117,26 @@
 				<td></td>
 			</tr>
 		</table>
-		
+		</td><td>
 		<table>
-			<tr colspan = "4"><h2>수업 목록</h2> </tr>
-			<tr><th>과목코드</th><th>과목이름</th><th>시간</th><th>교수코드</th></tr>
+			<tr colspan = "4"><h1>수업 목록</h1> </tr>
+			<tr height="80px"><th width = "80">과목코드</th><th width = "80">과목이름</th>
+				<th width = "80">시간</th><th width = "80">교수코드</th></tr>
 			<%
 				if(list.size()==0){
-					out.println("<tr><td colspan = '4'>");
-					out.println("<select multiple = 'multiple' size = '5'>");
+					out.println("<tr height='80px'><td colspan = '4' width = '320'>");
+					out.println("<select multiple = 'multiple' size = '5' style = 'width:320px'>");
 					out.println("<option>조회된 데이터가 없습니다....</option>");
 					//out.println("<table><tr><td colspan = '4'>조회된 데이터가 없습니다....</td></tr></table>");
 					out.println("</select>");
 					out.println("</td></tr>");
 				}else{
-					out.println("<tr><td colspan = '4'>");
-					out.println("<select name = 'subjectList' multiple = 'multiple' size = '5'>");
+					out.println("<tr height='80px'><td colspan = '4'>");
+					out.println("<select name = 'subjectList' multiple = 'multiple' size = '5' style = 'width:320px'>");
 					for(int i = 0 ; i < list.size(); i++){
 						out.println("<option value = " + list.get(i).getScode() + ">");
 						out.println("<div><ul><li>" + list.get(i).getScode() + "</li>");
+						out.println("<li></li>");
 						out.println("<li>" + list.get(i).getSname() + "</li>");
 						out.println("<li>" + list.get(i).getStime() + "</li>");
 						out.println("<li>" + list.get(i).getPcode() + "</li>");
@@ -123,14 +147,29 @@
 			%>
 			<tr><td colspan="4"><input type="submit" value = "시간표 저장"></td></tr>
 		</table>
+		</td>
+		</tr></table>
 	</form>
 	
-	<table>
 		<%
-			ttd.insertTable(subjectList, writer); //과목리스트 삽입
+			int result = ttd.insertTable(subjectList, writer); //과목리스트 삽입
 			listTable = ttd.selectTable(writer); //시간표들 조회
+			if(result == 1){
 		%>
-		<tr>
+			<script type="text/javascript">
+				alert("수업이 등록 되셨습니다.");
+			</script>
+		<%} %>
+		<%-- <% }else if(result == 2){ %>
+			<script type="text/javascript">
+				alert("수업이 중복됩니다.. 다시 선택해주세요");
+			</script>
+		<% } %> --%>
+	
+	<table>
+		
+		
+		<tr bgcolor = "orange">
 			<th>시간</th>
 			<th>월</th>
 			<th>화</th>
@@ -141,19 +180,62 @@
 		</tr>
 		<%
 			if(listTable.size() == 0){
-				out.print("<tr><td>아직 시간표를 등록하지 않으셨습니다.</td></tr>");
+				out.print("<tr><td colspan = '7'>아직 시간표를 등록하지 않으셨습니다.</td></tr>");
 			}else{
 				for(int i = 0; i <= 11 ; i++){
-					out.print("<tr><td>" + listTable.get(i).getTime() + "</td>");
-					out.print("<td>" + listTable.get(i).getMon() + "</td>");
-					out.print("<td>" + listTable.get(i).getThu() + "</td>");
-					out.print("<td>" + listTable.get(i).getWed() + "</td>");
-					out.print("<td>" + listTable.get(i).getTues() + "</td>");
-					out.print("<td>" + listTable.get(i).getFri() + "</td>");
-					out.print("<td>" + listTable.get(i).getSat() + "</td></tr>");
+					/* String bgcolor = "#" + "8" + String.valueOf(i) + 
+											String.valueOf(i+5) +  "c" +
+											String.valueOf(i+5) +  "c"; */
+					out.print("<tr><td width = '50' align = 'center' bgcolor = 'pink'>" + listTable.get(i).getTime() + "</td>");
+					if(listTable.get(i).getMon() == null || listTable.get(i).getMon().equals("")){
+						out.print("<td width = '130' align = 'center'></td>");
+					}else{
+						//out.print("<td width = '130' align = 'center' bgcolor='" + bgcolor +"'>" 
+						out.print("<td width = '130' align = 'center' bgcolor='" + "green" +"'>" 
+						+ listTable.get(i).getMon() + "</td>");
+					}//월요일
+					if(listTable.get(i).getThu() == null || listTable.get(i).getThu().equals("")){
+						out.print("<td width = '130' align = 'center'></td>");
+					}else{
+						//out.print("<td width = '130' align = 'center' bgcolor='" + bgcolor +"'>" 
+						out.print("<td width = '130' align = 'center' bgcolor='" + "green" +"'>" 
+					    + listTable.get(i).getThu() + "</td>");
+					}//화요일
+					if(listTable.get(i).getWed() == null || listTable.get(i).getWed().equals("")){
+						out.print("<td width = '130' align = 'center'></td>");
+					}else{
+						//out.print("<td width = '130' align = 'center' bgcolor='" + bgcolor +"'>" 
+						out.print("<td width = '130' align = 'center' bgcolor='" + "green" +"'>" 
+						+ listTable.get(i).getWed() + "</td>");
+					}//수요일
+					if(listTable.get(i).getTues() == null || listTable.get(i).getTues().equals("")){
+						out.print("<td width = '130' align = 'center'></td>");
+					}else{
+						//out.print("<td width = '130' align = 'center' bgcolor='" + bgcolor +"'>" 
+						out.print("<td width = '130' align = 'center' bgcolor='" + "green" +"'>" 
+						+ listTable.get(i).getTues() + "</td>");
+					}//목요일
+					if(listTable.get(i).getFri() == null || listTable.get(i).getFri().equals("")){
+						out.print("<td width = '130' align = 'center'></td>");
+					}else{
+						//out.print("<td width = '130' align = 'center' bgcolor='" + bgcolor +"'>" 
+						out.print("<td width = '130' align = 'center' bgcolor='" + "green" +"'>" 
+						+ listTable.get(i).getFri() + "</td>");
+					}//금요일
+					if(listTable.get(i).getSat() == null || listTable.get(i).getSat().equals("")){
+						out.print("<td width = '130' align = 'center'></td>");
+					}else{
+						//out.print("<td width = '130' align = 'center' bgcolor='" + bgcolor +"'>" 
+						out.print("<td width = '130' align = 'center' bgcolor='" + "green" +"'>" 
+						+ listTable.get(i).getSat() + "</td>");
+					}//토요일
+					
 				}
 			}
 		%>
 	</table>
+	<%
+	}//else 끝난곳
+	%>
 </body>
 </html>

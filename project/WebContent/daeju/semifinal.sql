@@ -1,4 +1,4 @@
---È¸¿øÁ¤º¸
+--È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 create table member (
 	snum number(10) primary key,
 	name varchar2(20) not null,
@@ -17,7 +17,7 @@ create table member (
 select * from member;
 --drop table member;
 --------------------------------------------------------------------------------
---°øÁö»çÇ×
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 create table notice (
 	bnum number primary key,
 	title varchar2(50) not null,
@@ -29,26 +29,26 @@ create table notice (
 );
 select * from notice;
 --------------------------------------------------------------------------------
---±³¼ö Å×ÀÌºí
+--ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½
 create table professor (
 	pcode varchar2(10) primary key,	
 	pname varchar2(10) not null
 );
 select * from professor;
 --------------------------------------------------------------------------------
---°ú¸ñÅ×ÀÌºí ¿¢¼¿ Áý¾î³Ö±â ¼º°ø
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½
 create table subject(
-	scode varchar2(20), --scode = ½Ã°£ + ¿äÀÏ +±³¼öÄÚµå
+	scode varchar2(20), --scode = ï¿½Ã°ï¿½ + ï¿½ï¿½ï¿½ï¿½ +ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
 	sname varchar2(40) not null,
 	stime varchar2(15) not null,
-	sday varchar2(15) not null, --Ãß°¡ ¿äÀÏ ±¸º°
+	sday varchar2(15) not null, --ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	pcode varchar2(10) not null,
-	scategory varchar2(2) --Àü°ø, ±³¾ç
+	scategory varchar2(2) --ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½
 );
 select * from subject;
 --drop table subject;
 --------------------------------------------------------------------------------
---½Ã°£Ç¥
+--ï¿½Ã°ï¿½Ç¥
 create table timeTable(
 	snum number(10),
 	writer varchar2(10),
@@ -63,36 +63,37 @@ create table timeTable(
 	sub9 varchar2(20),
 	sub10 varchar2(20)
 );
---subµéÀº °ú¸ñÄÚµåµéÀÌ µé¾î°¥ Ç×¸ñ
+--subï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¥ ï¿½×¸ï¿½
 select * from timeTable;
-drop table timeTable;
---5¿ù7ÀÏ Ãß°¡
+--drop table timeTable;
+--5ï¿½ï¿½7ï¿½ï¿½ ï¿½ß°ï¿½
 create table weboutput(
 	time number primary key,
-	mon varchar2(20),
-	thu varchar2(20),
-	wed varchar2(20),
-	tues varchar2(20),
-	fri varchar2(20),
-	sat varchar2(20)
+	mon varchar2(40),
+	thu varchar2(40),
+	wed varchar2(40),
+	tues varchar2(40),
+	fri varchar2(40),
+	sat varchar2(40)
 );
 select * from weboutput;
---insert into weboutput(time) values(1);
---insert into weboutput(time) values(2);
---insert into weboutput(time) values(3);
---insert into weboutput(time) values(4);
---insert into weboutput(time) values(5);
---insert into weboutput(time) values(6);
---insert into weboutput(time) values(7);
---insert into weboutput(time) values(8);
---insert into weboutput(time) values(9);
---insert into weboutput(time) values(10);
---insert into weboutput(time) values(11);
---insert into weboutput(time) values(12);
+--drop table weboutput;
+insert into weboutput(time) values(1);
+insert into weboutput(time) values(2);
+insert into weboutput(time) values(3);
+insert into weboutput(time) values(4);
+insert into weboutput(time) values(5);
+insert into weboutput(time) values(6);
+insert into weboutput(time) values(7);
+insert into weboutput(time) values(8);
+insert into weboutput(time) values(9);
+insert into weboutput(time) values(10);
+insert into weboutput(time) values(11);
+insert into weboutput(time) values(12);
 --drop table weboutput;
 insert into weboutput(mon) values('mon') where time = 1;
 --------------------------------------------------------------------------------
---ÀÚÀ¯°Ô½ÃÆÇ-
+--ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½-
 create table fboard (
 	bnum number primary key,
 	title varchar2(50) not null,
@@ -110,7 +111,7 @@ create table fboard (
 );
 select * from fboard;
 --drop table fboard;
---title null·Î ÇÑ°Å·Î ÇÏÀÚ ¾Æ·¡ Å×ÀÌºí »ý¼º
+--title nullï¿½ï¿½ ï¿½Ñ°Å·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ·ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½
 create table fboard (
 	bnum number primary key,
 	title varchar2(50) ,
@@ -153,22 +154,19 @@ create table cboard(
 	title varchar2(255),
 	s_date date,
 	content varchar2(255),
-	content2 varchar2(255),
 	hits number default 0,
 	bpass varchar2(255),
 	fileName varchar2(255),
 	fileSize number,
 	re_step number,
 	re_level number,
-	re2_step number,
-	re2_level number,
 	ref number,
 	ip varchar2(255),
 	category varchar2(255)
 );
 select * from cboard;
 --------------------------------------------------------------------------------
---Á·º¸
+--ï¿½ï¿½ï¿½ï¿½
 create table traBoard (
 	bnum number primary key,
 	title varchar2(50) ,
@@ -187,7 +185,7 @@ create table traBoard (
 );
 select * from traBoard;
 --------------------------------------------------------------------------------
---ÀåÅÍ
+--ï¿½ï¿½ï¿½ï¿½
 create table maBoard(
 bnum number primary key,
 title varchar2(20),
@@ -204,48 +202,48 @@ ip varchar2(20),
 ref number,
 category varchar2(20)
 );
-select * from maBaord;
+select * from maBoard;
 --------------------------------------------------------------------------------
---ÀÚÀ¯°Ô½ÃÆÇ ¸®ÇÃ
+--ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create table fReplyComment(
 reply_code number primary key,
 bnum number,
 re_step number,
 re_level number,
 content varchar2(255),
-writer varchar2(20), --Ãß°¡
+writer varchar2(20), --ï¿½ß°ï¿½
 r_date date not null
 );
 select * from fReplyComment;
-drop table fReplyComment;
+--drop table fReplyComment;
 --------------------------------------------------------------------------------
---ÀåÅÍ°Ô½ÃÆÇ ¸®ÇÃ
+--ï¿½ï¿½ï¿½Í°Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create table mReplyComment(
 reply_code number primary key,
 bnum number,
 re_step number,
 re_level number,
 content varchar2(255),
-writer varchar2(20), --Ãß°¡
+writer varchar2(20), --ï¿½ß°ï¿½
 r_date date not null
 );
 select * from mReplyComment;
-drop table mReplyComment;
+--drop table mReplyComment;
 --------------------------------------------------------------------------------
---Á·º¸°Ô½ÃÆÇ ¸®ÇÃ 5¿ù 6ÀÏ ¼öÁ¤ writer¸¦ Ãß°¡
+--ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 5ï¿½ï¿½ 6ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ writerï¿½ï¿½ ï¿½ß°ï¿½
 create table tReplyComment(
 reply_code number primary key,
 bnum number,
 re_step number,
 re_level number,
 content varchar2(255),
-writer varchar2(20), --Ãß°¡
+writer varchar2(20), --ï¿½ß°ï¿½
 r_date date not null
 );
 select * from tReplyComment;
 --drop table tReplyComment;
 --------------------------------------------------------------------------------
---counsel°Ô½ÃÆÇ ¸®ÇÃ
+--counselï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create table cReplyComment(
 reply_code number primary key,
 bnum number,
@@ -258,7 +256,7 @@ r_date date not null
 select * from CREPLYCOMMENT;
 --drop table CREPLYCOMMENT;
 --------------------------------------------------------------------------------
---Q&A°Ô½ÃÆÇ ¸®ÇÃ
+--Q&Aï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create table qReplyComment(
 reply_code number primary key,
 bnum number,

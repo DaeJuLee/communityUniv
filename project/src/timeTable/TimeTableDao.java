@@ -201,6 +201,8 @@ public class TimeTableDao {
 		int result = 0;
 		String sday = "";
 		String stime = "";
+		String professorname = "";
+		String subjectname = "";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -254,16 +256,15 @@ public class TimeTableDao {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				for (int i = 0; i < week.length; i++) {
-					if (rs.getString(week[i]) != null) {
-						result = 2;// 등록한 과목이 있습니다.
-						break;
-					}
-					if (result == 2) {
-						break;
-					}
+				System.out.println("------------- 요일 null?" + rs.getString(sday));
+				if(rs.getString(sday) != null){
+					result = 2;
+				}else{
+					result = 1;
 				}
 			}
+			System.out.println("************result 내가 보고있는데 : " + result);
+			System.out.println("*****************과목 들오오냐? " + subjectList);
 			pstmt.close();
 
 			pstmt = conn.prepareStatement(sqlWeboutputSelect);
@@ -303,6 +304,12 @@ public class TimeTableDao {
 			String sqlWeboutputUpdate = "update weboutput set " +sday+ " = ? where time = ?";
 			System.out.println("weboutput에 겹치는 과목이 있는지 체크");
 			System.out.println(sqlWeboutputUpdate);
+			//-------------------------------------------------------
+			//과목이름 추출
+			subjectname = subjectName(subjectList);
+			//교수이름 추출
+			professorname = professorName(subjectList);
+			//-------------------------------------------------------
 			// 과목 등록하기
 			if (result == 1) {
 				pstmt = conn.prepareStatement(sqlWeboutputUpdate);
@@ -313,15 +320,15 @@ public class TimeTableDao {
 				pstmt.executeQuery();
 				pstmt.close();
 				pstmt = conn.prepareStatement(sqlWeboutputUpdate);
-				pstmt.setString(1, subjectList);
-				pstmt.setString(2, stime + 1);
-				System.out.println("stime : " + stime+1);
+				pstmt.setString(1, subjectname);
+				pstmt.setString(2, String.valueOf(Integer.parseInt(stime)+1));
+				System.out.println("stime : " + String.valueOf(Integer.parseInt(stime)+1));
 				pstmt.executeQuery();
 				pstmt.close();
 				pstmt = conn.prepareStatement(sqlWeboutputUpdate);
-				pstmt.setString(1, subjectList);
-				pstmt.setString(2, stime + 2);
-				System.out.println("stime : " + stime+2);
+				pstmt.setString(1, professorname);
+				pstmt.setString(2, String.valueOf(Integer.parseInt(stime)+2));
+				System.out.println("stime : " + String.valueOf(Integer.parseInt(stime)+2));
 				pstmt.executeQuery();
 				pstmt.close();
 			}
@@ -380,5 +387,69 @@ public class TimeTableDao {
 		}
 		return list;
 	}
+	
+	public String professorName(String scode) throws SQLException{
+		String professor="";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String pcode = "";
+		String sqlSelectpcode = "select pcode from subject where scode = ?";
+		String sqlSelectpname = "select pname from professor where pcode = ?";
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sqlSelectpcode);
+			pstmt.setString(1, scode);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				pcode = rs.getString("pcode");
+			}
+			pstmt.close();
+			
+			pstmt = conn.prepareStatement(sqlSelectpname);
+			pstmt.setString(1, pcode);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				professor = rs.getString("pname");
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		return professor;
+	}
 
+	public String subjectName(String scode) throws SQLException{
+		String sname="";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select sname from subject where scode = ?";
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, scode);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				sname = rs.getString("sname");
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		return sname;
+	}
+	
 }
