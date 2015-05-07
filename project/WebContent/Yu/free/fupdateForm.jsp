@@ -60,9 +60,9 @@
 					</tr>
 					<tr>
 						<th scope="row">내용</th>
-						<td><textarea rows="10" cols="40" name="content"
+						<td><textarea rows="10" cols="30" name="content"
 								required="required" class="intTy"
-								style="width: 165px; height: 100px;"><%=board.getContent()%></textarea></td>
+								style="width:465px; height:100px;";"><%=board.getContent()%></textarea></td>
 					</tr>
 					</tbody>
 				</table>
