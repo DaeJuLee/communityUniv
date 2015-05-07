@@ -1,4 +1,11 @@
---ȸ������
+create table univmember(
+	unum number primary key,
+	uname varchar2(40),
+	major varchar2(40),
+	email varchar2(40)
+);
+select * from UNIVMEMBER;
+--drop table univmember;
 create table member (
 	snum number(10) primary key,
 	name varchar2(20) not null,
