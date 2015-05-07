@@ -78,7 +78,7 @@
 					<%}else if(id.equals("admin") || id == "admin"){ %>
 					<legend><%=writer %>님 반갑습니다.</legend>
 					<ul class="help">
-						<li class="first"><a href="#">마이페이지</a></li>
+						<li class="first"><a href="homeMainPage.jsp?pgm=../hyun/memberInfo.jsp">마이페이지</a></li>
 						<li><a href="homeMainPage.jsp?pgm=../hyun/memberList.jsp">회원관리</a></li>
 						<li><a href="../sessionLogout.jsp">로그아웃</a></li>
 						<li><input type = "button" onclick = "location.href='../sessionLogout.jsp'"
