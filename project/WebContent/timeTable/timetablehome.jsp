@@ -1,8 +1,9 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="timeTable.TimeTable"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="timeTable.*"%>
+<%@ include file="../memberCheck.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -38,11 +39,11 @@
 <body onload="initPage()">
 
 	<%
-		List<Subject> list = new ArrayList<Subject>();
-		List<TimeTable> listTable = new ArrayList<TimeTable>();
+		List<Subject> list = new ArrayList<Subject>();//과목 조회 리스트
+		List<weboutput> listTable = new ArrayList<weboutput>();//시간표 출력 리스트
 		String sname = request.getParameter("sname");//과목이름
 		String scategory = request.getParameter("scategory");//Subject의 DTO scategory
-		String subjectList = request.getParameter("subjectList");
+		String subjectList = request.getParameter("subjectList"); 
 		Subject subject = new Subject();
 		TimeTableDao ttd = TimeTableDao.getInstance();
 		out.println("sname : " + sname); //console창에 띄우기
@@ -115,7 +116,7 @@
 						out.println("<li>" + list.get(i).getSname() + "</li>");
 						out.println("<li>" + list.get(i).getStime() + "</li>");
 						out.println("<li>" + list.get(i).getPcode() + "</li>");
-						out.println("</ul></div>");
+						out.println("</ul></div></option>");
 					}
 					out.println("</select></td></tr>");
 				}
@@ -125,7 +126,34 @@
 	</form>
 	
 	<table>
-		
+		<%
+			ttd.insertTable(subjectList, writer); //과목리스트 삽입
+			listTable = ttd.selectTable(writer); //시간표들 조회
+		%>
+		<tr>
+			<th>시간</th>
+			<th>월</th>
+			<th>화</th>
+			<th>수</th>
+			<th>목</th>
+			<th>금</th>
+			<th>토</th>
+		</tr>
+		<%
+			if(listTable.size() == 0){
+				out.print("<tr><td>아직 시간표를 등록하지 않으셨습니다.</td></tr>");
+			}else{
+				for(int i = 0; i <= 11 ; i++){
+					out.print("<tr><td>" + listTable.get(i).getTime() + "</td>");
+					out.print("<td>" + listTable.get(i).getMon() + "</td>");
+					out.print("<td>" + listTable.get(i).getThu() + "</td>");
+					out.print("<td>" + listTable.get(i).getWed() + "</td>");
+					out.print("<td>" + listTable.get(i).getTues() + "</td>");
+					out.print("<td>" + listTable.get(i).getFri() + "</td>");
+					out.print("<td>" + listTable.get(i).getSat() + "</td></tr>");
+				}
+			}
+		%>
 	</table>
 </body>
 </html>

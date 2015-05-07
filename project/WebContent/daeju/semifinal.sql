@@ -36,20 +36,22 @@ create table professor (
 );
 select * from professor;
 --------------------------------------------------------------------------------
---과목테이블
+--과목테이블 엑셀 집어넣기 성공
 create table subject(
-	scode varchar2(20) primary key, --scode = 시간 + 요일 +교수코드
-	sname varchar2(20) not null,
+	scode varchar2(20), --scode = 시간 + 요일 +교수코드
+	sname varchar2(40) not null,
 	stime varchar2(15) not null,
 	sday varchar2(15) not null, --추가 요일 구별
 	pcode varchar2(10) not null,
 	scategory varchar2(2) --전공, 교양
 );
 select * from subject;
+--drop table subject;
 --------------------------------------------------------------------------------
 --시간표
 create table timeTable(
 	snum number(10),
+	writer varchar2(10),
 	sub1 varchar2(20),
 	sub2 varchar2(20),
 	sub3 varchar2(20),
@@ -60,9 +62,35 @@ create table timeTable(
 	sub8 varchar2(20),
 	sub9 varchar2(20),
 	sub10 varchar2(20)
-)
+);
 --sub들은 과목코드들이 들어갈 항목
 select * from timeTable;
+drop table timeTable;
+--5월7일 추가
+create table weboutput(
+	time number primary key,
+	mon varchar2(20),
+	thu varchar2(20),
+	wed varchar2(20),
+	tues varchar2(20),
+	fri varchar2(20),
+	sat varchar2(20)
+);
+select * from weboutput;
+--insert into weboutput(time) values(1);
+--insert into weboutput(time) values(2);
+--insert into weboutput(time) values(3);
+--insert into weboutput(time) values(4);
+--insert into weboutput(time) values(5);
+--insert into weboutput(time) values(6);
+--insert into weboutput(time) values(7);
+--insert into weboutput(time) values(8);
+--insert into weboutput(time) values(9);
+--insert into weboutput(time) values(10);
+--insert into weboutput(time) values(11);
+--insert into weboutput(time) values(12);
+--drop table weboutput;
+insert into weboutput(mon) values('mon') where time = 1;
 --------------------------------------------------------------------------------
 --자유게시판-
 create table fboard (
@@ -159,7 +187,24 @@ create table traBoard (
 );
 select * from traBoard;
 --------------------------------------------------------------------------------
---maBoard?
+--장터
+create table maBoard(
+bnum number primary key,
+title varchar2(20),
+s_date date,
+writer varchar2(10),
+content varchar2(200),
+hits number,
+bpass varchar2(20),
+fileName varchar2(20),
+fileSize varchar2(20),
+re2_step number,
+re2_level number,
+ip varchar2(20),
+ref number,
+category varchar2(20)
+);
+select * from maBaord;
 --------------------------------------------------------------------------------
 --자유게시판 리플
 create table fReplyComment(
