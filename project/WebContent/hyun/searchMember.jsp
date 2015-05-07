@@ -14,7 +14,6 @@
 			action="../combinePage/homeMainPage.jsp" name="frmSearchId">
 			<input type="hidden" name = "pgm" value="../hyun/searchPro.jsp">
 			<div class="contents">
-
 				<table class="tbTy1 dataLeft">
 					<tbody>
 					<colgroup>
@@ -22,15 +21,15 @@
 						<col width="70%">
 					</colgroup>
 					<tr>
-						<th>이름</th>
+						<th scope = "row">이름</th>
 						<td><input type="text" name="name"></td>
 					</tr>
 					<tr>
-						<th>학번</th>
+						<th  scope = "row">학번</th>
 						<td><input type="text" name="snum"></td>
 					</tr>
 					<tr>
-						<th>이메일</th>
+						<th scope = "row">이메일</th>
 						<td><input type="text" name="email"></td>
 					</tr>
 				</table>
@@ -60,16 +59,16 @@
 						<col width="70%">
 					</colgroup>
 					<tr>
-						<th>id</th>
+						<th scope = "row">id</th>
 						<td><input type="text" name="id"></td>
 					</tr>
 
 					<tr>
-						<th>학번</th>
+						<th scope = "row">학번</th>
 						<td><input type="text" name="snum"></td>
 					</tr>
 					<tr>
-						<th>이메일</th>
+						<th scope = "row">이메일</th>
 						<td><input type="text" name="email" value=""></td>
 					</tr>
 				</table>
