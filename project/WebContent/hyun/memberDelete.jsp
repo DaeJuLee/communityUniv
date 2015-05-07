@@ -15,13 +15,19 @@
 		int result = md.deleteM(id);
 
 		if (result > 0) {
-			response.sendRedirect("memberList.jsp");
+			//response.sendRedirect("homeMainPage.jsp?pgm=../hyun/memberList.jsp");
+	%>
+	<script type="text/javascript">
+		alert("삭제되었습니다.");
+		location.href = "../combinePage/homeMainPage.jsp?pgm=../hyun/memberList.jsp";
+	</script>
 
+	<%
 		} else {
 	%>
 	<script type="text/javascript">
 		alert("삭제할 수 없습니다.");
-		Location.href = "memberList.jsp";
+		location.href = "../combinePage/homeMainPage.jsp?pgm=../hyun/memberList.jsp";
 	</script>
 	<%
 		}
