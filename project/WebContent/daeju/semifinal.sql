@@ -226,6 +226,7 @@ bnum number,
 re_step number,
 re_level number,
 content varchar2(255),
+writer varchar2(20), --Ãß°¡
 r_date date not null
 );
 select * from mReplyComment;
