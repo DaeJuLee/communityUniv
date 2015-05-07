@@ -54,11 +54,11 @@
 						<%
 						if (bnum > 0) {
 						%> 
-							<input type="text" name="title" value="[답변] " required="required" class="intTy" style="width:88%;"> 
+							<input type="text" name="title" value="[답변] " required="required" class="intTy" style="width:88%;" maxlength="50"> 
 						<%
  						} else {
 						%> 
-						 <input type="text" name="title" required="required" class="intTy" style="width:88%;"> 
+						 <input type="text" name="title" required="required" class="intTy" style="width:88%;" maxlength="50"> 
 						<%
  						}
  						%>
@@ -69,8 +69,8 @@
 				<td><input type = "hidden"  name = "writer"  value="<%=writer %>"><%=writer %></td>
 			</tr>
 			<tr>
-				<th scope="row">암호</th>
-				<td><input type="password" name="bpass" required="required" class="intTy" style="width:88%;"></td>
+				<th scope="row">비밀번호</th>
+				<td><input type="password" name="bpass" required="required" class="intTy" style="width:88%;" maxlength="10"></td>
 			</tr>
 			<tr>
 				<th scope="row">내용</th>

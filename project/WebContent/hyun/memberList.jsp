@@ -6,7 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원 명단</title>
-<link rel="stylesheet" type="text/css" href="../combinePage/homeMainPage.css">
+<link rel="stylesheet" type="text/css"
+	href="../combinePage/homeMainPage.css">
 </head>
 <body>
 
@@ -56,7 +57,7 @@
 						int endRow = startRow + pageSize - 1;
 						int startNum = totCnt - startRow + 1;
 
-						List<Member> list = md.list(startRow,endRow);
+						List<Member> list = md.list(startRow, endRow);
 
 						if (list == null) {
 							out.println("회원 정보가 없습니다.");
@@ -76,8 +77,11 @@
 							<%=list.get(i).getJibeon()%> <%=list.get(i).getAddr()%></td>
 						<%-- 			<td width="8%" align="center"><%=list.get(i).getGrade()%></td> --%>
 						<%-- 	<td width="8%" align="center"><a href="memberUpdate.jsp?id=<%=list.get(i).getId()%>">수정</a></td> --%>
-						<td width="5%" align="center"><a
-							href="memberDelete.jsp?id=<%=list.get(i).getId()%>">삭제</a></td>
+						<td width="5%" align="center">
+						<%-- <a	href="homeMainPage.jsp?pgm=../hyun/memberDelete.jsp?id=<%=list.get(i).getId()%>"> --%>
+						<a onclick ="return confirm('삭제하시겠습니까?')" href ="homeMainPage.jsp?pgm=../hyun/memberDelete.jsp?id=<%=list.get(i).getId()%>" >
+						삭제</a></td>
+
 					</tr>
 					<%
 						}
@@ -102,8 +106,8 @@
 					}
 
 					for (int i = startPage; i <= endPage; i++) {
-						out.println("<a href='homeMainPage.jsp?pgm=../hyun/memberList.jsp?pageNum=" + i + "'>[" + i
-								+ "]</a>");
+						out.println("<a href='homeMainPage.jsp?pgm=../hyun/memberList.jsp?pageNum="
+								+ i + "'>[" + i + "]</a>");
 					}
 
 					if (endPage < pageCnt) {

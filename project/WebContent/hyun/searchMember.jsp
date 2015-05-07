@@ -10,9 +10,10 @@
 <body>
 	<div class="columnMain">
 		<h2>아이디 찾기</h2>
-		<form action="searchPro.jsp" name="frmSearchId">
+		<form
+			action="../combinePage/homeMainPage.jsp" name="frmSearchId">
+			<input type="hidden" name = "pgm" value="../hyun/searchPro.jsp">
 			<div class="contents">
-
 				<table class="tbTy1 dataLeft">
 					<tbody>
 					<colgroup>
@@ -20,15 +21,15 @@
 						<col width="70%">
 					</colgroup>
 					<tr>
-						<th>이름</th>
+						<th scope = "row">이름</th>
 						<td><input type="text" name="name"></td>
 					</tr>
 					<tr>
-						<th>학번</th>
+						<th  scope = "row">학번</th>
 						<td><input type="text" name="snum"></td>
 					</tr>
 					<tr>
-						<th>이메일</th>
+						<th scope = "row">이메일</th>
 						<td><input type="text" name="email"></td>
 					</tr>
 				</table>
@@ -36,17 +37,19 @@
 					<span class="btnR"> <input type="hidden" name="id" value="">
 						<input type="submit" value="확인" class="btnTy3"> <input
 						type="button" name="idS" class="btnTy2"
-						onclick="location.href='../conbinePage/homeMainPage.jsp'"
+						onclick="location.href='../combinePage/homeMainPage.jsp'"
 						value="취소">
 
 					</span>
 				</div>
 			</div>
+		</form>
 	</div>
-	</form>
+
 	<div class="columnMain">
 		<h2>비밀번호 찾기</h2>
-		<form action="searchPro.jsp" name="frmSearchPw">
+		<form action="../combinePage/homeMainPage.jsp" name="frmSearchPw">
+		<input type = "hidden" name = "pgm" value="../hyun/searchPro.jsp">
 			<div class="contents">
 
 				<table class="tbTy1 dataLeft">
@@ -56,16 +59,16 @@
 						<col width="70%">
 					</colgroup>
 					<tr>
-						<th>id</th>
+						<th scope = "row">id</th>
 						<td><input type="text" name="id"></td>
 					</tr>
 
 					<tr>
-						<th>학번</th>
+						<th scope = "row">학번</th>
 						<td><input type="text" name="snum"></td>
 					</tr>
 					<tr>
-						<th>이메일</th>
+						<th scope = "row">이메일</th>
 						<td><input type="text" name="email" value=""></td>
 					</tr>
 				</table>
@@ -74,13 +77,14 @@
 				<div class="btnArea">
 					<span class="btnR"> <input type="submit" class="btnTy3"
 						value="확인"> <input type="button" name="pwS" class="btnTy2"
-						onclick="location.href='../conbinePage/homeMainPage.jsp'"
+						onclick="location.href='../combinePage/homeMainPage.jsp'"
 						value="취소">
 
 					</span>
 				</div>
 			</div>
+		</form>
 	</div>
-	</form>
+
 </body>
 </html>

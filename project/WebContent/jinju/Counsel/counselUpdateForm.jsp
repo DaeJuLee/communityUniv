@@ -57,7 +57,7 @@
 			</tr>
 			<tr>
 				<th scope="row">작성자</th>
-				<td><input type="text" name="writer" required="required" class="intTy" style="width:88%;" value="<%=cboard.getWriter()%>"></td>
+				<td><input type="hidden" name="writer" required="required" class="intTy" style="width:88%;" value="<%=cboard.getWriter()%>"><%=cboard.getWriter()%></td>
 			</tr>
 			<tr>
 				<th scope="row">암호</th>

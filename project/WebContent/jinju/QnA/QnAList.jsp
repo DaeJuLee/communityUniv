@@ -149,11 +149,11 @@
 			
 		</div>
 
-		<p class="search">
+<!-- 		<p class="search">
 			<input type="text" class="intTy" style="width: 126px"> <a
 				href="#none" class="btnTy3">검색</a>
-			<!-- 여기를 어디로 연결해야함  -->
-		</p>
+			여기를 어디로 연결해야함 
+		</p> -->
 		<%
 			}//else 끝 문장
 		%>

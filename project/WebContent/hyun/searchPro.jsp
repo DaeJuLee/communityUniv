@@ -18,37 +18,38 @@
 
 		MemberDao md = MemberDao.getInstance();
 		String result = md.findMember(id, snum, email, name);
-		out.println("result : " + result + "\t");
-		out.println("id : " + id + "\t");
-		out.println("email : " + email + "\t");
-		if (result != null && (id == null||id.equals(""))) {
+		/* 		out.println("result : " + result + "\t");
+		 out.println("id : " + id + "\t");
+		 out.println("email : " + email + "\t"); */
+		if (result != null && (id == null || id.equals(""))) {
 	%>
 	<script type="text/javascript">
 		 var result ='<%=result%>';
-		 alert(result);
-		 alert("id입니다. 우측상단 확인하세요");
+		 alert("id는 " + result + "입니다.");
+/* 		 alert("id입니다. 우측상단 확인하세요"); */
 		location.href = "../combinePage/homeMainPage.jsp";
 	</script>
 	<%
-		} else if (result != null && ( name == null || name.equals(""))) {
+		} else if (result != null && (name == null || name.equals(""))) {
 	%>
 	<script type="text/javascript">
+		 var result ="<%=result%>";
 		alert("비밀번호는 " + result + "입니다.");
-		location.href ="../combinePage/homeMainPage.jsp";
+		location.href = "../combinePage/homeMainPage.jsp";
 	</script>
 	<%
-		} else if (result == null && ( id == null || id.equals(""))) {
+		} else if (result == null && (id == null || id.equals(""))) {
 	%>
 	<script type="text/javascript">
 		alert("id 찾기를 실패하셨습니다.");
-		location.href = "searchMember.jsp";
+		location.href = "../combinePage/homeMainPage.jsp?pgm=../hyun/searchMember.jsp";
 	</script>
 	<%
-		} else if (result == null && ( name == null || name.equals(""))) {
+		} else if (result == null && (name == null || name.equals(""))) {
 	%>
 	<script type="text/javascript">
 		alert("비밀번호 찾기를 실패하셨습니다.");
-		location.href = "searchMember.jsp";
+		location.href = "../combinePage/homeMainPage.jsp?pgm=../hyun/searchMember.jsp";
 	</script>
 	<%
 		}
