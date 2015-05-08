@@ -156,5 +156,29 @@ public class AdminDao {
 		
 		return result;
 	}
+	public int deleteMaBoard(int bnum) throws SQLException{
+		int result = 0;
+		
+		String sql = "delete from maBoard where bnum=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bnum);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			result = -1;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		
+		return result;
+	}
 	
 }
