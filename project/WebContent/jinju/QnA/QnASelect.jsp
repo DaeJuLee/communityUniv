@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>QnA Select</title>
 
-<link rel="stylesheet" type="text/css" href="../../common.css">
+<!-- <link rel="stylesheet" type="text/css" href="../../common.css"> -->
 
 <script type="text/javascript">
 function chk(){

@@ -25,7 +25,7 @@
 				<input type = "hidden" name = "pgm" value = "../jinju/QnA/QnADeletePro.jsp">
 				글 번호 : <%=bnum %> <p>
 				<input type="hidden" name="bnum" value="<%=bnum%>">
-				암호 : <input type="password" name="bpass">
+				비밀번호 : <input type="password" name="bpass">
 				<input type="submit" value="확인" class="btnTy3">
 			</form>
 		</div>
