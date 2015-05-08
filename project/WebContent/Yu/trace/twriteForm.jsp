@@ -6,6 +6,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>족보게시판 글작성</title>
+<script type="text/javascript">
+function chk(){
+	if(frm.file.value == null || frm.file.value == ''){
+		alert("반드시 파일을 첨부해주세요!!");
+		frm.file.focus();
+		return false;
+	}
+	return true;
+}
+</script>
 </head>
 <body>
 	<div class="columnMain">
@@ -28,7 +38,7 @@
 		%>
 
 		<form action="homeMainPage.jsp?pgm=../Yu/trace/twritePro.jsp"
-			method="post" enctype="multipart/form-data">
+			method="post" enctype="multipart/form-data" name = "frm" onsubmit="return chk()">
 			<input type="hidden" name="writer" value="<%=writer%>"> <input
 				type="hidden" name="bnum" value="<%=bnum%>"> <input
 				type="hidden" name="pageNum" value="<%=pageNum%>">
