@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>시간표 만들기~</title>
+<title>시간표 만들기</title>
 <script type="text/javascript">
 	function initPage() {
 		selectOption.selectHAKKI.value = 1;
@@ -88,7 +88,7 @@ table .haha{
 		<table class = "haha"><tr><td align = "center">
 		<table>
 			<tr height="80px">
-				<td colspan = "2"><h1>과목 찾기 카테고리 설정</h1></td>
+				<td colspan = "2"><h3>과목 찾기 카테고리 설정</h3></td>
 			</tr>
 			<tr height="80px">
 				<td>
@@ -119,7 +119,7 @@ table .haha{
 		</table>
 		</td><td>
 		<table>
-			<tr colspan = "4"><h1>수업 목록</h1> </tr>
+			<tr colspan = "4"><h3>수업 목록</h3> </tr>
 			<tr height="80px"><th width = "80">과목코드</th><th width = "80">과목이름</th>
 				<th width = "80">시간</th><th width = "80">교수코드</th></tr>
 			<%
@@ -169,7 +169,7 @@ table .haha{
 	<table>
 		
 		
-		<tr bgcolor = "orange">
+		<tr bgcolor = "#043b72">
 			<th>시간</th>
 			<th>월</th>
 			<th>화</th>
@@ -180,53 +180,53 @@ table .haha{
 		</tr>
 		<%
 			if(listTable.size() == 0){
-				out.print("<tr><td colspan = '7'>아직 시간표를 등록하지 않으셨습니다.</td></tr>");
+				out.print("<tr><td colspan = '7'>등록된 시간표가 없습니다.</td></tr>");
 			}else{
 				for(int i = 0; i <= 11 ; i++){
 					/* String bgcolor = "#" + "8" + String.valueOf(i) + 
 											String.valueOf(i+5) +  "c" +
 											String.valueOf(i+5) +  "c"; */
-					out.print("<tr><td width = '50' align = 'center' bgcolor = 'pink'>" + listTable.get(i).getTime() + "</td>");
+					out.print("<tr><td width = '50' align = 'center' bgcolor = '#043b72'>" + listTable.get(i).getTime() + "</td>");
 					if(listTable.get(i).getMon() == null || listTable.get(i).getMon().equals("")){
 						out.print("<td width = '130' align = 'center'></td>");
 					}else{
 						//out.print("<td width = '130' align = 'center' bgcolor='" + bgcolor +"'>" 
-						out.print("<td width = '130' align = 'center' bgcolor='" + "green" +"'>" 
+						out.print("<td width = '130' align = 'center' bgcolor='" + "#fff" +"'>" 
 						+ listTable.get(i).getMon() + "</td>");
 					}//월요일
 					if(listTable.get(i).getThu() == null || listTable.get(i).getThu().equals("")){
 						out.print("<td width = '130' align = 'center'></td>");
 					}else{
 						//out.print("<td width = '130' align = 'center' bgcolor='" + bgcolor +"'>" 
-						out.print("<td width = '130' align = 'center' bgcolor='" + "green" +"'>" 
+						out.print("<td width = '130' align = 'center' bgcolor='" + "#fff" +"'>" 
 					    + listTable.get(i).getThu() + "</td>");
 					}//화요일
 					if(listTable.get(i).getWed() == null || listTable.get(i).getWed().equals("")){
 						out.print("<td width = '130' align = 'center'></td>");
 					}else{
 						//out.print("<td width = '130' align = 'center' bgcolor='" + bgcolor +"'>" 
-						out.print("<td width = '130' align = 'center' bgcolor='" + "green" +"'>" 
+						out.print("<td width = '130' align = 'center' bgcolor='" + "#fff" +"'>" 
 						+ listTable.get(i).getWed() + "</td>");
 					}//수요일
 					if(listTable.get(i).getTues() == null || listTable.get(i).getTues().equals("")){
 						out.print("<td width = '130' align = 'center'></td>");
 					}else{
 						//out.print("<td width = '130' align = 'center' bgcolor='" + bgcolor +"'>" 
-						out.print("<td width = '130' align = 'center' bgcolor='" + "green" +"'>" 
+						out.print("<td width = '130' align = 'center' bgcolor='" + "#fff" +"'>" 
 						+ listTable.get(i).getTues() + "</td>");
 					}//목요일
 					if(listTable.get(i).getFri() == null || listTable.get(i).getFri().equals("")){
 						out.print("<td width = '130' align = 'center'></td>");
 					}else{
 						//out.print("<td width = '130' align = 'center' bgcolor='" + bgcolor +"'>" 
-						out.print("<td width = '130' align = 'center' bgcolor='" + "green" +"'>" 
+						out.print("<td width = '130' align = 'center' bgcolor='" + "#fff" +"'>" 
 						+ listTable.get(i).getFri() + "</td>");
 					}//금요일
 					if(listTable.get(i).getSat() == null || listTable.get(i).getSat().equals("")){
 						out.print("<td width = '130' align = 'center'></td>");
 					}else{
 						//out.print("<td width = '130' align = 'center' bgcolor='" + bgcolor +"'>" 
-						out.print("<td width = '130' align = 'center' bgcolor='" + "green" +"'>" 
+						out.print("<td width = '130' align = 'center' bgcolor='" + "#fff" +"'>" 
 						+ listTable.get(i).getSat() + "</td>");
 					}//토요일
 					
