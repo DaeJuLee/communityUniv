@@ -77,8 +77,9 @@
 </head>
 <body>
 
-	<form action="memberJoinPro.jsp" method="post" name="frm"
+	<form action="../combinePage/homeMainPage.jsp" method="post" name="frm"
 		onsubmit="return passchk()">
+		<input type = "hidden" name = "pgm" value = "../hyun/memberJoinPro.jsp">
 		<div class="columnMain">
 			<h2>회원가입</h2>
 			<div class="contents">

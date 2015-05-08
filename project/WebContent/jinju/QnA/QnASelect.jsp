@@ -103,40 +103,33 @@ function chk(){
 		</table>
 	</form>
 	<div class = "contents">
-	<table class="tbTy1 detaLeft">
+	<!-- <table class="tbTy1 detaLeft"> -->
+	<table>
 		<%
 			/* replyResult = cbd.inputRipple(bnum); */
 			QnAList = qbd.listRippleSelect(bnum);
 			for(int i = 0 ; i < QnAList.size(); i++){
 				int width = QnAList.get(i).getRe_level() * 10;
 				
-				out.println("<tr><td> 작성자 :" + QnAList.get(i).getWriter() + "</td>");
-				out.println("<td> 날짜 : " + QnAList.get(i).getR_date() + "</td>");
+				out.println("<tr><td width = '150' height = '30'> 작성자 :" + QnAList.get(i).getWriter() + "</td>");
+				out.println("<td width = '1000'> 날짜 : " + QnAList.get(i).getR_date() + "</td>");
 				
 				if(writer.equals(QnAList.get(i).getWriter())){
 					out.println("<td> <input type = 'button' value = '수정'"+
-							"onclick = location.href='homeMainPage.jsp?pgm=../jinju/CounselReply/counselUpdateReply.jsp?bnum=" +
+							"onclick = location.href='homeMainPage.jsp?pgm=../jinju/QnAReply/QnAUpdateReply.jsp?bnum=" +
 							bnum + "&pageNum=" + pageNum + "&re_step=" + QnAList.get(i).getRe_step() + 
-							"'></td></tr>");
-				}else{
-					//out.println("<td>"+writer+"는 get출력을 하는" + replyList.get(i).getWriter() +"와 같냐?</td></tr>");
-					out.println("<td>"+writer+","+QnAList.get(i).getWriter()+"</td></tr>");
-				}
-				out.println("<tr><td colspan = '2'>" + QnAList.get(i).getContent() + "</td>");
-				if(writer.equals(QnAList.get(i).getWriter())){
+							"'></td>");
 					out.println("<td> <input type = 'button' value = '삭제'"+
-							"onclick = location.href='homeMainPage.jsp?pgm=../jinju/CounselReply/counselDeleteReplyPro.jsp?bnum=" +
+							"onclick = location.href='homeMainPage.jsp?pgm=../jinju/QnAReply/QnADeleteReplyPro.jsp?bnum=" +
 							bnum + "&pageNum=" + pageNum + "&re_step=" + QnAList.get(i).getRe_step() + 
 							"'></td></tr>");
 				}else{
-					out.println("<td></td></tr>");
+					out.println("<td colspan='2' width ='10%' height = '30'align = 'right'>"+
+							"<img src='http://static.naver.com/common/comment/btn_report.gif' width='60' height='25'>"+
+							"</td></tr>");
 				}
-				
+				out.println("<tr><td colspan = '4'><legend>" + QnAList.get(i).getContent() + "</legend></td>");
 				out.println("</tr>");
-				/* if (replyList.get(i).getRe_level() > 0) {
-					out.println("<img src='images/level.gif' width="
-							+ width + ">" + "<img src='images/re.gif'>");
-				} */
 			}
 		%>
 	</table>

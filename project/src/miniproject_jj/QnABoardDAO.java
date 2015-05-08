@@ -345,7 +345,7 @@ public class QnABoardDAO {
 			pstmt.setInt(1, number);
 			pstmt.setInt(2, qrb.getBnum());
 			pstmt.setInt(3, qrb.getRe_step());
-			pstmt.setString(4, toKor(qrb.getContent()));
+			pstmt.setString(4, qrb.getContent());//toKor없앰
 			pstmt.setString(5, toKor(qrb.getWriter()));
 			result = pstmt.executeUpdate();
 

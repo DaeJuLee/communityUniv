@@ -19,7 +19,6 @@
 	<script type="text/javascript">
 		alert("댓글삭제  성공");
 		location.href = "homeMainPage.jsp?pgm=../Yu/free/fContent.jsp?bnum=" + <%=bnum%> + "&pageNum="+ <%=pageNum%>;
-		histroy.back();
 	</script>
 	<%
 		} else {

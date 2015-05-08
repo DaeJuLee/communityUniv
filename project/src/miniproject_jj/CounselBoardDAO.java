@@ -358,12 +358,12 @@ public class CounselBoardDAO {
 			pstmt.setInt(1, number);
 			pstmt.setInt(2, crb.getBnum());
 			pstmt.setInt(3, crb.getRe_step());
-			pstmt.setString(4, toKor(crb.getContent()));
+			pstmt.setString(4, crb.getContent());//toKor없앰...
 			pstmt.setString(5, toKor(crb.getWriter()));
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println("error占쏙옙 占쏙옙占신억옙??? ");
+			System.out.println("error");
 			System.out.println(e.getMessage());
 		} finally {
 			if (rs != null)
