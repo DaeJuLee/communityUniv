@@ -73,6 +73,10 @@ function chk(){
 			<td><pre><%=qboard.getContent()%></pre></td>
 		</tr>
 	</table>
+	
+	<% 
+		if(writer.equals(qboard.getWriter())){
+	%>
 
 	<div class="btnArea">
 		<span class="btnR">
@@ -82,6 +86,14 @@ function chk(){
 			<input type="button" value="답변작성" class="btnTy2" onclick="location.href='homeMainPage.jsp?pgm=../jinju/QnA/QnAWriteForm.jsp?bnum=<%=qboard.getBnum()%>&pageNum=<%=pageNum%>'">
 		</span>
 	</div>
+	
+	<%
+		}else{
+	%>
+	
+	<%
+		}
+	%>
 
 	<form action = "homeMainPage.jsp" name = "frm" method = "get" onsubmit = "return chk()">
 		<!-- 위에  name => bnum과 pageNum 두개의 값을 정해놨다.action을 취하면 값이 넘어간다. -->

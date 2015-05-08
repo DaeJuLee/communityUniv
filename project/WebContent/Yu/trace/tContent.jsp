@@ -70,6 +70,9 @@
 					<td><a href = "../Yu/trace/filedown.jsp?fileName=<%=fileName%>"><%=fileName%></td>
 				</tr>
 				</table>
+				<% 
+					if(writer.equals(tboard.getWriter())){
+				%>
 				<div class="btnArea">
 					<span class="btnR"> <input type="button" value="수정" class = "btnTy3"
 						onclick="location.href='homeMainPage.jsp?pgm=../Yu/trace/tupdateForm.jsp?bnum=<%=tboard.getBnum()%>&pageNum=<%=pageNum%>'">
@@ -79,6 +82,13 @@
 						onclick="location.href='homeMainPage.jsp?pgm=../Yu/trace/traceList.jsp?pageNum=<%=pageNum%>'">
 					</span>
 				</div>
+				<%
+					} else{
+				%>
+				
+				<%
+					}
+				%>
 		<form action="homeMainPage.jsp" name="frm" method="get"
 				onsubmit="return chk()">
 		<table class="tbTy1 detaLeft">

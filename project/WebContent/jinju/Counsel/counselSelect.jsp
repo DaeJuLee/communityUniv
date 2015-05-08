@@ -73,7 +73,9 @@
 					<td><pre><%=cboard.getContent()%></pre></td>
 				</tr>
 			</table>
-
+			<% 
+				if(writer.equals(cboard.getWriter())){
+			%>
 			<div class="btnArea">
 				<span class="btnR"> <input type="button" class="btnTy3"
 					value="수정"
@@ -86,7 +88,13 @@
 					onclick="location.href='homeMainPage.jsp?pgm=../jinju/Counsel/counselList.jsp?pageNum=<%=pageNum%>'">
 				</span>
 			</div>
-
+			<%
+				}else{
+			%>
+			
+			<%
+				}	
+			%>
 			<!-- <form action="homeMainPage.jsp?pgm=../CounselReply/counselSelectReplyPro.jsp" name="frm" method="get" onsubmit="return chk()"> -->
 			<form action="homeMainPage.jsp" name="frm" method="get"
 				onsubmit="return chk()">

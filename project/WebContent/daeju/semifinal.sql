@@ -11,7 +11,7 @@ create table member (
 	name varchar2(20) not null,
 	id varchar2(10) not null,
 	pass varchar2(14) not null,
-	writer varchar2(10) not null,
+	writer varchar2(40) not null,
 	post1 number,
 	post2 number,
 	addr varchar2(250),

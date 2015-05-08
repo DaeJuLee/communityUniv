@@ -50,10 +50,20 @@ h2 {text-align: center;}
 			<td colspan="2" height="500px" valign="top"><%=mboard.getContent()%></td>
 		</tr>
 		<tr>
+		<% 
+			if(writer.equals(mboard.getWriter())){
+		%>
 			<td colspan="2">
 			<input type="button" value="수정" onclick="location.href='homeMainPage.jsp?pgm=../Yu/market/mupdateForm.jsp?bnum=<%=mboard.getBnum()%>&pageNum=<%=pageNum%>'">
 			<input type="button" value="삭제" onclick="location.href='homeMainPage.jsp?pgm=../Yu/market/mdeleteForm.jsp?bnum=<%=mboard.getBnum()%>'">
 			<input type="button" value="목록" onclick="location.href='homeMainPage.jsp?pgm=../Yu/market/maList.jsp?pageNum=<%=pageNum%>'"></td>
+		<%
+			}else{
+		%>
+		
+		<%
+			}
+		%>
 		</tr></table>
 		<form action="homeMainPage.jsp" name="frm" method="get" onsubmit="return chk()">
 		<table>
