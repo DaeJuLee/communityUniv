@@ -88,7 +88,7 @@ public class MaBoardDao {
 			pstmt.setInt(5, mboard.getHits());
 			pstmt.setString(6, mboard.getBpass());
 			pstmt.setString(7, mboard.getFileName());
-			//System.out.println("���� �̸� : " +  mboard.getFileName());
+			//System.out.println("占쏙옙占쏙옙 占싱몌옙 : " +  mboard.getFileName());
 			pstmt.setInt(8, mboard.getFileSize());
 			pstmt.setInt(9, mboard.getRe2_step());
 			pstmt.setInt(10, mboard.getRe2_level());
@@ -166,7 +166,7 @@ public class MaBoardDao {
 			pstmt.setString(4, mboard.getBpass());
 			pstmt.setString(5, mboard.getCategory());
 			pstmt.setInt(6, mboard.getBnum());
-			
+			System.out.println("writer dao" + mboard.getWriter());
 			result = pstmt.executeUpdate();
 			System.out.println("result : "+ result);
 		} catch(Exception e) {	System.out.println(e.getMessage()); 
@@ -235,7 +235,7 @@ public class MaBoardDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				MaReplyBoard mboard = new MaReplyBoard();
-				mboard.setBnum(boardNum);// 占쏙옙占썩가 틀占싫놂옙..占싻ㅿ옙
+				mboard.setBnum(boardNum);// �뜝�룞�삕�뜝�뜦媛� ���뜝�떕�냲�삕..�뜝�떩�끏�삕
 				mboard.setRe_step(rs.getInt("re_step"));
 				mboard.setRe_level(rs.getInt("re_level"));
 				mboard.setContent(rs.getString("content"));
@@ -256,7 +256,7 @@ public class MaBoardDao {
 		}
 		return list;
 	}
-	// 占쏙옙榜占쌜댐옙占� 占쏙옙占쏙옙 占싹댐옙 占쏙옙!! mine 占쏙옙占쏙옙
+	// �뜝�룞�삕礖쒎뜝�뙗�뙋�삕�뜝占� �뜝�룞�삕�뜝�룞�삕 �뜝�떦�뙋�삕 �뜝�룞�삕!! mine �뜝�룞�삕�뜝�룞�삕
 	public int insertReply(MaReplyBoard mb) throws SQLException {
 		int result = 0;
 		Connection conn = null;
@@ -275,13 +275,13 @@ public class MaBoardDao {
 			pstmt.close();
 			mb.setRe_step(mb.getRe_step() + 1);
 			pstmt = conn.prepareStatement(sql1);
-			//primary key占쏙옙 1占쏙옙 占쏙옙占쏙옙
+			//primary key�뜝�룞�삕 1�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 			rs = pstmt.executeQuery();
 			rs.next();
 			int number = rs.getInt(1) + 1;
 			rs.close();
 			pstmt.close();
-			//insert占쏙옙占쏙옙 占쏙옙占쏙옙占싹댐옙 占쏙옙
+			//insert�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�뜝�떦�뙋�삕 �뜝�룞�삕
 			pstmt = conn.prepareStatement(sql2);
 			pstmt.setInt(1, number);
 			pstmt.setInt(2, mb.getBnum());

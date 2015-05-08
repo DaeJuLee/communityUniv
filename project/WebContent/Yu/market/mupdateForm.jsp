@@ -50,7 +50,7 @@
 					</tr>
 					<tr>
 						<th scope="row">작성자</th>
-						<td><%=mboard.getWriter()%></td>
+						<td><input type="hidden"  name="writer" value = "<%=mboard.getWriter()%>"><%=mboard.getWriter()%></td>
 					</tr>
 					<tr>
 						<th scope="row">비밀번호</th>
