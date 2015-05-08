@@ -49,7 +49,7 @@
 			document.frm.id.focus();
 			return false;
 		}
-		url = "confirmId.jsp?id=" + id;
+		url = "../hyun/confirmId.jsp?id=" + id;
 		window.open(url, "IDCheck", "width=300,height=150");
 	}
 
@@ -59,7 +59,7 @@
 			document.frm.snum.focus();
 			return false;
 		}
-		url = "confirmSnum.jsp?snum=" + snum;
+		url = "../hyun/confirmSnum.jsp?snum=" + snum;
 		window.open(url, "SnumCheck", "width=300,height=150");
 	}
 
@@ -69,7 +69,7 @@
 			document.frm.writer.focus();
 			return false;
 		}
-		url = "confirmWriter.jsp?writer=" + writer;
+		url = "../hyun/confirmWriter.jsp?writer=" + writer;
 		window.open(url, "writerCheck", "width=300,height=150");
 	}
 </script>
