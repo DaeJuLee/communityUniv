@@ -47,7 +47,7 @@
 					</select>
 				<tr>
 					<th scope="row">제목</th>
-					<td><input type="text" size="50" maxlength="50" name="title"></td>
+					<td><input type="text" class="intTy" style="width: 88%;"  maxlength="50" name="title"></td>
 				</tr>
 				<tr>
 					<th scope="row">작성자</th>
@@ -55,13 +55,12 @@
 				</tr>
 				<tr>
 					<th scope="row">비밀번호</th>
-					<td><input type="password" size="5" maxlength="10"
-						name="bpass"></td>
+					<td><input type="password" size="5" maxlength="10" class="intTy" style="width: 88%;" 	name="bpass"></td>
 				</tr>
 				<tr>
 					<th scope="row">내용</th>
 					<td><textarea id="textAreaContent"
-							rows="10" cols="30"name="content"  style="width:465px; height:100px;"></textarea></td>
+							rows="10" cols="30"name="content"  style="width:600px; height:100px;"></textarea></td>
 				</tr>
 </table>
 		<div class="btnArea">

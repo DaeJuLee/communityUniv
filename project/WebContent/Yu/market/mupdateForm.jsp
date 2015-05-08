@@ -45,7 +45,7 @@
 					</tr>
 					<tr>
 						<th scope="row">제목</th>
-						<td><input type="text" name="title" required="required"
+						<td><input type="text" name="title" required="required"class="intTy" style="width: 88%;" 
 							value="<%=mboard.getTitle()%>"></td>
 					</tr>
 					<tr>
@@ -54,14 +54,14 @@
 					</tr>
 					<tr>
 						<th scope="row">비밀번호</th>
-						<td><input type="password" name="bpass" required="required"
+						<td><input type="password" name="bpass" required="required"class="intTy" style="width: 88%;" 
 							value="<%=mboard.getBpass()%>"></td>
 					</tr>
 					<tr>
 						<td>내용</td>
 						<td><textarea rows="10" cols="30" id="textAreaContent"
 								name="content" required="required"
-								style="width: 465px; height: 100px;"><%=mboard.getContent()%></textarea>
+								style="width: 600px; height: 100px;"><%=mboard.getContent()%></textarea>
 						</td>
 					</tr>
 					</tbody>

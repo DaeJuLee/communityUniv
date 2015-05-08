@@ -24,7 +24,7 @@
 		%>
 		<p class="btnArea">
 			<span class="btnR"><a
-				href="homeMainPage.jsp?pgm=../Yu/market/mwriteForm.jsp">글쓰기</a></span>
+				href="homeMainPage.jsp?pgm=../Yu/market/mwriteForm.jsp" class = "btnTy3">글쓰기</a></span>
 		</p>
 		<div class="contents">
 			<table class="tbTy1">

@@ -71,11 +71,11 @@
 				if (writer.equals(mboard.getWriter())) {
 			%>
 			<div class="btnArea">
-				<span class="btnR"> <input type="button" value="수정"
+				<span class="btnR"> <input type="button" value="수정" class = "btnTy3"
 					onclick="location.href='homeMainPage.jsp?pgm=../Yu/market/mupdateForm.jsp?bnum=<%=mboard.getBnum()%>&pageNum=<%=pageNum%>'">
-					<input type="button" value="삭제"
+					<input type="button" value="삭제"class = "btnTy2"
 					onclick="location.href='homeMainPage.jsp?pgm=../Yu/market/mdeleteForm.jsp?bnum=<%=mboard.getBnum()%>'">
-					<input type="button" value="목록"
+					<input type="button" value="목록" class = "btnTy3"
 					onclick="location.href='homeMainPage.jsp?pgm=../Yu/market/maList.jsp?pageNum=<%=pageNum%>'">
 				</span>
 			</div>
