@@ -452,4 +452,43 @@ public class TimeTableDao {
 		return sname;
 	}
 	
+	public int deleteTable() throws SQLException{
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "delete from weboutput where time = ?";
+		String sql1 = "insert into weboutput(time) values(?)";
+		try{
+			System.out.println("시간표 삭제 dao들어옴");
+			conn = getConnection();
+			for(int i = 1 ; i < 13 ; i++){
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, i);
+				pstmt.executeQuery();
+				pstmt.close();
+			}
+			
+			for(int j = 1 ; j < 13 ; j++){
+				pstmt = conn.prepareStatement(sql1);
+				pstmt.setInt(1, j);
+				pstmt.executeQuery();
+				pstmt.close();
+			}
+			result = 1;
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			result = 0;
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		
+		return result;
+	}
+	
 }

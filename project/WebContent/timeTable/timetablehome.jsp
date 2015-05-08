@@ -145,7 +145,10 @@ table .haha{
 					out.println("</select></td></tr>");
 				}
 			%>
-			<tr><td colspan="4"><input type="submit" value = "시간표 저장"></td></tr>
+			<tr><td colspan="3"><input type="submit" value = "시간표 저장"></td>
+			<td><input type="button" value = "시간표 초기화"
+				onclick = "location.href='../combinePage/homeMainPage.jsp?pgm=../timeTable/deletetimetable.jsp'" ></td>
+			</tr>
 		</table>
 		</td>
 		</tr></table>

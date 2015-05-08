@@ -70,6 +70,18 @@ create table timeTable(
 )
 --sub들은 과목코드들이 들어갈 항목
 select * from timeTable;
+
+select * from WEBOUTPUT;
+create table weboutput(
+time number primary key,
+mon varchar2(40),
+thu varchar2(40),
+wed varchar2(40),
+tues varchar2(40),
+fri varchar2(40),
+sat varchar2(40)
+);
+--drop table weboutput;
 --------------------------------------------------------------------------------
 --자유게시판-
 create table fboard (

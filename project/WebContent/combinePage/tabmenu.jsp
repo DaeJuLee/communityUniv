@@ -29,16 +29,16 @@ jQuery(function($){
 </script>
 <%
 	NoticeDao nd = NoticeDao.getInstance();
-	List<Notice> list = nd.list(1, 4);
+	List<Notice> list = nd.list(2, 5);
 	
 	TraBoardDao tbd = TraBoardDao.getInstance();
-	List<TraBoard> listTra = tbd.list(1, 4);
+	List<TraBoard> listTra = tbd.list(3, 6);
 	
 	BoardDao fbd = BoardDao.getInstance();
 	List<Board> listFree = fbd.list(1, 4);
 	
 	MaBoardDao mbd = MaBoardDao.getInstance();
-	List<MaBoard> listMarket = mbd.list(1, 4);
+	List<MaBoard> listMarket = mbd.list(8, 11);
 %>
 </head>
 <body>
@@ -46,7 +46,7 @@ jQuery(function($){
 <!-- UI Object -->
 <div class="tab_list m1" style="height:112px;">
 	<ul>
-	<li class="m1"><a href="../combinePage/homeMainPage.jsp?pgm=../hyun/noticeList.jsp"><span>공지사항</span></a>
+	<li class="m1"><a href="#"><span>공지사항</span></a>
 		<ul>
 		<%
 			int index = 4;
@@ -60,44 +60,46 @@ jQuery(function($){
 		<li class="more">› <a href="../combinePage/homeMainPage.jsp?pgm=../hyun/noticeList.jsp">공지사항 더보기</a></li>
 		</ul>
 	</li>
-	<li class="m2"><a href="../combinePage/homeMainPage.jsp?pgm=../Yu/trace/traceList.jsp"><span>족보공유</span></a>
+	<li class="m2"><a href="#"><span>족보공유</span></a>
 		<ul>
 		<%
 			int index1 = 4;
-			for(int i = 0; i <list.size(); i++){
+			for(int i = 0; i <listTra.size(); i++){
 				out.println("<li>›<a href = '../combinePage/homeMainPage.jsp?pgm=../Yu/trace/tContent.jsp?bnum="+(index1) 
 			 	+ "&pageNum=1'>" 
-				 + list.get(i).getTitle() + "</a></li>");
+				 + listTra.get(i).getTitle() + "</a></li>");
 				index1--;
 			}
 		%>
-		<li class="more">› <a href="../combinePage/homeMainPage.jsp?pgm=../Yu/trace/traceList.jsp">보도자료 더보기</a></li>
+		<li class="more">› <a href="../combinePage/homeMainPage.jsp?pgm=../Yu/trace/traceList.jsp">족보공유 더보기</a></li>
 		</ul>
 	</li>
-	<li class="m3"><a href="../combinePage/homeMainPage.jsp?pgm=../Yu/free/freeList.jsp"><span>자유게시판</span></a>
+	<li class="m3"><a href="#"><span>자유게시판</span></a>
 		<ul>
 		<%
 			int index2 = 4;
-			for(int i = 0; i <list.size(); i++){
-				out.println("<li>›<a href = '../combinePage/homeMainPage.jsp?pgm=../Yu/free/fContent.jsp?bnum="+(index1) 
+			for(int i = 0; i <listFree.size(); i++){
+				out.println("<li>›<a href = '../combinePage/homeMainPage.jsp?pgm=../Yu/free/fContent.jsp?bnum="+(index2) 
 			 	+ "&pageNum=1'>" 
-				 + list.get(i).getTitle() + "</a></li>");
+				 + listFree.get(i).getTitle() + "</a></li>");
 				index2--;
 			}
 		%>
+		<li class="more">› <a href="../combinePage/homeMainPage.jsp?pgm=../Yu/free/freeList.jsp">자유게시판 더보기</a></li>
 		</ul>
 	</li>
-	<li class="m4"><a href="../combinePage/homeMainPage.jsp?pgm=../Yu/market/maList.jsp"><span>장터</span></a>
+	<li class="m4"><a href="#"><span>장터</span></a>
 		<ul>
 		<%
 			int index3 = 4;
-			for(int i = 0; i <list.size(); i++){
-				out.println("<li>›<a href = '../combinePage/homeMainPage.jsp?pgm=../Yu/trace/tContent.jsp?bnum="+(index3) 
+			for(int i = 0; i <listMarket.size(); i++){
+				out.println("<li>›<a href = '../combinePage/homeMainPage.jsp?pgm=../Yu/market/mContent.jsp?bnum="+(index3) 
 			 	+ "&pageNum=1'>" 
-				 + list.get(i).getTitle() + "</a></li>");
+				 + listMarket.get(i).getTitle() + "</a></li>");
 				index3--;
 			}
 		%>
+		<li class="more">› <a href="../combinePage/homeMainPage.jsp?pgm=../Yu/market/maList.jsp">장터 더보기</a></li>
 		</ul>
 	</li>
 	</ul>
