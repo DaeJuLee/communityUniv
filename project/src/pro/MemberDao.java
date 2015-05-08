@@ -417,9 +417,10 @@ public class MemberDao {
 	}
 
 	public int confirmSnum(int snum) throws SQLException {
-		int result = 1;
+		int result = 0;
 		Connection conn = null;
-
+		int unum= 0;
+		String sqlUniv = "select unum from univmember where unum = ?";
 		String sql = "select snum from member where snum=?";
 
 		PreparedStatement pstmt = null;
@@ -427,14 +428,35 @@ public class MemberDao {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sqlUniv);
 			pstmt.setInt(1, snum);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				result = 1;
+				unum = rs.getInt("unum");
+				result = 2;//커뮤니티 학생입니다.
 			} else {
 				result = 0;
+			}
+			pstmt.close();
+			rs.close();
+			
+			if(result == 2){
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, unum);
+				rs = pstmt.executeQuery();
+			}
+			
+			if(rs.next()){
+				result = 0;
+			}else{
+				result = 1;//가입할 수 있다.
+			}
+			///////////////////////////////////////////////////////////
+			if(result == 1){
+				System.out.println("가입할수 있다. " + result);
+			}else{
+				System.out.println("가입할수 없다. " + result);
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

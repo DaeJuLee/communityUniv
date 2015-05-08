@@ -17,7 +17,7 @@
 			window.close();
 		}
 	</script>
-
+<!-- 닫기 버튼은 나중에 쌤께 물어봐야함 -->
 </head>
 <body>
 
@@ -25,17 +25,17 @@
 		MemberDao md = MemberDao.getInstance();
 		int result = md.confirmSnum(snum);
 		
-		if(result==0) {
+		if(result==1) {
 	%>
 		
-		<%=snum%>는 사용할 수 있습니다.
+		<%=snum%>은 가입할 수 있습니다.
 		<input type="button" value="닫기" onclick="wincl()">
 	
 	<%		
 		} else {
 	%>
 		
-		<%=snum%>는 이미 있는 학번입니다. 다른 학번을 입력하세요.
+		<%=snum%>는 이미 가입되어있거나 커뮤니티학생이 아닙니다.
 		<p>
 		
 		<form>
