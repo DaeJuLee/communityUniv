@@ -14,7 +14,7 @@
 <body>
 
 	<div class="columnMain">
-		<h2>QnA 글쓰기</h2>
+		<h2>장터 글쓰기</h2>
 		<%	
 	MaBoardDao mbd = MaBoardDao.getInstance();
 	String pageNum = request.getParameter("pageNum");
@@ -54,7 +54,7 @@
 					<td><input type="hidden" name="writer" value="<%=writer %>"><%=writer %></td>
 				</tr>
 				<tr>
-					<td>비밀번호</td>
+					<th scope="row">비밀번호</th>
 					<td><input type="password" size="5" maxlength="10"
 						name="bpass"></td>
 				</tr>
