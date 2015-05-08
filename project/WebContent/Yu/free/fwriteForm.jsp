@@ -26,7 +26,7 @@
 			}
 		%>
 
-		<form action="../combinePage/homeMainPage.jsp" method="post">
+		<form action="../combinePage/homeMainPage.jsp" method="post" name = "frm">
 			<input type = "hidden" name = "pgm" value = "../Yu/free/fwritePro.jsp?pageNum=<%=pageNum%>">
 			<input type="hidden" name="bnum" value="<%=bnum%>">
 			<%-- <input type="hidden" name="ref" value="<%=ref%>">
