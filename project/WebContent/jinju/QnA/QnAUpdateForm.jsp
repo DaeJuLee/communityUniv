@@ -49,7 +49,7 @@
 				<td><%=qboard.getWriter() %></td>
 			</tr>
 			<tr>
-				<th scope="row">암호</th>
+				<th scope="row">비밀번호</th>
 				<td><input type="password" name="bpass" required="required" class="intTy" style="width:88%;" value = "<%=qboard.getBpass()%>"></td>
 			</tr>
 			<tr>
