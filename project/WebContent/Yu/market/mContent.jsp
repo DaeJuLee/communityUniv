@@ -67,8 +67,8 @@
 				</tr>
 			</table>
 
-			<% 
-				if(writer.equals(mboard.getWriter())){
+			<%
+				if (writer.equals(mboard.getWriter())) {
 			%>
 			<div class="btnArea">
 				<span class="btnR"> <input type="button" value="수정"
@@ -80,9 +80,9 @@
 				</span>
 			</div>
 			<%
-				}else{
+				} else {
 			%>
-			
+
 			<%
 				}
 			%>
@@ -96,8 +96,9 @@
 							name="bnum" value=<%=bnum%>> <input type="hidden"
 							name="pageNum" value=<%=pageNum%>> <input type="hidden"
 							name="writer" value="<%=writer%>">
-							<div>
-								<span> <input type="submit" value="댓글달기">
+							<div class="btnArea">
+								<span class="btnR"> <input type="submit" value="댓글달기"
+									class="btnTy3">
 								</span>
 							</div></td>
 					</tr>
