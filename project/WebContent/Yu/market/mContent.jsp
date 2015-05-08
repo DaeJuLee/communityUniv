@@ -67,6 +67,9 @@
 				</tr>
 			</table>
 
+			<% 
+				if(writer.equals(mboard.getWriter())){
+			%>
 			<div class="btnArea">
 				<span class="btnR"> <input type="button" value="수정"
 					onclick="location.href='homeMainPage.jsp?pgm=../Yu/market/mupdateForm.jsp?bnum=<%=mboard.getBnum()%>&pageNum=<%=pageNum%>'">
@@ -76,6 +79,13 @@
 					onclick="location.href='homeMainPage.jsp?pgm=../Yu/market/maList.jsp?pageNum=<%=pageNum%>'">
 				</span>
 			</div>
+			<%
+				}else{
+			%>
+			
+			<%
+				}
+			%>
 			<form action="homeMainPage.jsp" name="frm" method="get"
 				onsubmit="return chk()">
 				<table class="tbTy1 detaLeft">
